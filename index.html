@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>muse.tag — 아이돌이 입은 그거, 어디꺼? | 아이돌 착용템 브랜드·가격·구매처</title>
-<meta name="description" content="아이돌이 공항·방송·SNS에서 입은 옷과 소품을 브랜드·제품명·가격·구매처까지 매일 아침 정리해요.">
+<meta name="description" content="아이돌이 공항·방송·SNS에서 입은 옷과 소품을 브랜드·제품명·가격·구매처까지 매일 아침 정리해요. 오늘은 연준·해원·민니·김도연 착용템.">
 <link rel="canonical" href="https://sogalbi.github.io/muse.tag/">
 <meta name="theme-color" content="#F7F2EF">
 <link rel="icon" href="favicon.png" type="image/png">
@@ -12,7 +12,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="muse.tag">
 <meta property="og:title" content="muse.tag — 아이돌이 입은 그거, 어디꺼?">
-<meta property="og:description" content="아이돌이 공항·방송·SNS에서 입은 옷과 소품을 브랜드·제품명·가격·구매처까지 매일 아침 정리해요.">
+<meta property="og:description" content="아이돌이 공항·방송·SNS에서 입은 옷과 소품을 브랜드·제품명·가격·구매처까지 매일 아침 정리해요. 오늘은 연준·해원·민니·김도연 착용템.">
 <meta property="og:url" content="https://sogalbi.github.io/muse.tag/">
 <meta property="og:image" content="https://sogalbi.github.io/muse.tag/assets/og.jpg">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
@@ -203,46 +203,147 @@ button{font:inherit;color:inherit}
 footer{margin-top:56px;border-top:2px solid var(--ink);padding:22px 0 40px;font-size:13px;line-height:1.7;color:var(--mute)}
 footer b{color:var(--ink)}
 
+/* ── 휴대폰: 한눈에 (사용자 10/16 '모바일에서 한눈에, 지금은 지저분') ──
+   첫 화면에 바로 오늘 목록 · 카드 대신 한 줄 목록(사진 · 이름 · 가격표) · 기울임 없음 · 영수증은 합계만 · 찾기 칩은 한 줄 */
+.estline{display:none}
+@media (max-width:719px){
+  .hero{padding:18px 0 2px}
+  .hero .wrap{gap:0}
+  .dateline{font-size:11px;padding:7px 10px 6px}
+  .hero h1{font-size:34px;margin:12px 0 10px}
+  .lede{font-size:15px;line-height:1.6;margin:0 0 6px}
+  .who-today{font-size:13px;margin:0}
+  .hero .cta,.collage,.ribbon{display:none}
+  .sec{padding:26px 0 4px}
+  .head{margin-bottom:12px;padding-bottom:8px;align-items:center}
+  .head h2{font-size:25px}
+  .eyebrow{font-size:10.5px;margin-bottom:6px}
+  .more{font-size:13px}
+
+  /* 오늘 목록: 흰 종이 한 장에 줄줄이 */
+  .grid{display:block;background:var(--white);box-shadow:var(--shadow);padding:0 14px}
+  .grid li+li{border-top:1.5px dashed rgba(19,16,21,.16)}
+  .item,.item:hover,.item:focus-visible{display:grid;grid-template-columns:68px minmax(0,1fr) auto;grid-template-areas:"ph who tag" "ph meta meta";
+    column-gap:12px;row-gap:3px;align-items:start;padding:14px 0;background:none;box-shadow:none;transform:none}
+  .item .ph{grid-area:ph;width:68px;height:68px;aspect-ratio:auto}
+  .item .ph img{top:0;left:0;width:100%;height:100%}
+  .item .ph .noimg{inset:0;font-size:11px}
+  .item .who{grid-area:who;position:static;max-width:none;transform:none;background:none;padding:2px 0 0;font-size:17px;line-height:1.2}
+  .item .who small{font-size:9.5px;color:var(--mute)}
+  .item .tag,.item:hover .tag{grid-area:tag;align-self:start;margin:0;transform:none;font-size:13px;min-height:26px;padding:4px 9px 4px 21px;
+    clip-path:polygon(10px 0,100% 0,100% 100%,10px 100%,0 calc(100% - 10px),0 10px)}
+  .item .tag::before{left:8px;width:5px;height:5px;margin-top:-2.5px}
+  .item .meta{grid-area:meta;padding:0;gap:1px}
+  .brand{font-size:10px}
+  .prod{font-size:13.5px;-webkit-line-clamp:1}
+  .sale{margin-top:4px;font-size:11px;padding:2px 5px}
+  .basis{padding-top:3px;font-size:10.5px}
+  .est{display:none}
+  .estline{display:inline-block;align-self:flex-start;margin-top:4px;border:1.2px solid var(--ink);border-radius:99px;padding:1px 7px;font:700 10.5px/1.4 var(--kr)}
+
+  /* 영수증은 합계만 */
+  .split{gap:30px}
+  .receipt{transform:none;padding:22px 18px 16px;margin-top:4px}
+  .receipt::before{width:70px;height:20px;margin-left:-35px;top:-10px}
+  .r-top{font-size:11px}.r-top b{font-size:15px}
+  .r-list{display:none}
+  .r-total{margin-top:14px;padding-top:12px;border-top:1.5px dashed var(--ink)}
+  .r-total b{font-size:19px}
+  .barcode{height:26px;margin-top:12px}
+
+  /* 찾기: 칩 한 줄, 쳤을 때만 결과 */
+  .find h3{font-size:25px}
+  .find p.sub{font-size:13.5px;margin-bottom:12px}
+  .search input{font-size:16px;padding:13px 0}
+  .chips{flex-wrap:nowrap;overflow-x:auto;margin:12px -16px 2px;padding:0 16px 4px;scrollbar-width:none}
+  .chips::-webkit-scrollbar{display:none}
+  .chip{flex:none;font-size:13px;padding:8px 11px}
+  .results.is-default,.count.is-default{display:none}
+  .res{grid-template-columns:52px minmax(0,1fr) auto}
+  .res img,.res .noimg{width:52px;height:52px}
+
+  /* 지난 착용템·모아 보기 */
+  .shelf{grid-auto-columns:minmax(140px,40%);gap:12px}
+  .day .mini{padding:40px 10px 10px}
+  .day .k{font-size:14px;transform:none;left:0}
+  .day .d{font-size:14px}
+
+  /* 확인 방법·팔로우 */
+  .rules{padding:2px 16px}
+  .rules div{padding:12px 0}
+  .rules dt{font-size:16px}
+  .rules dd{font-size:14px;line-height:1.55}
+  .follow{margin-top:24px;gap:12px}
+  .follow p{font-size:21px}
+  .follow .tag{font-size:13.5px;min-height:40px;padding:8px 14px 8px 26px}
+  footer{margin-top:36px}
+}
+
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation:none!important;transition:none!important}
 }
 </style>
 </head>
-<body data-latest="">
+<body data-latest="2026-10-16">
 <header class="bar">
   <div class="wrap">
     <a class="logo" href="./" aria-label="muse.tag 홈"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-118 -45 1303 245" aria-hidden="true" focusable="false" aria-labelledby="title"><title id="title">muse.tag 로고 — MUSE.TAG 행택</title><path id="tag" fill="#2B44E8" fill-rule="evenodd" d="M-52,-45 L1185,-45 L1185,200 L-52,200 L-118,134 L-118,21 Z M-93,77.5 A21,21 0 1 1 -51,77.5 A21,21 0 1 1 -93,77.5 Z"/><path id="letters" fill="#FFFFFF" fill-rule="evenodd" d="M17.68,2.64 L61.46,2.64 L77.94,64.23 Q78.95,67.48 80.53,73.74 Q82.11,80 83.78,87.03 Q85.45,94.06 87.6,99.86 Q89.45,95.42 90.9,89.25 Q92.35,83.08 93.97,76.38 Q95.6,69.68 96.92,64.1 L113.52,2.64 L173.1,2.64 L173.1,153.64 L131.63,153.64 L131.63,93.23 Q131.63,84.05 131.74,74.51 Q131.84,64.98 132.02,56.89 Q132.2,48.81 131.32,44.5 Q129.78,48.24 128.44,54.37 Q127.1,60.5 125.58,66.85 Q124.07,73.19 122.75,77.85 L101.75,153.64 L68.27,153.64 L47.05,77.85 Q45.95,73.46 44.46,67.44 Q42.97,61.42 41.67,55.22 Q40.38,49.03 38.49,44.72 Q37.83,50.35 38.05,58.63 Q38.27,66.91 38.44,75.94 Q38.62,84.97 38.62,93.23 L38.62,153.64 L0,153.64 L0,20.31 L17.68,2.64 Z M195.58,2.64 L221.04,2.64 L221.04,93.45 Q221.04,106.98 228.29,115.15 Q235.54,123.32 249.86,123.32 Q264.18,123.32 271.61,115.15 Q279.03,106.98 279.03,93.45 L279.03,2.64 L322.04,2.64 L322.04,94.24 Q322.04,114.71 313.48,128.55 Q304.91,142.39 288.83,149.33 Q272.75,156.27 249.95,156.27 Q227.41,156.27 211.27,149.33 Q195.12,142.39 186.51,128.55 Q177.9,114.71 177.9,94.24 L177.9,20.31 L195.58,2.64 Z M349.93,9.41 Q358.27,4.83 368.7,2.57 Q380.56,0 393.83,0 Q407.05,0 418.63,2.68 Q430.2,5.36 439.16,11.01 Q448.13,16.65 453.2,25.24 Q458.28,33.83 458.5,45.78 L458.5,48.41 L417.64,48.41 L417.64,47.14 Q417.64,42.53 415.2,38.82 Q412.76,35.1 407.75,32.84 Q402.74,30.58 395.06,30.58 Q387.54,30.58 382.38,32.03 Q377.22,33.48 374.56,36.11 Q371.9,38.75 371.9,42.18 Q371.9,46.75 375.7,49.65 Q379.5,52.54 386.01,54.57 Q392.51,56.59 400.55,58.32 Q408.59,60.06 417.22,62.06 Q425.85,64.06 433.89,67.2 Q441.93,70.34 448.43,75.28 Q454.94,80.22 458.74,87.47 Q462.54,94.72 462.54,105.13 Q462.54,123.41 453.99,134.66 Q445.45,145.9 430.53,151.09 Q415.62,156.27 396.77,156.27 Q381.96,156.27 369.05,153.83 Q356.13,151.4 346.31,145.73 Q336.49,140.06 330.87,130.46 Q325.24,120.86 325.24,106.63 Q325.24,105.92 325.24,104.96 Q325.24,103.99 325.46,103.24 L366.63,103.24 Q366.54,103.99 366.48,104.89 Q366.41,105.79 366.41,106.45 Q366.41,113.3 369.82,117.28 Q373.22,121.26 379.42,122.86 Q385.61,124.46 393.69,124.46 Q397.65,124.46 401.34,124.16 Q405.03,123.85 408.1,122.97 Q411.18,122.09 413.62,120.66 Q416.06,119.24 417.31,117.11 Q418.56,114.97 418.56,111.99 Q418.56,107.29 414.76,104.34 Q410.96,101.4 404.52,99.38 Q398.09,97.36 390.05,95.56 Q382.01,93.75 373.31,91.6 Q364.61,89.45 356.57,86.15 Q348.53,82.86 342.09,77.76 Q335.66,72.67 331.86,65 Q328.06,57.33 328.06,46.48 Q328.06,35.39 332.25,27.09 L349.93,9.41 Z M484.22,2.64 L593.55,2.64 L593.55,35.59 L509.55,35.59 L509.55,60.94 L582.35,60.94 L582.35,92.88 L509.55,92.88 L509.55,120.69 L595.09,120.69 L595.09,153.64 L466.54,153.64 L466.54,20.31 L484.22,2.64 Z M13.29,28.81 A6,6 0 1 1 25.29,28.81 A6,6 0 1 1 13.29,28.81 Z M614.517113702624 153.64V109.83679300291544H661.1818367346939V153.64Z M719.9908746355685 153.64V40.940291545189496H670.2445189504373V2.1997667638484018H818.1628862973761V40.940291545189496H768.6366472303207V153.64Z M804.7357725947522 153.64 859.9850437317784 2.1997667638484018H916.5550145772595L971.8042857142857 153.64H920.2969970845481L913.9136151603499 132.28868804664722H860.8655102040816L854.4821282798835 153.64ZM870.9908746355685 98.39072886297376H904.0083673469388L896.7445189504374 74.17790087463555Q895.8640524781341 71.53650145772593 894.7634693877551 67.79451895043731Q893.6628862973761 64.05253644314868 892.5623032069971 59.870320699708444Q891.4617201166182 55.688104956268205 890.3611370262391 51.61594752186588Q889.2605539358601 47.54379008746355 888.3800874635568 44.46215743440233H886.6191545189505Q885.7386880466472 48.42425655976676 884.3079300291545 53.4869387755102Q882.8771720116619 58.54962099125363 881.3363556851313 63.94247813411078Q879.7955393586006 69.33533527696792 878.2547230320699 74.17790087463555Z M1051.7066180758018 156.2813994169096Q1013.8465597667639 156.2813994169096 995.0265889212828 136.47090379008745Q976.2066180758018 116.66040816326529 976.2066180758018 77.9198833819242Q976.2066180758018 51.94612244897958 985.8917492711371 34.55690962099124Q995.5768804664724 17.167696793002904 1014.0666763848398 8.363032069970842Q1032.556472303207 -0.44163265306121957 1058.7503498542274 -0.44163265306121957Q1074.598746355685 -0.44163265306121957 1088.5761516034986 3.1902915451895097Q1102.553556851312 6.822215743440239 1113.2292128279882 13.976005830903787Q1123.9048688046648 21.129795918367336 1129.8480174927113 31.91551020408162Q1135.791166180758 42.701224489795905 1135.791166180758 57.008804664723016H1089.346559766764Q1089.346559766764 52.166239067055386 1087.035335276968 48.204139941690954Q1084.724110787172 44.24204081632652 1080.7620116618077 41.490583090379Q1076.7999125364431 38.73912536443147 1071.627172011662 37.308367346938766Q1066.4544314868806 35.87760932944606 1060.7313994169097 35.87760932944606Q1052.1468513119535 35.87760932944606 1045.5433527696794 38.18883381924198Q1038.9398542274052 40.5000583090379 1034.647580174927 45.122507288629734Q1030.355306122449 49.74495626822157 1028.154139941691 56.12833819241982Q1025.952973760933 62.511720116618065 1025.952973760933 70.87615160349853V84.96361516034985Q1025.952973760933 95.96944606413993 1029.8050145772595 103.7835860058309Q1033.657055393586 111.59772594752185 1041.4711953352771 115.77994169096209Q1049.285335276968 119.96215743440231 1060.7313994169097 119.96215743440231Q1068.4354810495627 119.96215743440231 1074.928921282799 117.6509329446064Q1081.422361516035 115.33970845481048 1085.3844606413995 110.93737609329445Q1089.346559766764 106.53504373177842 1089.346559766764 100.81201166180756V99.93154518950436H1055.008367346939V69.11521865889212H1135.791166180758V153.64H1110.6978717201166L1105.855306122449 138.67206997084546Q1099.0316909620992 144.3951020408163 1090.8873760932945 148.35720116618074Q1082.7430612244898 152.31930029154518 1073.0579300291547 154.3003498542274Q1063.3727988338194 156.2813994169096 1051.7066180758018 156.2813994169096Z"/></svg></a>
     <nav aria-label="바로가기">
       <a class="nav" href="#today">오늘</a>
       <a class="nav" href="#find">찾기</a>
-      <a class="nav" href="#days">지난 착용템</a>
+      <a class="nav" href="#collections">모아 보기</a>
       <a class="tag ink" href="https://www.instagram.com/muse.tag/" target="_blank" rel="noopener">@muse.tag</a>
     </nav>
   </div>
 </header>
 
 <main>
-<section class="hero"><div class="wrap"><div><span class="dateline">Daily · K-pop fashion</span><h1>아이돌이 입은<br>그거, <span class="hl">어디꺼?</span></h1><p class="lede">공항·방송·SNS에서 입은 옷과 소품을 브랜드·제품명·가격·구매처까지 매일 아침 정리해요.</p><p class="who-today">첫 세트를 준비하고 있어요.</p></div></div></section>
+<section class="hero" aria-labelledby="hero-h">
+  <div class="wrap">
+    <div>
+      <span class="dateline" data-recent="Latest · 10.16 FRI">Today · 10.16 FRI</span>
+      <h1 id="hero-h">아이돌이 입은<br>그거, <span class="hl">어디꺼?</span></h1>
+      <p class="lede">공항·방송·SNS에서 입은 옷과 소품을 브랜드·제품명·가격·구매처까지 매일 아침 정리해요.</p>
+      <p class="who-today"><span data-recent="최근 세트는">오늘은</span> <b>연준·해원·민니 외 2명</b>의 착용템 9개</p>
+      <a class="tag ink cta" href="#today">착용템 9개 보기</a>
+    </div>
+    <div class="collage" aria-hidden="true"><div class="cut c1" style="--i:1"><img src="2026-10-16/img/01.webp" alt="" width="360" height="360"><span class="tag">₩3,000,000</span></div><div class="cut c2" style="--i:2"><img src="2026-10-16/img/02.webp" alt="" width="360" height="360"><span class="tag">₩1,670,000</span></div><div class="cut c3" style="--i:3"><img src="2026-10-16/img/03.webp" alt="" width="360" height="360"><span class="tag">₩6,300,000</span></div><div class="cut c4" style="--i:4"><img src="2026-10-16/img/04.webp" alt="" width="360" height="360"><span class="tag">₩1,800,000</span></div></div>
+  </div>
+</section>
 
 <div class="ribbon" aria-hidden="true"><p>Brand · Item · Price · Shop · @muse.tag · Brand · Item · Price · Shop · @muse.tag · Brand · Item · Price · Shop · @muse.tag · Brand · Item · Price · Shop · @muse.tag · Brand · Item · Price · Shop · @muse.tag · Brand · Item · Price · Shop · @muse.tag</p></div>
 
-
+<section class="sec" id="today" aria-labelledby="today-h">
+  <div class="wrap">
+    <div class="head">
+      <div><span class="eyebrow">10.16 FRI · 9 items</span><h2 id="today-h" data-recent="최근 착용템 10.16 (금)">오늘의 착용템</h2></div>
+      <a class="more" href="2026-10-16/">구매처·출처 한 번에 보기 →</a>
+    </div>
+    <ul class="grid"><li><a class="item" href="2026-10-16/#i01"><span class="who">연준<small>TXT</small></span><span class="ph"><img src="2026-10-16/img/01.webp" alt="" loading="lazy" width="360" height="360"></span><span class="tag">₩3,000,000</span><span class="meta"><span class="brand">Miu Miu</span><span class="prod">스피릿 나파 가죽 백</span><span class="basis">10/10 기준</span></span></a></li><li><a class="item" href="2026-10-16/#i02"><span class="who">연준<small>TXT</small></span><span class="ph"><img src="2026-10-16/img/02.webp" alt="" loading="lazy" width="360" height="360"></span><span class="tag">₩1,670,000</span><span class="meta"><span class="brand">Miu Miu</span><span class="prod">버블 테크니컬 패브릭 &amp; 스웨이드 스니커즈</span><span class="basis">10/9 기준</span></span></a></li><li><a class="item" href="2026-10-16/#i03"><span class="who">연준<small>TXT</small></span><span class="ph"><img src="2026-10-16/img/03.webp" alt="" loading="lazy" width="360" height="360"></span><span class="tag">₩6,300,000</span><span class="meta"><span class="brand">Miu Miu</span><span class="prod">테크니컬 패브릭 및 시어링 윈드브레이커 (헤마타이트)</span><span class="basis">10/10 기준</span></span></a></li><li><a class="item" href="2026-10-16/#i04"><span class="who">연준<small>TXT</small></span><span class="ph"><img src="2026-10-16/img/04.webp" alt="" loading="lazy" width="360" height="360"></span><span class="tag">₩1,800,000</span><span class="meta"><span class="brand">Miu Miu</span><span class="prod">스트레치 울 팬츠 (네이비)</span><span class="basis">10/10 기준</span></span></a></li><li><a class="item" href="2026-10-16/#i05"><span class="who">연준<small>TXT</small></span><span class="est" aria-label="정확한 모델 확인 중">모델<br>확인 중</span><span class="ph"><img src="2026-10-16/img/05.webp" alt="" loading="lazy" width="360" height="360"></span><span class="tag">₩1,690,000</span><span class="meta"><span class="brand">Miu Miu</span><span class="prod">포플린 셔츠 (페리윙클 블루)</span><span class="basis">10/10 기준</span><span class=estline>모델 확인 중</span></span></a></li><li><a class="item" href="2026-10-16/#i06"><span class="who">해원<small>NMIXX</small></span><span class="ph"><img src="2026-10-16/img/06.webp" alt="" loading="lazy" width="360" height="360"></span><span class="tag">₩279,000</span><span class="meta"><span class="brand">Dr. Martens</span><span class="prod">1460 크레이지 호스 레더 부츠 (다크 브라운)</span><span class="basis">10/9 기준</span></span></a></li><li><a class="item" href="2026-10-16/#i07"><span class="who">민니<small>i-dle</small></span><span class="ph"><img src="2026-10-16/img/07.webp" alt="" loading="lazy" width="360" height="360"></span><span class="tag">₩6,050,000</span><span class="meta"><span class="brand">Miu Miu</span><span class="prod">아르카디 스터드 장식 가죽 백</span><span class="basis">10/9 기준</span></span></a></li><li><a class="item" href="2026-10-16/#i08"><span class="who">김도연<small>전 위키미키</small></span><span class="est" aria-label="정확한 모델 확인 중">모델<br>확인 중</span><span class="ph"><img src="2026-10-16/img/08.webp" alt="" loading="lazy" width="360" height="360"></span><span class="tag">₩189,000</span><span class="meta"><span class="brand">Archivépke</span><span class="prod">스몰 플링 호보백</span><span class="basis">10/16 기준</span><span class=estline>모델 확인 중</span></span></a></li><li><a class="item" href="2026-10-16/#i09"><span class="who">태민<small>SHINee</small></span><span class="ph"><img src="2026-10-16/img/09.webp" alt="" loading="lazy" width="360" height="360"></span><span class="tag">₩5,900,000</span><span class="meta"><span class="brand">Maison Margiela</span><span class="prod">LINK 라지</span><span class="basis">10/10 기준</span></span></a></li></ul>
+  </div>
+</section>
 
 <section class="sec" id="find" aria-labelledby="find-h">
   <div class="wrap">
     <div class="split">
-      <div></div>
+      <div class="receipt" aria-label="10.16 (금) 영수증">
+  <p class="r-top"><b>MUSE·TAG</b>Receipt No.20261016<br>10.16 FRI · 9 items</p>
+  <ul class="r-list"><li><span class="rn">연준<small>Miu Miu</small></span><span class="rp">₩3,000,000</span></li><li><span class="rn">연준<small>Miu Miu</small></span><span class="rp">₩1,670,000</span></li><li><span class="rn">연준<small>Miu Miu</small></span><span class="rp">₩6,300,000</span></li><li><span class="rn">연준<small>Miu Miu</small></span><span class="rp">₩1,800,000</span></li><li><span class="rn">연준<small>Miu Miu</small></span><span class="rp">₩1,690,000</span></li><li><span class="rn">해원<small>Dr. Martens</small></span><span class="rp">₩279,000</span></li><li><span class="rn">민니<small>Miu Miu</small></span><span class="rp">₩6,050,000</span></li><li><span class="rn">김도연<small>Archivépke</small></span><span class="rp">₩189,000</span></li><li><span class="rn">태민<small>Maison Margiela</small></span><span class="rp">₩5,900,000</span></li></ul>
+  <p class="r-total"><span data-recent="이 세트 다 사면">오늘 다 사면</span><b>₩26,878,000</b></p>
+  <p class="r-note">정가 기준 · 가격·재고는 올린 날 공식몰 기준이라 바뀔 수 있어요.</p>
+  <div class="barcode" aria-hidden="true"></div>
+</div>
       <div class="find">
-        <span class="eyebrow">Search · 12 items</span>
+        <span class="eyebrow">Search · 11 items</span>
         <h3 id="find-h">아이돌·브랜드로 찾기</h3>
-        <p class="sub">지금까지 정리한 착용템 12개에서 찾아요. 이름, 그룹, 브랜드, 종류(가방·신발…)로 찾을 수 있어요.</p>
+        <p class="sub">착용템 11개에서 이름·그룹·브랜드·종류(가방·신발…)로 찾아요.</p>
         <label class="search">
           <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M15.5 15.5 21 21" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"/></svg>
           <span class="sr">아이돌 이름이나 브랜드</span>
           <input id="q" type="search" placeholder="예: 연준, Miu Miu, 가방" autocomplete="off" enterkeyhint="search">
         </label>
-        <div class="chips" role="group" aria-label="많이 찾는 이름"><button type="button" class="chip" aria-pressed="false">연준</button><button type="button" class="chip" aria-pressed="false">김도연</button><button type="button" class="chip" aria-pressed="false">장원영</button><button type="button" class="chip" aria-pressed="false">해원</button><button type="button" class="chip" aria-pressed="false">민니</button><button type="button" class="chip" aria-pressed="false">Miu Miu</button><button type="button" class="chip" aria-pressed="false">Archivépke</button><button type="button" class="chip" aria-pressed="false">KARE</button></div>
+        <div class="chips" role="group" aria-label="많이 찾는 이름"><button type="button" class="chip" aria-pressed="false">연준</button><button type="button" class="chip" aria-pressed="false">해원</button><button type="button" class="chip" aria-pressed="false">민니</button><button type="button" class="chip" aria-pressed="false">김도연</button><button type="button" class="chip" aria-pressed="false">태민</button><button type="button" class="chip" aria-pressed="false">Miu Miu</button><button type="button" class="chip" aria-pressed="false">Dr. Martens</button><button type="button" class="chip" aria-pressed="false">Archivépke</button></div>
         <p class="count" id="count" aria-live="polite"></p>
         <ul class="results" id="results"></ul>
         <noscript><p class="count">찾기는 자바스크립트가 켜져 있어야 돼요. 아래 지난 착용템에서 날짜별로 볼 수 있어요.</p></noscript>
@@ -251,17 +352,12 @@ footer b{color:var(--ink)}
   </div>
 </section>
 
-<section class="sec" id="days" aria-labelledby="days-h">
-  <div class="wrap">
-    <div class="head"><div><span class="eyebrow">Archive · 0 sets</span><h2 id="days-h">지난 착용템</h2></div></div>
-    <p class="empty">지난 세트가 여기에 날짜별로 쌓여요. 매일 아침 하나씩 늘어나요.</p>
-  </div>
-</section>
+
 
 <section class="sec" id="collections" aria-labelledby="col-h">
   <div class="wrap">
     <div class="head"><div><span class="eyebrow">Collections</span><h2 id="col-h">모아 보기</h2></div></div>
-    <ul class="shelf"><li><a class="day" href="%EC%98%B7%EC%9E%A5_%EC%97%B0%EC%A4%80/"><span class="cv"><span class="k">옷장</span><span class="mini"><img src="%EC%98%B7%EC%9E%A5_%EC%97%B0%EC%A4%80/img/01.webp" alt="" loading="lazy" width="200" height="200"><img src="%EC%98%B7%EC%9E%A5_%EC%97%B0%EC%A4%80/img/02.webp" alt="" loading="lazy" width="200" height="200"><img src="%EC%98%B7%EC%9E%A5_%EC%97%B0%EC%A4%80/img/03.webp" alt="" loading="lazy" width="200" height="200"><img src="%EC%98%B7%EC%9E%A5_%EC%97%B0%EC%A4%80/img/04.webp" alt="" loading="lazy" width="200" height="200"></span></span><span class="d">연준의 옷장</span><span class="c">7개 · 10.10 (토)</span></a></li><li><a class="day" href="%ED%8A%B9%EC%A7%91_%EA%B0%80%EA%B2%A9_300000/"><span class="cv"><span class="k">특집</span><span class="mini"><img src="%ED%8A%B9%EC%A7%91_%EA%B0%80%EA%B2%A9_300000/img/01.webp" alt="" loading="lazy" width="200" height="200"><img src="%ED%8A%B9%EC%A7%91_%EA%B0%80%EA%B2%A9_300000/img/02.webp" alt="" loading="lazy" width="200" height="200"><img src="%ED%8A%B9%EC%A7%91_%EA%B0%80%EA%B2%A9_300000/img/03.webp" alt="" loading="lazy" width="200" height="200"></span></span><span class="d">30만 원 이하 아이돌 착용템</span><span class="c">3개 · 10.10 (토)</span></a></li><li><a class="day" href="%ED%8A%B9%EC%A7%91_%EB%B8%8C%EB%9E%9C%EB%93%9C_MiuMiu/"><span class="cv"><span class="k">특집</span><span class="mini"><img src="%ED%8A%B9%EC%A7%91_%EB%B8%8C%EB%9E%9C%EB%93%9C_MiuMiu/img/01.webp" alt="" loading="lazy" width="200" height="200"><img src="%ED%8A%B9%EC%A7%91_%EB%B8%8C%EB%9E%9C%EB%93%9C_MiuMiu/img/02.webp" alt="" loading="lazy" width="200" height="200"><img src="%ED%8A%B9%EC%A7%91_%EB%B8%8C%EB%9E%9C%EB%93%9C_MiuMiu/img/03.webp" alt="" loading="lazy" width="200" height="200"><img src="%ED%8A%B9%EC%A7%91_%EB%B8%8C%EB%9E%9C%EB%93%9C_MiuMiu/img/04.webp" alt="" loading="lazy" width="200" height="200"></span></span><span class="d">MIU MIU 입은 아이돌들</span><span class="c">8개 · 10.10 (토)</span></a></li><li><a class="day" href="%ED%8A%B9%EC%A7%91_%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC_%EA%B0%80%EB%B0%A9/"><span class="cv"><span class="k">특집</span><span class="mini"><img src="%ED%8A%B9%EC%A7%91_%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC_%EA%B0%80%EB%B0%A9/img/01.webp" alt="" loading="lazy" width="200" height="200"><img src="%ED%8A%B9%EC%A7%91_%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC_%EA%B0%80%EB%B0%A9/img/02.webp" alt="" loading="lazy" width="200" height="200"><img src="%ED%8A%B9%EC%A7%91_%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC_%EA%B0%80%EB%B0%A9/img/03.webp" alt="" loading="lazy" width="200" height="200"><img src="%ED%8A%B9%EC%A7%91_%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC_%EA%B0%80%EB%B0%A9/img/04.webp" alt="" loading="lazy" width="200" height="200"></span></span><span class="d">아이돌 가방 브랜드·가격 모음</span><span class="c">4개 · 10.10 (토)</span></a></li><li><a class="day" href="2026-10-2%EC%A3%BC/"><span class="cv"><span class="k">주간 베스트</span><span class="mini"><img src="2026-10-2%EC%A3%BC/img/01.webp" alt="" loading="lazy" width="200" height="200"><img src="2026-10-2%EC%A3%BC/img/02.webp" alt="" loading="lazy" width="200" height="200"><img src="2026-10-2%EC%A3%BC/img/03.webp" alt="" loading="lazy" width="200" height="200"><img src="2026-10-2%EC%A3%BC/img/04.webp" alt="" loading="lazy" width="200" height="200"></span></span><span class="d">이번주 아이돌이 입은 그거, 어디꺼?</span><span class="c">10개 · 10.09 (금)</span></a></li></ul>
+    <ul class="shelf"><li><a class="day" href="%EC%98%B7%EC%9E%A5_%EC%97%B0%EC%A4%80/"><span class="cv"><span class="k">옷장</span><span class="mini"><img src="%EC%98%B7%EC%9E%A5_%EC%97%B0%EC%A4%80/img/01.webp" alt="" loading="lazy" width="200" height="200"><img src="%EC%98%B7%EC%9E%A5_%EC%97%B0%EC%A4%80/img/02.webp" alt="" loading="lazy" width="200" height="200"><img src="%EC%98%B7%EC%9E%A5_%EC%97%B0%EC%A4%80/img/03.webp" alt="" loading="lazy" width="200" height="200"><img src="%EC%98%B7%EC%9E%A5_%EC%97%B0%EC%A4%80/img/04.webp" alt="" loading="lazy" width="200" height="200"></span></span><span class="d">연준의 옷장</span><span class="c">7개 · 10.10 (토)</span></a></li><li><a class="day" href="%ED%8A%B9%EC%A7%91_%EB%B8%8C%EB%9E%9C%EB%93%9C_MiuMiu/"><span class="cv"><span class="k">특집</span><span class="mini"><img src="%ED%8A%B9%EC%A7%91_%EB%B8%8C%EB%9E%9C%EB%93%9C_MiuMiu/img/01.webp" alt="" loading="lazy" width="200" height="200"><img src="%ED%8A%B9%EC%A7%91_%EB%B8%8C%EB%9E%9C%EB%93%9C_MiuMiu/img/02.webp" alt="" loading="lazy" width="200" height="200"><img src="%ED%8A%B9%EC%A7%91_%EB%B8%8C%EB%9E%9C%EB%93%9C_MiuMiu/img/03.webp" alt="" loading="lazy" width="200" height="200"><img src="%ED%8A%B9%EC%A7%91_%EB%B8%8C%EB%9E%9C%EB%93%9C_MiuMiu/img/04.webp" alt="" loading="lazy" width="200" height="200"></span></span><span class="d">MIU MIU 입은 아이돌들</span><span class="c">8개 · 10.10 (토)</span></a></li></ul>
   </div>
 </section>
 
@@ -269,10 +365,10 @@ footer b{color:var(--ink)}
   <div class="wrap">
     <div class="head"><div><span class="eyebrow">How we check</span><h2 id="about-h">이렇게 확인해요</h2></div></div>
     <dl class="rules">
-      <div><dt>함께 나온 것만</dt><dd>아이돌 이름과 제품이 한 기사·공식 게시물에 같이 나온 것만 올려요. 짐작으로 채우지 않아요.</dd></div>
-      <div><dt>가격은 공식몰 정가</dt><dd>한국 공식몰 정가를 확인한 날짜와 함께 적어요. 할인 중이면 할인가를 따로 표시하고, 한국 공식몰이 없으면 그 나라 가격을 그대로 적어요.</dd></div>
-      <div><dt>사진은 제품컷만</dt><dd>아이돌 사진 대신 브랜드 공식몰의 제품 이미지를 써요. 착용 모습은 각 날짜 페이지의 출처 기사에서 볼 수 있어요.</dd></div>
-      <div><dt>‘모델 확인 중’</dt><dd>브랜드는 확인됐지만 정확한 모델·컬러를 아직 찾는 중인 제품이에요. 알고 계시면 인스타그램 댓글로 알려 주세요.</dd></div>
+      <div><dt>함께 나온 것만</dt><dd>아이돌과 제품이 한 기사·공식 게시물에 같이 나온 것만 올려요.</dd></div>
+      <div><dt>가격은 공식몰 정가</dt><dd>확인한 날짜와 함께 적고, 할인 중이면 할인가를 따로 표시해요.</dd></div>
+      <div><dt>사진은 제품컷만</dt><dd>아이돌 사진 대신 공식몰 제품 이미지를 써요.</dd></div>
+      <div><dt>‘모델 확인 중’</dt><dd>브랜드는 맞지만 정확한 모델·컬러를 찾는 중이에요. 아시면 댓글로 알려 주세요.</dd></div>
     </dl>
     <div class="follow">
       <p>매일 아침, 인스타그램과<br>스레드에 먼저 올려요</p>
@@ -286,11 +382,11 @@ footer b{color:var(--ink)}
   <div class="wrap">
     <p><b>muse.tag</b> · 아이돌 착용템 브랜드·제품명·가격·구매처</p>
     <p>가격·재고는 올린 날 공식몰 기준이라 바뀔 수 있어요. 구매 링크는 공식몰·정품 판매처로 연결돼요.</p>
-    <p>마지막 업데이트 2026.10.16 00:17</p>
+    <p>마지막 업데이트 2026.10.16 02:15</p>
   </div>
 </footer>
 
-<script id="items-data" type="application/json">[{"w":"연준","g":"TXT","b":"Miu Miu","p":"테크니컬 패브릭 및 시어링 윈드브레이커 (헤마타이트)","c":"아우터","al":"미우미우","t":"₩6,300,000","l":"10.10 (토)","i":"%EC%98%B7%EC%9E%A5_%EC%97%B0%EC%A4%80/img/01.webp","u":"%EC%98%B7%EC%9E%A5_%EC%97%B0%EC%A4%80/#i01"},{"w":"연준","g":"TXT","b":"Miu Miu","p":"포플린 셔츠 (페리윙클 블루)","c":"상의","al":"미우미우","t":"₩1,690,000","l":"10.10 (토)","i":"%EC%98%B7%EC%9E%A5_%EC%97%B0%EC%A4%80/img/02.webp","u":"%EC%98%B7%EC%9E%A5_%EC%97%B0%EC%A4%80/#i02"},{"w":"연준","g":"TXT","b":"Miu Miu","p":"스트레치 울 팬츠 (네이비)","c":"하의","al":"미우미우","t":"₩1,800,000","l":"10.10 (토)","i":"%EC%98%B7%EC%9E%A5_%EC%97%B0%EC%A4%80/img/03.webp","u":"%EC%98%B7%EC%9E%A5_%EC%97%B0%EC%A4%80/#i03"},{"w":"연준","g":"TXT","b":"Miu Miu","p":"스피릿 나파 가죽 백","c":"가방","al":"미우미우","t":"₩3,000,000","l":"10.10 (토)","i":"%EC%98%B7%EC%9E%A5_%EC%97%B0%EC%A4%80/img/04.webp","u":"%EC%98%B7%EC%9E%A5_%EC%97%B0%EC%A4%80/#i04"},{"w":"연준","g":"TXT","b":"Miu Miu","p":"버블 테크니컬 패브릭 & 스웨이드 스니커즈","c":"신발","al":"미우미우","t":"₩1,670,000","l":"10.10 (토)","i":"%EC%98%B7%EC%9E%A5_%EC%97%B0%EC%A4%80/img/05.webp","u":"%EC%98%B7%EC%9E%A5_%EC%97%B0%EC%A4%80/#i05"},{"w":"연준","g":"TXT","b":"Miu Miu","p":"레브리 선글라스","c":"액세서리","al":"미우미우","t":"₩680,000","l":"10.10 (토)","i":"%EC%98%B7%EC%9E%A5_%EC%97%B0%EC%A4%80/img/06.webp","u":"%EC%98%B7%EC%9E%A5_%EC%97%B0%EC%A4%80/#i06"},{"w":"연준","g":"TXT","b":"Miu Miu","p":"드릴 햇 (로열 블루/화이트)","c":"모자","al":"미우미우","t":"₩960,000","l":"10.10 (토)","i":"%EC%98%B7%EC%9E%A5_%EC%97%B0%EC%A4%80/img/07.webp","u":"%EC%98%B7%EC%9E%A5_%EC%97%B0%EC%A4%80/#i07"},{"w":"김도연","g":"전 위키미키","b":"Archivépke","p":"스몰 플링 호보백","c":"가방","al":"아카이브앱크","t":"₩189,000","l":"10.10 (토)","i":"%ED%8A%B9%EC%A7%91_%EA%B0%80%EA%B2%A9_300000/img/01.webp","u":"%ED%8A%B9%EC%A7%91_%EA%B0%80%EA%B2%A9_300000/#i01"},{"w":"장원영","g":"IVE","b":"KARE","p":"Deko Vase Bubble Gum Lady 30cm 화병","c":"소품","al":"","t":"€99.90","l":"10.10 (토)","i":"%ED%8A%B9%EC%A7%91_%EA%B0%80%EA%B2%A9_300000/img/02.webp","u":"%ED%8A%B9%EC%A7%91_%EA%B0%80%EA%B2%A9_300000/#i02"},{"w":"해원","g":"NMIXX","b":"Dr. Martens","p":"1460 크레이지 호스 레더 부츠 (다크 브라운)","c":"신발","al":"닥터마틴","t":"₩279,000","l":"10.10 (토)","i":"%ED%8A%B9%EC%A7%91_%EA%B0%80%EA%B2%A9_300000/img/03.webp","u":"%ED%8A%B9%EC%A7%91_%EA%B0%80%EA%B2%A9_300000/#i03"},{"w":"민니","g":"i-dle","b":"Miu Miu","p":"아르카디 스터드 장식 가죽 백","c":"가방","al":"미우미우","t":"₩6,050,000","l":"10.10 (토)","i":"%ED%8A%B9%EC%A7%91_%EB%B8%8C%EB%9E%9C%EB%93%9C_MiuMiu/img/08.webp","u":"%ED%8A%B9%EC%A7%91_%EB%B8%8C%EB%9E%9C%EB%93%9C_MiuMiu/#i08"},{"w":"레이·리즈","g":"IVE","b":"Valentino Garavani","p":"락스터드 맥싱 라지 숄더백","c":"가방","al":"","t":"₩4,350,000","l":"10.10 (토)","i":"%ED%8A%B9%EC%A7%91_%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC_%EA%B0%80%EB%B0%A9/img/02.webp","u":"%ED%8A%B9%EC%A7%91_%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC_%EA%B0%80%EB%B0%A9/#i02"}]</script>
+<script id="items-data" type="application/json">[{"w":"연준","g":"TXT","b":"Miu Miu","p":"스피릿 나파 가죽 백","c":"가방","al":"미우미우","t":"₩3,000,000","l":"10.16 (금)","i":"2026-10-16/img/01.webp","u":"2026-10-16/#i01","n":1},{"w":"연준","g":"TXT","b":"Miu Miu","p":"버블 테크니컬 패브릭 & 스웨이드 스니커즈","c":"신발","al":"미우미우","t":"₩1,670,000","l":"10.16 (금)","i":"2026-10-16/img/02.webp","u":"2026-10-16/#i02","n":1},{"w":"연준","g":"TXT","b":"Miu Miu","p":"테크니컬 패브릭 및 시어링 윈드브레이커 (헤마타이트)","c":"아우터","al":"미우미우","t":"₩6,300,000","l":"10.16 (금)","i":"2026-10-16/img/03.webp","u":"2026-10-16/#i03","n":1},{"w":"연준","g":"TXT","b":"Miu Miu","p":"스트레치 울 팬츠 (네이비)","c":"하의","al":"미우미우","t":"₩1,800,000","l":"10.16 (금)","i":"2026-10-16/img/04.webp","u":"2026-10-16/#i04","n":1},{"w":"연준","g":"TXT","b":"Miu Miu","p":"포플린 셔츠 (페리윙클 블루)","c":"상의","al":"미우미우","t":"₩1,690,000","l":"10.16 (금)","i":"2026-10-16/img/05.webp","u":"2026-10-16/#i05","n":1},{"w":"해원","g":"NMIXX","b":"Dr. Martens","p":"1460 크레이지 호스 레더 부츠 (다크 브라운)","c":"신발","al":"닥터마틴","t":"₩279,000","l":"10.16 (금)","i":"2026-10-16/img/06.webp","u":"2026-10-16/#i06","n":1},{"w":"민니","g":"i-dle","b":"Miu Miu","p":"아르카디 스터드 장식 가죽 백","c":"가방","al":"미우미우","t":"₩6,050,000","l":"10.16 (금)","i":"2026-10-16/img/07.webp","u":"2026-10-16/#i07","n":1},{"w":"김도연","g":"전 위키미키","b":"Archivépke","p":"스몰 플링 호보백","c":"가방","al":"아카이브앱크","t":"₩189,000","l":"10.16 (금)","i":"2026-10-16/img/08.webp","u":"2026-10-16/#i08","n":1},{"w":"태민","g":"SHINee","b":"Maison Margiela","p":"LINK 라지","c":"가방","al":"","t":"₩5,900,000","l":"10.16 (금)","i":"2026-10-16/img/09.webp","u":"2026-10-16/#i09","n":1},{"w":"연준","g":"TXT","b":"Miu Miu","p":"레브리 선글라스","c":"액세서리","al":"미우미우","t":"₩680,000","l":"10.10 (토)","i":"%EC%98%B7%EC%9E%A5_%EC%97%B0%EC%A4%80/img/06.webp","u":"%EC%98%B7%EC%9E%A5_%EC%97%B0%EC%A4%80/#i06"},{"w":"연준","g":"TXT","b":"Miu Miu","p":"드릴 햇 (로열 블루/화이트)","c":"모자","al":"미우미우","t":"₩960,000","l":"10.10 (토)","i":"%EC%98%B7%EC%9E%A5_%EC%97%B0%EC%A4%80/img/07.webp","u":"%EC%98%B7%EC%9E%A5_%EC%97%B0%EC%A4%80/#i07"}]</script>
 <script>
 (function () {
   // 오늘 세트가 방문한 날짜와 다르면 '오늘' 대신 '최근'으로
@@ -315,6 +411,8 @@ footer b{color:var(--ink)}
     list.textContent = "";
     chips.forEach(function (c) { c.setAttribute("aria-pressed", norm(c.textContent) === t && t ? "true" : "false"); });
     var hits;
+    list.classList.toggle("is-default", !t);  // 휴대폰에선 쳤을 때만 결과를 보여 준다
+    count.classList.toggle("is-default", !t);
     if (!t) {  // 비었을 땐 오늘 세트 말고 최근 착용템 몇 개
       hits = items.filter(function (it) { return !it.n; }).slice(0, 5);
       count.textContent = hits.length ? "최근 세트에서 고른 착용템이에요. 이름이나 브랜드를 쳐서 더 찾아보세요." : "";
