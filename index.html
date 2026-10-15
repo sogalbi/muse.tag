@@ -1,6 +1,351 @@
 <!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>muse.tag — 아이돌 착용템</title>
-<style>body{margin:0;min-height:100vh;display:grid;place-items:center;background:#F3EEE8;color:#131015;font-family:system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;text-align:center;padding:24px}
-b{font-size:40px;letter-spacing:-.02em}span{display:inline-block;background:#2B4BF2;color:#fff;padding:2px 10px;border-radius:6px;margin-left:4px}p{color:#5a5560}</style></head>
-<body><div><b>MUSE<span>·tag</span></b><p>아이돌이 입은 그거, 어디 거? 브랜드·가격·구매처를 매일 아침 정리해요.<br>곧 오늘의 착용템 구매처 모음이 여기 올라와요.</p><p><a href="https://www.instagram.com/muse.tag/">@muse.tag</a></p></div></body></html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>muse.tag — 아이돌이 입은 그거, 어디꺼? | 아이돌 착용템 브랜드·가격·구매처</title>
+<meta name="description" content="아이돌이 공항·방송·SNS에서 입은 옷과 소품을 브랜드·제품명·가격·구매처까지 매일 아침 정리해요.">
+<link rel="canonical" href="https://sogalbi.github.io/muse.tag/">
+<meta name="theme-color" content="#F7F2EF">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="muse.tag">
+<meta property="og:title" content="muse.tag — 아이돌이 입은 그거, 어디꺼?">
+<meta property="og:description" content="아이돌이 공항·방송·SNS에서 입은 옷과 소품을 브랜드·제품명·가격·구매처까지 매일 아침 정리해요.">
+<meta property="og:url" content="https://sogalbi.github.io/muse.tag/">
+<meta property="og:image" content="https://sogalbi.github.io/muse.tag/assets/og.jpg">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100,900;125,800&family=Black+Han+Sans&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" rel="stylesheet">
+<style>
+/* muse.tag 홈 — 브랜드 키트(종이 모눈 · 핑크 테이프 · 블루 가격표)와 캐러셀 핑크 VOX 를 그대로 따른다 */
+:root{
+  --paper:#F7F2EF; --ink:#131015; --pink:#FF9ACB; --blue:#2B44E8; --white:#FFFFFF; --mute:#6B6457;
+  --grid:rgba(43,68,232,.07); --tape:rgba(232,222,190,.78);
+  --shadow:0 1px 1px rgba(19,16,21,.14),0 10px 22px rgba(19,16,21,.08);
+  --ease:cubic-bezier(.2,0,0,1);
+  --kr:"Pretendard Variable",Pretendard,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --display:"Black Han Sans",var(--kr);
+  --label:"Archivo",var(--kr);
+  --mono:"Space Mono",ui-monospace,"SFMono-Regular",Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background-color:var(--paper);color:var(--ink);font:400 16px/1.6 var(--kr);word-break:keep-all;overflow-wrap:anywhere;
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:28px 28px}
+a{color:inherit}
+img{display:block;max-width:100%}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 16px}
+@media (min-width:720px){.wrap{padding:0 32px}}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* 가격표 모양 (브랜드 ·tag): 왼쪽이 깎이고 구멍(점)이 있는 꼬리표 */
+.tag{position:relative;display:inline-flex;align-items:center;gap:8px;min-height:34px;padding:7px 14px 7px 27px;background:var(--blue);color:var(--white);
+  text-decoration:none;font:800 15px/1.1 var(--kr);font-variant-numeric:tabular-nums;white-space:nowrap;
+  clip-path:polygon(14px 0,100% 0,100% 100%,14px 100%,0 calc(100% - 14px),0 14px)}
+.tag::before{content:"";position:absolute;left:11px;top:50%;width:7px;height:7px;margin-top:-3.5px;border-radius:50%;background:var(--paper)}
+.tag.ink{background:var(--ink)}
+
+/* 위 막대 */
+.bar{position:sticky;top:0;z-index:30;background:rgba(247,242,239,.94);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:2px solid var(--ink)}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;height:56px;gap:12px}
+.bar .logo{display:block;padding:6px 0}
+.bar .logo svg{height:24px;width:auto;display:block}
+.bar nav{display:flex;align-items:center;gap:2px}
+.bar nav a.nav{font:700 14px/1 var(--kr);text-decoration:none;padding:12px 10px;display:none}
+.bar nav a.nav:hover{text-decoration:underline;text-underline-offset:4px}
+.bar .tag{font-size:13px;min-height:32px}
+@media (min-width:760px){.bar nav a.nav{display:inline-block}.bar .logo svg{height:28px}}
+
+/* 첫 화면 */
+.hero{padding:30px 0 6px}
+.hero .wrap{display:grid;gap:18px}
+@media (min-width:900px){.hero{padding:44px 0 10px}.hero .wrap{grid-template-columns:1.02fr .98fr;align-items:center;gap:36px}}
+.dateline{display:inline-block;background:var(--ink);color:var(--white);font:800 12px/1 var(--label);font-stretch:125%;letter-spacing:.16em;text-transform:uppercase;padding:9px 12px 8px}
+.hero h1{font:400 clamp(42px,11.6vw,84px)/1.04 var(--display);margin:16px 0 16px;letter-spacing:-.005em}
+.hero h1 .hl{background:linear-gradient(transparent 56%,var(--pink) 56%,var(--pink) 94%,transparent 94%);padding:0 .04em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.lede{font-size:17px;line-height:1.65;max-width:28em;margin:0 0 8px;color:#2B2630}
+.who-today{font-size:14px;color:var(--mute);margin:0 0 22px}
+.who-today b{color:var(--ink);font-weight:700}
+.hero .cta{font-size:16px;min-height:46px;padding:12px 20px 12px 32px}
+.hero .cta::before{left:13px;width:8px;height:8px;margin-top:-4px}
+.collage{position:relative;width:100%;max-width:560px;aspect-ratio:1/.9;margin:6px auto 0}
+.cut{position:absolute;aspect-ratio:1;min-height:0;transform:rotate(var(--cr,0deg))}
+.cut img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;
+  filter:drop-shadow(2.5px 0 0 #fff) drop-shadow(-2.5px 0 0 #fff) drop-shadow(0 2.5px 0 #fff) drop-shadow(0 -2.5px 0 #fff) drop-shadow(0 8px 12px rgba(19,16,21,.16))}
+.cut .tag{position:absolute;font-size:clamp(15px,3.8vw,21px);min-height:clamp(34px,7.6vw,44px);transform-origin:12px 50%;transform:rotate(var(--r,0deg));
+  animation:swing 1.5s var(--ease) both;animation-delay:calc(var(--i,0) * 110ms + 250ms)}
+/* 네 장이 겹치지 않게: 가격표는 각 제품의 바깥 모서리 쪽에 */
+.c1{left:0;top:2%;width:48%;--cr:-3deg}.c1 .tag{left:-2%;top:4%;--r:-5deg}
+.c2{right:0;top:0;width:44%;--cr:4deg}.c2 .tag{right:-2%;bottom:-2%;--r:3deg}
+.c3{left:6%;bottom:0;width:44%;--cr:2deg}.c3 .tag{left:-4%;bottom:2%;--r:4deg}
+.c4{right:2%;bottom:4%;width:42%;--cr:-4deg}.c4 .tag{right:-3%;bottom:-6%;--r:-3deg}
+@keyframes swing{
+  0%{transform:rotate(calc(var(--r,0deg) - 18deg));opacity:0}
+  12%{opacity:1}
+  34%{transform:rotate(calc(var(--r,0deg) + 9deg))}
+  58%{transform:rotate(calc(var(--r,0deg) - 4deg))}
+  80%{transform:rotate(calc(var(--r,0deg) + 1.5deg))}
+  100%{transform:rotate(var(--r,0deg))}}
+
+/* 핑크 테이프 띠 */
+.ribbon{overflow:hidden;padding:18px 0 10px}
+.ribbon p{margin:0 -20px;background:var(--pink);transform:rotate(-1.4deg);white-space:nowrap;overflow:hidden;padding:11px 0 10px;
+  font:800 14px/1 var(--label);font-stretch:125%;letter-spacing:.18em;text-transform:uppercase}
+
+/* 구역 */
+.sec{padding:40px 0 6px;scroll-margin-top:64px}
+.head{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:6px 16px;border-bottom:2px solid var(--ink);padding-bottom:10px;margin-bottom:22px}
+.head h2{font:400 clamp(30px,6.4vw,44px)/1.08 var(--display);margin:0}
+.eyebrow{display:block;font:800 12px/1 var(--label);font-stretch:125%;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-bottom:8px}
+.more{font:700 14px/1.2 var(--kr);text-decoration:none;border-bottom:2px solid var(--ink);padding-bottom:2px;white-space:nowrap}
+.more:hover{color:var(--blue);border-color:var(--blue)}
+
+/* 오늘 아이템 */
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px 14px;list-style:none;margin:0;padding:0}
+@media (min-width:720px){.grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:34px 24px}}
+@media (min-width:1040px){.grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.item{position:relative;display:flex;flex-direction:column;height:100%;background:var(--white);box-shadow:var(--shadow);text-decoration:none;color:inherit;
+  transform:rotate(var(--tilt,0deg));transition:transform .45s var(--ease),box-shadow .45s var(--ease)}
+.grid li:nth-child(3n+1){--tilt:-.7deg}.grid li:nth-child(3n+2){--tilt:.5deg}.grid li:nth-child(3n){--tilt:-.2deg}
+.item:hover,.item:focus-visible{transform:translateY(-4px) rotate(0deg);box-shadow:0 2px 2px rgba(19,16,21,.14),0 18px 30px rgba(19,16,21,.12)}
+.item .who{position:absolute;left:-7px;top:12px;z-index:2;max-width:calc(100% - 4px);background:var(--pink);padding:7px 10px 5px;transform:rotate(-2deg);
+  font:400 18px/1 var(--display);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.item .who small{font:800 10px/1 var(--label);font-stretch:125%;letter-spacing:.06em;margin-left:5px;text-transform:uppercase}
+.item .ph{position:relative;display:block;aspect-ratio:1;min-height:0}
+.item .ph img{position:absolute;top:44px;left:12px;width:calc(100% - 24px);height:calc(100% - 52px);object-fit:contain}
+.item .ph .noimg{position:absolute;inset:44px 12px 8px;display:grid;place-items:center;font:900 22px/1.1 var(--label);text-transform:uppercase;text-align:center;color:var(--mute)}
+.item .tag{align-self:flex-start;margin:-16px 0 0 -7px;font-size:16px;transform-origin:12px 50%;transform:rotate(-2.5deg);transition:transform .6s var(--ease)}
+.item:hover .tag{transform:rotate(2deg)}
+.item .meta{display:flex;flex-direction:column;gap:3px;flex:1;padding:12px 13px 14px}
+.brand{font:800 11px/1.35 var(--label);font-stretch:125%;letter-spacing:.11em;text-transform:uppercase;color:var(--mute)}
+.prod{font:600 14.5px/1.42 var(--kr);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.sale{align-self:flex-start;margin-top:5px;background:var(--white);border:1.5px solid var(--blue);color:var(--blue);font:700 11.5px/1.3 var(--kr);padding:3px 6px}
+.basis{margin-top:auto;padding-top:8px;font:400 11px/1.3 var(--mono);color:var(--mute)}
+.est{position:absolute;right:6px;top:50px;z-index:2;width:48px;height:48px;border:2px solid var(--ink);border-radius:50%;display:grid;place-items:center;
+  text-align:center;font:800 10px/1.12 var(--kr);transform:rotate(12deg);background:rgba(255,255,255,.88)}
+@media (min-width:720px){.est{top:10px;width:54px;height:54px;font-size:10.5px}}
+
+/* 영수증 + 찾기 */
+.split{display:grid;gap:44px}
+@media (min-width:900px){.split{grid-template-columns:minmax(0,380px) minmax(0,1fr);gap:56px;align-items:start}}
+.receipt{position:relative;background:var(--white);padding:30px 20px 24px;box-shadow:var(--shadow);transform:rotate(-.8deg);max-width:420px;margin:10px auto 0}
+.receipt::before{content:"";position:absolute;top:-13px;left:50%;width:96px;height:26px;margin-left:-48px;background:var(--tape);transform:rotate(-3deg)}
+.receipt::after{content:"";position:absolute;left:0;right:0;bottom:-8px;height:8px;
+  background:linear-gradient(135deg,var(--white) 50%,transparent 50%) 0 0/12px 8px repeat-x,linear-gradient(-135deg,var(--white) 50%,transparent 50%) 0 0/12px 8px repeat-x}
+.r-top{text-align:center;font:700 12px/1.6 var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.r-top b{display:block;font:800 18px/1.2 var(--label);font-stretch:125%;letter-spacing:.16em;margin-bottom:2px}
+.r-list{list-style:none;margin:14px 0 0;padding:12px 0;border-top:1.5px dashed var(--ink);border-bottom:1.5px dashed var(--ink)}
+.r-list li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 12px;padding:5px 0;font-size:13.5px;line-height:1.35}
+.r-list .rn{font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.r-list .rn small{display:block;font:800 10px/1.4 var(--label);font-stretch:125%;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.r-list .rp{font:700 13px/1.35 var(--mono);text-align:right;white-space:nowrap}
+.r-total{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin:12px 0 4px;font-weight:800}
+.r-total b{font:700 21px/1 var(--mono);letter-spacing:-.02em}
+.r-note{font-size:12px;line-height:1.5;color:var(--mute);margin:6px 0 0}
+.barcode{height:36px;margin:16px auto 4px;max-width:220px;
+  background:repeating-linear-gradient(90deg,var(--ink) 0 2px,transparent 2px 4px,var(--ink) 4px 5px,transparent 5px 8px,var(--ink) 8px 11px,transparent 11px 12px,var(--ink) 12px 13px,transparent 13px 17px)}
+.find h3{font:400 clamp(26px,5vw,34px)/1.15 var(--display);margin:0 0 6px}
+.find p.sub{margin:0 0 16px;color:var(--mute);font-size:15px}
+.search{display:flex;align-items:center;gap:10px;background:var(--white);border:2px solid var(--ink);padding:0 14px;box-shadow:4px 4px 0 var(--ink);transition:box-shadow .3s var(--ease)}
+.search:focus-within{box-shadow:4px 4px 0 var(--blue)}
+.search svg{flex:none}
+.search input{flex:1;min-width:0;border:0;outline:0;background:transparent;font:600 17px/1 var(--kr);padding:15px 0;color:var(--ink)}
+.search input::placeholder{color:#9A9286}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 8px}
+.chip{border:1.5px solid var(--ink);background:transparent;font:700 14px/1 var(--kr);padding:9px 12px;cursor:pointer;transition:background .2s var(--ease),color .2s var(--ease)}
+.chip:hover{background:var(--white)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--white)}
+.count{font-size:13px;color:var(--mute);margin:10px 0 0;min-height:1.6em}
+.results{list-style:none;margin:6px 0 0;padding:0}
+.res{display:grid;grid-template-columns:60px minmax(0,1fr) auto;gap:12px;align-items:center;padding:10px 2px;border-bottom:1.5px dashed rgba(19,16,21,.22);text-decoration:none}
+.res:hover .r1{text-decoration:underline;text-underline-offset:3px}
+.res img,.res .noimg{width:60px;height:60px;object-fit:contain;background:var(--white)}
+.res .r1{font-weight:700;font-size:15px;line-height:1.35}
+.res .r2{font-size:13px;color:var(--mute);line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.res .r3{font:700 13px/1.3 var(--mono);color:var(--blue);text-align:right;white-space:nowrap}
+.res .r3 small{display:block;font:400 11px/1.4 var(--mono);color:var(--mute)}
+
+/* 지난 착용템 · 모아 보기 */
+.shelf{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(150px,44%);gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;
+  margin:0 -16px;padding:6px 16px 20px;list-style:none;scrollbar-width:thin}
+@media (min-width:720px){.shelf{grid-auto-flow:row;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));overflow:visible;margin:0;padding:6px 0 10px}}
+.shelf li{scroll-snap-align:start}
+.day{display:block;text-decoration:none;color:inherit}
+.day .cv{position:relative;display:block;background:var(--white);box-shadow:var(--shadow);transition:transform .45s var(--ease)}
+.day:hover .cv{transform:translateY(-4px) rotate(-.6deg)}
+.day .mini{display:grid;grid-template-columns:1fr 1fr;gap:6px;aspect-ratio:1;padding:46px 12px 12px}
+.day .mini img{width:100%;height:100%;min-height:0;object-fit:contain}
+.day .d{display:block;margin-top:12px;font-weight:700;font-size:15px;line-height:1.35}
+.day .c{display:block;margin-top:3px;font:400 12px/1.45 var(--mono);color:var(--mute)}
+.day .k{position:absolute;left:-6px;top:10px;background:var(--pink);font:400 16px/1 var(--display);padding:7px 10px 5px;transform:rotate(-2deg)}
+.empty{background:var(--white);padding:18px;box-shadow:var(--shadow);margin:0}
+
+/* 확인 방법 · 팔로우 */
+.rules{background:var(--white);box-shadow:var(--shadow);margin:0;padding:6px 20px}
+.rules div{display:grid;gap:4px;padding:16px 0;border-bottom:1.5px dashed rgba(19,16,21,.22)}
+.rules div:last-child{border-bottom:0}
+@media (min-width:720px){.rules div{grid-template-columns:220px 1fr;gap:24px}}
+.rules dt{font:400 20px/1.3 var(--display)}
+.rules dd{margin:0;color:#2B2630}
+.follow{display:grid;gap:18px;align-items:center;margin-top:34px}
+@media (min-width:720px){.follow{grid-template-columns:1fr auto}}
+.follow p{margin:0;font:400 clamp(24px,4.6vw,32px)/1.25 var(--display)}
+.follow .btns{display:flex;flex-wrap:wrap;gap:10px}
+.follow .tag{font-size:15px;min-height:44px;padding:10px 18px 10px 30px}
+
+footer{margin-top:56px;border-top:2px solid var(--ink);padding:22px 0 40px;font-size:13px;line-height:1.7;color:var(--mute)}
+footer b{color:var(--ink)}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body data-latest="">
+<header class="bar">
+  <div class="wrap">
+    <a class="logo" href="./" aria-label="muse.tag 홈"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-118 -45 1303 245" aria-hidden="true" focusable="false" aria-labelledby="title"><title id="title">muse.tag 로고 — MUSE.TAG 행택</title><path id="tag" fill="#2B44E8" fill-rule="evenodd" d="M-52,-45 L1185,-45 L1185,200 L-52,200 L-118,134 L-118,21 Z M-93,77.5 A21,21 0 1 1 -51,77.5 A21,21 0 1 1 -93,77.5 Z"/><path id="letters" fill="#FFFFFF" fill-rule="evenodd" d="M17.68,2.64 L61.46,2.64 L77.94,64.23 Q78.95,67.48 80.53,73.74 Q82.11,80 83.78,87.03 Q85.45,94.06 87.6,99.86 Q89.45,95.42 90.9,89.25 Q92.35,83.08 93.97,76.38 Q95.6,69.68 96.92,64.1 L113.52,2.64 L173.1,2.64 L173.1,153.64 L131.63,153.64 L131.63,93.23 Q131.63,84.05 131.74,74.51 Q131.84,64.98 132.02,56.89 Q132.2,48.81 131.32,44.5 Q129.78,48.24 128.44,54.37 Q127.1,60.5 125.58,66.85 Q124.07,73.19 122.75,77.85 L101.75,153.64 L68.27,153.64 L47.05,77.85 Q45.95,73.46 44.46,67.44 Q42.97,61.42 41.67,55.22 Q40.38,49.03 38.49,44.72 Q37.83,50.35 38.05,58.63 Q38.27,66.91 38.44,75.94 Q38.62,84.97 38.62,93.23 L38.62,153.64 L0,153.64 L0,20.31 L17.68,2.64 Z M195.58,2.64 L221.04,2.64 L221.04,93.45 Q221.04,106.98 228.29,115.15 Q235.54,123.32 249.86,123.32 Q264.18,123.32 271.61,115.15 Q279.03,106.98 279.03,93.45 L279.03,2.64 L322.04,2.64 L322.04,94.24 Q322.04,114.71 313.48,128.55 Q304.91,142.39 288.83,149.33 Q272.75,156.27 249.95,156.27 Q227.41,156.27 211.27,149.33 Q195.12,142.39 186.51,128.55 Q177.9,114.71 177.9,94.24 L177.9,20.31 L195.58,2.64 Z M349.93,9.41 Q358.27,4.83 368.7,2.57 Q380.56,0 393.83,0 Q407.05,0 418.63,2.68 Q430.2,5.36 439.16,11.01 Q448.13,16.65 453.2,25.24 Q458.28,33.83 458.5,45.78 L458.5,48.41 L417.64,48.41 L417.64,47.14 Q417.64,42.53 415.2,38.82 Q412.76,35.1 407.75,32.84 Q402.74,30.58 395.06,30.58 Q387.54,30.58 382.38,32.03 Q377.22,33.48 374.56,36.11 Q371.9,38.75 371.9,42.18 Q371.9,46.75 375.7,49.65 Q379.5,52.54 386.01,54.57 Q392.51,56.59 400.55,58.32 Q408.59,60.06 417.22,62.06 Q425.85,64.06 433.89,67.2 Q441.93,70.34 448.43,75.28 Q454.94,80.22 458.74,87.47 Q462.54,94.72 462.54,105.13 Q462.54,123.41 453.99,134.66 Q445.45,145.9 430.53,151.09 Q415.62,156.27 396.77,156.27 Q381.96,156.27 369.05,153.83 Q356.13,151.4 346.31,145.73 Q336.49,140.06 330.87,130.46 Q325.24,120.86 325.24,106.63 Q325.24,105.92 325.24,104.96 Q325.24,103.99 325.46,103.24 L366.63,103.24 Q366.54,103.99 366.48,104.89 Q366.41,105.79 366.41,106.45 Q366.41,113.3 369.82,117.28 Q373.22,121.26 379.42,122.86 Q385.61,124.46 393.69,124.46 Q397.65,124.46 401.34,124.16 Q405.03,123.85 408.1,122.97 Q411.18,122.09 413.62,120.66 Q416.06,119.24 417.31,117.11 Q418.56,114.97 418.56,111.99 Q418.56,107.29 414.76,104.34 Q410.96,101.4 404.52,99.38 Q398.09,97.36 390.05,95.56 Q382.01,93.75 373.31,91.6 Q364.61,89.45 356.57,86.15 Q348.53,82.86 342.09,77.76 Q335.66,72.67 331.86,65 Q328.06,57.33 328.06,46.48 Q328.06,35.39 332.25,27.09 L349.93,9.41 Z M484.22,2.64 L593.55,2.64 L593.55,35.59 L509.55,35.59 L509.55,60.94 L582.35,60.94 L582.35,92.88 L509.55,92.88 L509.55,120.69 L595.09,120.69 L595.09,153.64 L466.54,153.64 L466.54,20.31 L484.22,2.64 Z M13.29,28.81 A6,6 0 1 1 25.29,28.81 A6,6 0 1 1 13.29,28.81 Z M614.517113702624 153.64V109.83679300291544H661.1818367346939V153.64Z M719.9908746355685 153.64V40.940291545189496H670.2445189504373V2.1997667638484018H818.1628862973761V40.940291545189496H768.6366472303207V153.64Z M804.7357725947522 153.64 859.9850437317784 2.1997667638484018H916.5550145772595L971.8042857142857 153.64H920.2969970845481L913.9136151603499 132.28868804664722H860.8655102040816L854.4821282798835 153.64ZM870.9908746355685 98.39072886297376H904.0083673469388L896.7445189504374 74.17790087463555Q895.8640524781341 71.53650145772593 894.7634693877551 67.79451895043731Q893.6628862973761 64.05253644314868 892.5623032069971 59.870320699708444Q891.4617201166182 55.688104956268205 890.3611370262391 51.61594752186588Q889.2605539358601 47.54379008746355 888.3800874635568 44.46215743440233H886.6191545189505Q885.7386880466472 48.42425655976676 884.3079300291545 53.4869387755102Q882.8771720116619 58.54962099125363 881.3363556851313 63.94247813411078Q879.7955393586006 69.33533527696792 878.2547230320699 74.17790087463555Z M1051.7066180758018 156.2813994169096Q1013.8465597667639 156.2813994169096 995.0265889212828 136.47090379008745Q976.2066180758018 116.66040816326529 976.2066180758018 77.9198833819242Q976.2066180758018 51.94612244897958 985.8917492711371 34.55690962099124Q995.5768804664724 17.167696793002904 1014.0666763848398 8.363032069970842Q1032.556472303207 -0.44163265306121957 1058.7503498542274 -0.44163265306121957Q1074.598746355685 -0.44163265306121957 1088.5761516034986 3.1902915451895097Q1102.553556851312 6.822215743440239 1113.2292128279882 13.976005830903787Q1123.9048688046648 21.129795918367336 1129.8480174927113 31.91551020408162Q1135.791166180758 42.701224489795905 1135.791166180758 57.008804664723016H1089.346559766764Q1089.346559766764 52.166239067055386 1087.035335276968 48.204139941690954Q1084.724110787172 44.24204081632652 1080.7620116618077 41.490583090379Q1076.7999125364431 38.73912536443147 1071.627172011662 37.308367346938766Q1066.4544314868806 35.87760932944606 1060.7313994169097 35.87760932944606Q1052.1468513119535 35.87760932944606 1045.5433527696794 38.18883381924198Q1038.9398542274052 40.5000583090379 1034.647580174927 45.122507288629734Q1030.355306122449 49.74495626822157 1028.154139941691 56.12833819241982Q1025.952973760933 62.511720116618065 1025.952973760933 70.87615160349853V84.96361516034985Q1025.952973760933 95.96944606413993 1029.8050145772595 103.7835860058309Q1033.657055393586 111.59772594752185 1041.4711953352771 115.77994169096209Q1049.285335276968 119.96215743440231 1060.7313994169097 119.96215743440231Q1068.4354810495627 119.96215743440231 1074.928921282799 117.6509329446064Q1081.422361516035 115.33970845481048 1085.3844606413995 110.93737609329445Q1089.346559766764 106.53504373177842 1089.346559766764 100.81201166180756V99.93154518950436H1055.008367346939V69.11521865889212H1135.791166180758V153.64H1110.6978717201166L1105.855306122449 138.67206997084546Q1099.0316909620992 144.3951020408163 1090.8873760932945 148.35720116618074Q1082.7430612244898 152.31930029154518 1073.0579300291547 154.3003498542274Q1063.3727988338194 156.2813994169096 1051.7066180758018 156.2813994169096Z"/></svg></a>
+    <nav aria-label="바로가기">
+      <a class="nav" href="#today">오늘</a>
+      <a class="nav" href="#find">찾기</a>
+      <a class="nav" href="#days">지난 착용템</a>
+      <a class="tag ink" href="https://www.instagram.com/muse.tag/" target="_blank" rel="noopener">@muse.tag</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero"><div class="wrap"><div><span class="dateline">Daily · K-pop fashion</span><h1>아이돌이 입은<br>그거, <span class="hl">어디꺼?</span></h1><p class="lede">공항·방송·SNS에서 입은 옷과 소품을 브랜드·제품명·가격·구매처까지 매일 아침 정리해요.</p><p class="who-today">첫 세트를 준비하고 있어요.</p></div></div></section>
+
+<div class="ribbon" aria-hidden="true"><p>Brand · Item · Price · Shop · @muse.tag · Brand · Item · Price · Shop · @muse.tag · Brand · Item · Price · Shop · @muse.tag · Brand · Item · Price · Shop · @muse.tag · Brand · Item · Price · Shop · @muse.tag · Brand · Item · Price · Shop · @muse.tag</p></div>
+
+
+
+<section class="sec" id="find" aria-labelledby="find-h">
+  <div class="wrap">
+    <div class="split">
+      <div></div>
+      <div class="find">
+        <span class="eyebrow">Search · 12 items</span>
+        <h3 id="find-h">아이돌·브랜드로 찾기</h3>
+        <p class="sub">지금까지 정리한 착용템 12개에서 찾아요. 이름, 그룹, 브랜드, 종류(가방·신발…)로 찾을 수 있어요.</p>
+        <label class="search">
+          <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M15.5 15.5 21 21" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"/></svg>
+          <span class="sr">아이돌 이름이나 브랜드</span>
+          <input id="q" type="search" placeholder="예: 연준, Miu Miu, 가방" autocomplete="off" enterkeyhint="search">
+        </label>
+        <div class="chips" role="group" aria-label="많이 찾는 이름"><button type="button" class="chip" aria-pressed="false">연준</button><button type="button" class="chip" aria-pressed="false">김도연</button><button type="button" class="chip" aria-pressed="false">장원영</button><button type="button" class="chip" aria-pressed="false">해원</button><button type="button" class="chip" aria-pressed="false">민니</button><button type="button" class="chip" aria-pressed="false">Miu Miu</button><button type="button" class="chip" aria-pressed="false">Archivépke</button><button type="button" class="chip" aria-pressed="false">KARE</button></div>
+        <p class="count" id="count" aria-live="polite"></p>
+        <ul class="results" id="results"></ul>
+        <noscript><p class="count">찾기는 자바스크립트가 켜져 있어야 돼요. 아래 지난 착용템에서 날짜별로 볼 수 있어요.</p></noscript>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="days" aria-labelledby="days-h">
+  <div class="wrap">
+    <div class="head"><div><span class="eyebrow">Archive · 0 sets</span><h2 id="days-h">지난 착용템</h2></div></div>
+    <p class="empty">지난 세트가 여기에 날짜별로 쌓여요. 매일 아침 하나씩 늘어나요.</p>
+  </div>
+</section>
+
+<section class="sec" id="collections" aria-labelledby="col-h">
+  <div class="wrap">
+    <div class="head"><div><span class="eyebrow">Collections</span><h2 id="col-h">모아 보기</h2></div></div>
+    <ul class="shelf"><li><a class="day" href="%EC%98%B7%EC%9E%A5_%EC%97%B0%EC%A4%80/"><span class="cv"><span class="k">옷장</span><span class="mini"><img src="%EC%98%B7%EC%9E%A5_%EC%97%B0%EC%A4%80/img/01.webp" alt="" loading="lazy" width="200" height="200"><img src="%EC%98%B7%EC%9E%A5_%EC%97%B0%EC%A4%80/img/02.webp" alt="" loading="lazy" width="200" height="200"><img src="%EC%98%B7%EC%9E%A5_%EC%97%B0%EC%A4%80/img/03.webp" alt="" loading="lazy" width="200" height="200"><img src="%EC%98%B7%EC%9E%A5_%EC%97%B0%EC%A4%80/img/04.webp" alt="" loading="lazy" width="200" height="200"></span></span><span class="d">연준의 옷장</span><span class="c">7개 · 10.10 (토)</span></a></li><li><a class="day" href="%ED%8A%B9%EC%A7%91_%EA%B0%80%EA%B2%A9_300000/"><span class="cv"><span class="k">특집</span><span class="mini"><img src="%ED%8A%B9%EC%A7%91_%EA%B0%80%EA%B2%A9_300000/img/01.webp" alt="" loading="lazy" width="200" height="200"><img src="%ED%8A%B9%EC%A7%91_%EA%B0%80%EA%B2%A9_300000/img/02.webp" alt="" loading="lazy" width="200" height="200"><img src="%ED%8A%B9%EC%A7%91_%EA%B0%80%EA%B2%A9_300000/img/03.webp" alt="" loading="lazy" width="200" height="200"></span></span><span class="d">30만 원 이하 아이돌 착용템</span><span class="c">3개 · 10.10 (토)</span></a></li><li><a class="day" href="%ED%8A%B9%EC%A7%91_%EB%B8%8C%EB%9E%9C%EB%93%9C_MiuMiu/"><span class="cv"><span class="k">특집</span><span class="mini"><img src="%ED%8A%B9%EC%A7%91_%EB%B8%8C%EB%9E%9C%EB%93%9C_MiuMiu/img/01.webp" alt="" loading="lazy" width="200" height="200"><img src="%ED%8A%B9%EC%A7%91_%EB%B8%8C%EB%9E%9C%EB%93%9C_MiuMiu/img/02.webp" alt="" loading="lazy" width="200" height="200"><img src="%ED%8A%B9%EC%A7%91_%EB%B8%8C%EB%9E%9C%EB%93%9C_MiuMiu/img/03.webp" alt="" loading="lazy" width="200" height="200"><img src="%ED%8A%B9%EC%A7%91_%EB%B8%8C%EB%9E%9C%EB%93%9C_MiuMiu/img/04.webp" alt="" loading="lazy" width="200" height="200"></span></span><span class="d">MIU MIU 입은 아이돌들</span><span class="c">8개 · 10.10 (토)</span></a></li><li><a class="day" href="%ED%8A%B9%EC%A7%91_%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC_%EA%B0%80%EB%B0%A9/"><span class="cv"><span class="k">특집</span><span class="mini"><img src="%ED%8A%B9%EC%A7%91_%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC_%EA%B0%80%EB%B0%A9/img/01.webp" alt="" loading="lazy" width="200" height="200"><img src="%ED%8A%B9%EC%A7%91_%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC_%EA%B0%80%EB%B0%A9/img/02.webp" alt="" loading="lazy" width="200" height="200"><img src="%ED%8A%B9%EC%A7%91_%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC_%EA%B0%80%EB%B0%A9/img/03.webp" alt="" loading="lazy" width="200" height="200"><img src="%ED%8A%B9%EC%A7%91_%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC_%EA%B0%80%EB%B0%A9/img/04.webp" alt="" loading="lazy" width="200" height="200"></span></span><span class="d">아이돌 가방 브랜드·가격 모음</span><span class="c">4개 · 10.10 (토)</span></a></li><li><a class="day" href="2026-10-2%EC%A3%BC/"><span class="cv"><span class="k">주간 베스트</span><span class="mini"><img src="2026-10-2%EC%A3%BC/img/01.webp" alt="" loading="lazy" width="200" height="200"><img src="2026-10-2%EC%A3%BC/img/02.webp" alt="" loading="lazy" width="200" height="200"><img src="2026-10-2%EC%A3%BC/img/03.webp" alt="" loading="lazy" width="200" height="200"><img src="2026-10-2%EC%A3%BC/img/04.webp" alt="" loading="lazy" width="200" height="200"></span></span><span class="d">이번주 아이돌이 입은 그거, 어디꺼?</span><span class="c">10개 · 10.09 (금)</span></a></li></ul>
+  </div>
+</section>
+
+<section class="sec" id="about" aria-labelledby="about-h">
+  <div class="wrap">
+    <div class="head"><div><span class="eyebrow">How we check</span><h2 id="about-h">이렇게 확인해요</h2></div></div>
+    <dl class="rules">
+      <div><dt>함께 나온 것만</dt><dd>아이돌 이름과 제품이 한 기사·공식 게시물에 같이 나온 것만 올려요. 짐작으로 채우지 않아요.</dd></div>
+      <div><dt>가격은 공식몰 정가</dt><dd>한국 공식몰 정가를 확인한 날짜와 함께 적어요. 할인 중이면 할인가를 따로 표시하고, 한국 공식몰이 없으면 그 나라 가격을 그대로 적어요.</dd></div>
+      <div><dt>사진은 제품컷만</dt><dd>아이돌 사진 대신 브랜드 공식몰의 제품 이미지를 써요. 착용 모습은 각 날짜 페이지의 출처 기사에서 볼 수 있어요.</dd></div>
+      <div><dt>‘모델 확인 중’</dt><dd>브랜드는 확인됐지만 정확한 모델·컬러를 아직 찾는 중인 제품이에요. 알고 계시면 인스타그램 댓글로 알려 주세요.</dd></div>
+    </dl>
+    <div class="follow">
+      <p>매일 아침, 인스타그램과<br>스레드에 먼저 올려요</p>
+      <div class="btns"><a class="tag ink" href="https://www.instagram.com/muse.tag/" target="_blank" rel="noopener">인스타그램 @muse.tag</a><a class="tag ink" href="https://www.threads.net/@muse.tag" target="_blank" rel="noopener">스레드 @muse.tag</a></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><b>muse.tag</b> · 아이돌 착용템 브랜드·제품명·가격·구매처</p>
+    <p>가격·재고는 올린 날 공식몰 기준이라 바뀔 수 있어요. 구매 링크는 공식몰·정품 판매처로 연결돼요.</p>
+    <p>마지막 업데이트 2026.10.16 00:17</p>
+  </div>
+</footer>
+
+<script id="items-data" type="application/json">[{"w":"연준","g":"TXT","b":"Miu Miu","p":"테크니컬 패브릭 및 시어링 윈드브레이커 (헤마타이트)","c":"아우터","al":"미우미우","t":"₩6,300,000","l":"10.10 (토)","i":"%EC%98%B7%EC%9E%A5_%EC%97%B0%EC%A4%80/img/01.webp","u":"%EC%98%B7%EC%9E%A5_%EC%97%B0%EC%A4%80/#i01"},{"w":"연준","g":"TXT","b":"Miu Miu","p":"포플린 셔츠 (페리윙클 블루)","c":"상의","al":"미우미우","t":"₩1,690,000","l":"10.10 (토)","i":"%EC%98%B7%EC%9E%A5_%EC%97%B0%EC%A4%80/img/02.webp","u":"%EC%98%B7%EC%9E%A5_%EC%97%B0%EC%A4%80/#i02"},{"w":"연준","g":"TXT","b":"Miu Miu","p":"스트레치 울 팬츠 (네이비)","c":"하의","al":"미우미우","t":"₩1,800,000","l":"10.10 (토)","i":"%EC%98%B7%EC%9E%A5_%EC%97%B0%EC%A4%80/img/03.webp","u":"%EC%98%B7%EC%9E%A5_%EC%97%B0%EC%A4%80/#i03"},{"w":"연준","g":"TXT","b":"Miu Miu","p":"스피릿 나파 가죽 백","c":"가방","al":"미우미우","t":"₩3,000,000","l":"10.10 (토)","i":"%EC%98%B7%EC%9E%A5_%EC%97%B0%EC%A4%80/img/04.webp","u":"%EC%98%B7%EC%9E%A5_%EC%97%B0%EC%A4%80/#i04"},{"w":"연준","g":"TXT","b":"Miu Miu","p":"버블 테크니컬 패브릭 & 스웨이드 스니커즈","c":"신발","al":"미우미우","t":"₩1,670,000","l":"10.10 (토)","i":"%EC%98%B7%EC%9E%A5_%EC%97%B0%EC%A4%80/img/05.webp","u":"%EC%98%B7%EC%9E%A5_%EC%97%B0%EC%A4%80/#i05"},{"w":"연준","g":"TXT","b":"Miu Miu","p":"레브리 선글라스","c":"액세서리","al":"미우미우","t":"₩680,000","l":"10.10 (토)","i":"%EC%98%B7%EC%9E%A5_%EC%97%B0%EC%A4%80/img/06.webp","u":"%EC%98%B7%EC%9E%A5_%EC%97%B0%EC%A4%80/#i06"},{"w":"연준","g":"TXT","b":"Miu Miu","p":"드릴 햇 (로열 블루/화이트)","c":"모자","al":"미우미우","t":"₩960,000","l":"10.10 (토)","i":"%EC%98%B7%EC%9E%A5_%EC%97%B0%EC%A4%80/img/07.webp","u":"%EC%98%B7%EC%9E%A5_%EC%97%B0%EC%A4%80/#i07"},{"w":"김도연","g":"전 위키미키","b":"Archivépke","p":"스몰 플링 호보백","c":"가방","al":"아카이브앱크","t":"₩189,000","l":"10.10 (토)","i":"%ED%8A%B9%EC%A7%91_%EA%B0%80%EA%B2%A9_300000/img/01.webp","u":"%ED%8A%B9%EC%A7%91_%EA%B0%80%EA%B2%A9_300000/#i01"},{"w":"장원영","g":"IVE","b":"KARE","p":"Deko Vase Bubble Gum Lady 30cm 화병","c":"소품","al":"","t":"€99.90","l":"10.10 (토)","i":"%ED%8A%B9%EC%A7%91_%EA%B0%80%EA%B2%A9_300000/img/02.webp","u":"%ED%8A%B9%EC%A7%91_%EA%B0%80%EA%B2%A9_300000/#i02"},{"w":"해원","g":"NMIXX","b":"Dr. Martens","p":"1460 크레이지 호스 레더 부츠 (다크 브라운)","c":"신발","al":"닥터마틴","t":"₩279,000","l":"10.10 (토)","i":"%ED%8A%B9%EC%A7%91_%EA%B0%80%EA%B2%A9_300000/img/03.webp","u":"%ED%8A%B9%EC%A7%91_%EA%B0%80%EA%B2%A9_300000/#i03"},{"w":"민니","g":"i-dle","b":"Miu Miu","p":"아르카디 스터드 장식 가죽 백","c":"가방","al":"미우미우","t":"₩6,050,000","l":"10.10 (토)","i":"%ED%8A%B9%EC%A7%91_%EB%B8%8C%EB%9E%9C%EB%93%9C_MiuMiu/img/08.webp","u":"%ED%8A%B9%EC%A7%91_%EB%B8%8C%EB%9E%9C%EB%93%9C_MiuMiu/#i08"},{"w":"레이·리즈","g":"IVE","b":"Valentino Garavani","p":"락스터드 맥싱 라지 숄더백","c":"가방","al":"","t":"₩4,350,000","l":"10.10 (토)","i":"%ED%8A%B9%EC%A7%91_%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC_%EA%B0%80%EB%B0%A9/img/02.webp","u":"%ED%8A%B9%EC%A7%91_%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC_%EA%B0%80%EB%B0%A9/#i02"}]</script>
+<script>
+(function () {
+  // 오늘 세트가 방문한 날짜와 다르면 '오늘' 대신 '최근'으로
+  var latest = document.body.getAttribute("data-latest");
+  var d = new Date();
+  var iso = d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+  if (latest && latest !== iso) {
+    document.querySelectorAll("[data-recent]").forEach(function (el) { el.textContent = el.getAttribute("data-recent"); });
+  }
+
+  var items = JSON.parse(document.getElementById("items-data").textContent || "[]");
+  var norm = function (s) { return String(s || "").toLowerCase().replace(/[\s·.\-_'’]/g, ""); };
+  items.forEach(function (it) { it.k = norm([it.w, it.g, it.b, it.p, it.c, it.al].join(" ")); });
+  var q = document.getElementById("q"), list = document.getElementById("results"), count = document.getElementById("count");
+  var chips = Array.prototype.slice.call(document.querySelectorAll(".chip"));
+  var MAX = 30;
+
+  function el(tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; }
+
+  function show(term) {
+    var t = norm(term);
+    list.textContent = "";
+    chips.forEach(function (c) { c.setAttribute("aria-pressed", norm(c.textContent) === t && t ? "true" : "false"); });
+    var hits;
+    if (!t) {  // 비었을 땐 오늘 세트 말고 최근 착용템 몇 개
+      hits = items.filter(function (it) { return !it.n; }).slice(0, 5);
+      count.textContent = hits.length ? "최근 세트에서 고른 착용템이에요. 이름이나 브랜드를 쳐서 더 찾아보세요." : "";
+    } else {
+      hits = items.filter(function (it) { return it.k.indexOf(t) !== -1; });
+      count.textContent = hits.length
+        ? "‘" + term.trim() + "’ " + hits.length + "개" + (hits.length > MAX ? " (최근 " + MAX + "개만 보여요)" : "")
+        : "‘" + term.trim() + "’(으)로 정리한 착용템이 아직 없어요. 다른 이름이나 영문 브랜드로 찾아보세요.";
+    }
+    hits.slice(0, MAX).forEach(function (it) {
+      var a = el("a", "res"); a.href = it.u;
+      if (it.i) { var im = el("img"); im.src = it.i; im.alt = ""; im.loading = "lazy"; im.width = 60; im.height = 60; a.appendChild(im); }
+      else { a.appendChild(el("span", "noimg")); }
+      var mid = el("span");
+      mid.appendChild(el("span", "r1", it.w + " · " + it.b));
+      mid.appendChild(el("span", "r2", it.p));
+      a.appendChild(mid);
+      var r3 = el("span", "r3", it.t); r3.appendChild(el("small", null, it.l)); a.appendChild(r3);
+      var li = el("li"); li.appendChild(a); list.appendChild(li);
+    });
+  }
+  var timer;
+  q.addEventListener("input", function () { clearTimeout(timer); timer = setTimeout(function () { show(q.value); }, 120); });
+  chips.forEach(function (c) {
+    c.addEventListener("click", function () {
+      var on = c.getAttribute("aria-pressed") === "true";
+      q.value = on ? "" : c.textContent; show(q.value);
+    });
+  });
+  show("");
+})();
+</script>
+</body>
+</html>
