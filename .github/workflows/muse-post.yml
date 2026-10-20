@@ -1,0 +1,34 @@
+# muse.tag 인스타 클라우드 게시 — 컴퓨터가 꺼져 있어도 GitHub 서버가 07:30 · 12:00 · 18:00 에 올린다 (10/20)
+# 저장소의 .github/workflows/muse-post.yml 로 들어간다. 원본: celeb-carousel/publisher/cloud/muse-post.yml
+# 필요한 것: 저장소 Settings → Secrets and variables → Actions → 'IG_TOKEN' (인스타 토큰, 사람이 넣음)
+# 시각은 UTC 기준 — 한국 07:12 · 11:42 · 17:42 에 깨어나 회차 시각까지 기다렸다 올린다 (GitHub 예약은 몇 분 늦을 수 있어서 일찍)
+name: muse-post
+on:
+  schedule:
+    - cron: "12 22 * * *"
+    - cron: "42 2 * * *"
+    - cron: "42 8 * * *"
+  workflow_dispatch:
+    inputs:
+      dry:
+        description: "1 이면 안 보내고 확인만"
+        default: "1"
+permissions:
+  contents: write
+concurrency:
+  group: muse-post
+  cancel-in-progress: false
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+      - name: 올리기
+        env:
+          IG_TOKEN: ${{ secrets.IG_TOKEN }}
+          DRY: ${{ github.event.inputs.dry || '0' }}
+        run: |
+          git config user.name "muse-poster"
+          git config user.email "muse-poster@users.noreply.github.com"
+          python3 poster/post.py
