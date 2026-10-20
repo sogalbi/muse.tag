@@ -12,6 +12,7 @@ from __future__ import annotations
 import datetime as dt
 import json
 import os
+import re
 import subprocess
 import sys
 import time
@@ -24,6 +25,7 @@ KST = dt.timezone(dt.timedelta(hours=9))
 START = {1: (7, 30), 2: (12, 0), 3: (18, 0)}
 END = {1: (11, 30), 2: (17, 30), 3: (21, 30)}
 EARLY = dt.timedelta(minutes=25)
+WAIT = dt.timedelta(minutes=25)  # 다른 쪽 '올리는 중'이 (그 표시 시각·회차 시각 중 늦은 쪽) + 25분이 지나도 그대로면 멈춘 것으로 본다
 HERE = Path(os.environ.get("POSTER_DIR") or Path(__file__).resolve().parent)
 QUEUE, DONE = HERE / "queue", HERE / "done"
 API = os.environ.get("IG_API", "https://graph.instagram.com/v25.0").rstrip("/")
@@ -49,13 +51,22 @@ def times(q: dict) -> tuple[dt.datetime, dt.datetime]:
     return start, max(at(day, END[slot]), start + dt.timedelta(hours=1, minutes=30))
 
 
+def stuck(d: dict, start: dt.datetime, t: dt.datetime) -> bool:
+    try:
+        since = dt.datetime.fromisoformat(d["at"][:19]).replace(tzinfo=KST)
+    except (KeyError, ValueError):
+        since = start
+    return t > max(since, start) + WAIT
+
+
 def pick(t: dt.datetime) -> tuple[Path, dict] | None:
-    """지금 처리할 회차: 시작 25분 전 ~ 마감 사이, 아직 안 올린 것 중 가장 이른 것"""
+    """지금 처리할 회차: 시작 25분 전 ~ 마감 사이, 아직 안 올린 것 중 가장 이른 것 ('올리는 중'이 멈춘 것도 다시)"""
     for f in sorted(QUEUE.glob(f"{t.date().isoformat()}-*.json")):
         q = json.loads(f.read_text(encoding="utf-8"))
         start, end = times(q)
         done = DONE / f.name
-        if done.exists() and json.loads(done.read_text(encoding="utf-8")).get("status") in ("posted", "posting", "skipped"):
+        d = json.loads(done.read_text(encoding="utf-8")) if done.exists() else {}
+        if d.get("status") in ("posted", "skipped") or (d.get("status") == "posting" and not stuck(d, start, t)):
             continue
         if start - EARLY <= t <= end:
             return f, q
@@ -152,6 +163,19 @@ def publish(q: dict, tok: str, ready=wait_ready) -> str:
         return "https://www.instagram.com/muse.tag/"
 
 
+def refresh_token(tok: str) -> str:
+    """장기 토큰(60일) 연장 시도 — 값은 출력하지 않고 결과만: same(같은 값으로 늘어남) · new(새 값 — 비밀값을 바꿔야 오래 감) · fail"""
+    root = re.sub(r"/v\d+(\.\d+)?$", "", API)  # 연장 주소엔 버전이 없다
+    try:
+        url = f"{root}/refresh_access_token?" + urllib.parse.urlencode({"grant_type": "ig_refresh_token", "access_token": tok})
+        with urllib.request.urlopen(url, timeout=30) as r:
+            j = json.loads(r.read().decode())
+        days = int(j.get("expires_in", 0)) // 86400
+        return ("same" if j.get("access_token") == tok else "new") + f" {days}일"
+    except Exception:
+        return "fail"
+
+
 def main(sleep=time.sleep) -> int:
     dry = os.environ.get("DRY") == "1"
     t = now()
@@ -177,7 +201,7 @@ def main(sleep=time.sleep) -> int:
     try:
         url = publish(q, tok)
         rec = {"status": "posted", "by": "cloud", "at": now().isoformat(timespec="seconds"), "kit": q["kit"], "action": q["action"],
-               "rec": q.get("rec", "instagram"), "url": url}
+               "rec": q.get("rec", "instagram"), "url": url, "token": refresh_token(tok)}
         print(f"✅ {what}: {url}")
         code = 0
     except Fail as e:
