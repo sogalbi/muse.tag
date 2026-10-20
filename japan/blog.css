@@ -1,0 +1,299 @@
+/* ---------- 블로그 (Threads 글 정리, /japan/blog/) ---------- */
+/* 글 카드: 링크 페이지 '스낵재팬 블로그' 칸과 블로그 목록이 같이 쓴다 */
+.post-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+.post-card {
+  display: grid;
+  grid-template-columns: 84px minmax(0, 1fr);
+  column-gap: 12px;
+  align-items: center;
+  padding: 8px 12px 8px 8px;
+  background: var(--card);
+  color: var(--on-card);
+  border: 2.5px solid var(--line);
+  border-radius: 14px;
+  box-shadow: 3px 3px 0 var(--shade);
+  text-decoration: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: rgba(22, 22, 22, .12);
+  transition: transform .09s ease-out, box-shadow .09s ease-out;
+}
+.post-card:active { transform: translate(3px, 3px); box-shadow: 1px 1px 0 var(--shade); }
+.post-card:focus-visible { outline: 3px solid var(--focus); outline-offset: 4px; }
+@media (hover: hover) { .post-card:hover { transform: translate(-1px, -1px); box-shadow: 5px 5px 0 var(--shade); } }
+.post-card-img {
+  display: block;
+  width: 84px; height: 84px;
+  border-radius: 10px;
+  border: 2px solid var(--line);
+  object-fit: cover;
+  background: var(--disc);
+}
+/* 사진 없는 글: 망점 바탕에 로고 글자 */
+.post-card-img-empty {
+  display: grid;
+  place-items: center;
+  background: radial-gradient(var(--dot) 1.3px, transparent 1.7px) 0 0 / 8px 8px, var(--disc);
+}
+.post-card-img-empty::before {
+  content: "SNACK\A JAPAN";
+  white-space: pre;
+  text-align: center;
+  font-family: var(--pop);
+  font-size: 13px;
+  line-height: 1.05;
+  color: var(--logo);
+}
+.post-card-body { min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 3px; }
+.post-card-meta, .post-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.post-card-meta:empty { display: none; }
+.post-cat {
+  display: inline-block;
+  padding: 0 7px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-weight: 800;
+  font-size: 11.5px;
+  line-height: 18px;
+  letter-spacing: -.01em;
+}
+.post-card-meta time, .post-meta time { color: var(--sub); font-weight: 700; font-size: 12px; letter-spacing: 0; }
+.post-card-title {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+  font-weight: 800;
+  font-size: 15.5px;
+  line-height: 1.32;
+  letter-spacing: -.025em;
+}
+.post-card-summary {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+  color: var(--sub);
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 1.4;
+}
+/* 링크 페이지 안의 '스낵재팬 블로그' 칸 (.group 이 아니다): 사진을 조금 작게 */
+.blog-teaser { margin-top: 30px; }
+.blog-teaser .post-card { grid-template-columns: 64px minmax(0, 1fr); }
+.blog-teaser .post-card-img { width: 64px; height: 64px; }
+.more-all { margin-top: 12px; }
+
+/* 블로그 머리: 왼쪽 로고(링크 페이지로), 오른쪽 목록 */
+.blog-top {
+  max-width: var(--col);
+  margin: 0 auto;
+  padding: 14px 16px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.blog-logo {
+  font-family: var(--pop);
+  font-size: 27px;
+  line-height: 1;
+  color: var(--logo);
+  text-decoration: none;
+  white-space: nowrap;
+  -webkit-text-stroke: 3.5px var(--logo-line);
+  paint-order: stroke fill;
+  text-shadow: 2px 2px 0 var(--logo-shade);
+}
+.blog-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  min-height: 32px;
+  padding: 0 11px;
+  border-radius: 999px;
+  background: #161616;
+  color: #fff;
+  font-weight: 800;
+  font-size: 13px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.blog-kicker [lang="ja"] { font-family: var(--jp); font-weight: 900; font-size: 11px; color: #FFE14D; }
+.blog-hero { margin: 18px 0 16px; }
+.blog-title {
+  margin: 0;
+  font-weight: 900;
+  font-size: 26px;
+  line-height: 1.25;
+  letter-spacing: -.04em;
+}
+.blog-intro { margin: 6px 0 0; white-space: pre-line; font-weight: 600; font-size: 14.5px; line-height: 1.5; }
+/* 목록 위 분류 바로가기 */
+.cat-nav { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 6px; }
+.cat-nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  min-height: 36px;
+  padding: 0 12px;
+  border-radius: 999px;
+  border: 2px solid var(--line);
+  background: var(--card);
+  color: var(--on-card);
+  font-weight: 800;
+  font-size: 13.5px;
+  text-decoration: none;
+}
+.cat-nav a span { color: var(--accent); }
+.cat-nav a:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+.cat-section { margin-top: 24px; scroll-margin-top: 12px; }
+/* 분류별 묶음 안에서는 카드의 분류 배지가 겹치므로 뺀다 */
+.cat-section .post-cat { display: none; }
+
+/* 글 한 편 */
+.post {
+  margin-top: 16px;
+  padding: 18px 16px 20px;
+  background: var(--card);
+  color: var(--on-card);
+  border: 2.5px solid var(--line);
+  border-radius: 18px;
+  box-shadow: 4px 4px 0 var(--shade);
+}
+.post-title {
+  margin: 8px 0 0;
+  font-weight: 900;
+  font-size: 23px;
+  line-height: 1.32;
+  letter-spacing: -.04em;
+}
+.post-lede { margin: 8px 0 0; color: var(--sub); font-weight: 600; font-size: 15px; line-height: 1.55; }
+/* 사진: 여러 장이면 옆으로 넘긴다 */
+.post-photos {
+  display: flex;
+  gap: 8px;
+  margin: 16px -16px 0;
+  padding: 0 16px 4px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 0 16px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.post-photos::-webkit-scrollbar { display: none; }
+.post-photos img {
+  flex: 0 0 100%;
+  aspect-ratio: 3 / 4;
+  max-height: 72vh;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 2px solid var(--line);
+  background: var(--disc);
+  scroll-snap-align: start;
+}
+.post-photos.is-many img { flex-basis: 80%; }
+.post-photos-hint { margin: 6px 0 0; text-align: center; color: var(--sub); font-weight: 700; font-size: 12px; }
+.post-body { margin-top: 16px; font-size: 16px; line-height: 1.75; letter-spacing: -.015em; }
+.post-body > :first-child { margin-top: 0; }
+.post-body p { margin: 14px 0 0; }
+.post-body h2 {
+  margin: 26px 0 0;
+  padding-left: 10px;
+  border-left: 5px solid var(--accent);
+  font-weight: 900;
+  font-size: 18.5px;
+  line-height: 1.35;
+  letter-spacing: -.03em;
+}
+.post-body ul { margin: 12px 0 0; padding: 0; list-style: none; display: grid; gap: 7px; }
+.post-body li {
+  position: relative;
+  padding: 9px 12px 9px 30px;
+  background: rgba(255, 225, 77, .28);
+  border-radius: 10px;
+  font-weight: 600;
+  line-height: 1.55;
+}
+.post-body li::before {
+  content: "";
+  position: absolute;
+  left: 12px; top: 1.05em;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+.post-figure { margin: 16px 0 0; }
+.post-figure img { display: block; width: 100%; border-radius: 12px; border: 2px solid var(--line); }
+.post-figure figcaption { margin-top: 6px; color: var(--sub); font-size: 13px; text-align: center; }
+/* 가게 정보 */
+.place {
+  margin-top: 22px;
+  padding: 14px;
+  background: var(--bg);
+  color: var(--on-bg);
+  border: 2.5px solid var(--line);
+  border-radius: 14px;
+}
+.place p { margin: 0; }
+.place-label {
+  display: inline-block;
+  padding: 0 8px;
+  border-radius: 999px;
+  background: #161616;
+  color: #fff;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 20px;
+}
+.place-name { margin-top: 6px !important; font-weight: 900; font-size: 19px; line-height: 1.3; letter-spacing: -.02em; }
+.place-area { margin-top: 2px !important; font-weight: 700; font-size: 14px; }
+.place-note { margin-top: 6px !important; font-weight: 600; font-size: 13px; line-height: 1.5; opacity: .85; }
+.place-map {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  margin-top: 12px;
+  border-radius: 10px;
+  border: 2px solid var(--line);
+  background: var(--accent);
+  color: var(--on-accent);
+  box-shadow: 0 3px 0 var(--line);
+  font-weight: 800;
+  font-size: 15px;
+  text-decoration: none;
+  touch-action: manipulation;
+}
+.place-map:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--line); background: var(--accent-press); }
+.place-map:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+.post-origin { margin-top: 14px; }
+
+/* 쿠팡 상품 카드 — 카드 모양은 japan.css 의 .products/.product* 그대로 (링크 페이지 구매 칸과 같음) */
+/* 글에 나온 상품: 본문 바로 아래 */
+.buy-here {
+  margin-top: 22px;
+  padding: 14px 12px 14px;
+  background: var(--bg);
+  color: var(--on-bg);
+  border: 2.5px solid var(--line);
+  border-radius: 14px;
+}
+.buy-here-title { margin: 0; font-weight: 900; font-size: 16.5px; line-height: 1.35; letter-spacing: -.03em; }
+.buy-here .disclosure, .blog-shop .disclosure { margin: 8px 0 0; }
+.buy-here .products { margin-top: 12px; }
+/* 글 아래 '찐 추천' */
+.blog-shop { margin-top: 28px; }
+.blog-shop .group-title { margin-bottom: 0; }
+.blog-shop .products { margin-top: 14px; }
+.post .button { background: #fff; }
+.blog .more { margin-top: 28px; }
+.empty { text-align: center; font-weight: 700; }
