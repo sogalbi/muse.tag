@@ -1,6 +1,6 @@
 {
- "status": "posting",
+ "status": "failed",
  "by": "pc",
- "at": "2026-10-21T11:55:03",
- "kit": "특집_카테고리_가방"
+ "at": "2026-10-21T12:00:21",
+ "error": "POST https://graph.instagram.com/v25.0/17841478555513315/media → 400: Only photo or video can be accepted as media type."
 }
