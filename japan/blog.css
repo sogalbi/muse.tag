@@ -1,5 +1,8 @@
+/* 손글씨 느낌 한글 글꼴(정리탭 제목·포스트잇 글자에만) */
+@import url("https://fonts.googleapis.com/css2?family=Gaegu:wght@700&display=swap");
+
 /* ---------- 블로그 (Threads 글 정리, /japan/blog/) ---------- */
-/* 글 카드: 링크 페이지 '스낵재팬 블로그' 칸과 블로그 목록이 같이 쓴다 */
+/* 글 카드: 블로그 목록·글 아래 '다른 글도 보기'가 쓴다 */
 .post-list {
   list-style: none;
   margin: 0;
@@ -87,9 +90,150 @@
   line-height: 1.4;
 }
 /* 링크 페이지 안의 '스낵재팬 블로그' 칸 (.group 이 아니다): 사진을 조금 작게 */
-.blog-teaser { margin-top: 30px; }
-.blog-teaser .post-card { grid-template-columns: 64px minmax(0, 1fr); }
-.blog-teaser .post-card-img { width: 64px; height: 64px; }
+/* ---------- 링크 페이지 '스낵재팬 정리탭' (상품 05 아래) ---------- */
+/* 줄 공책 메모지 + 오른쪽 가장자리에 테이프로 붙인 포스트잇 인덱스. 포스트잇은 main 안쪽(16px 여백 안)에서 끝난다 */
+.idx-book {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  margin-top: 30px;
+}
+.idx-paper {
+  position: relative;
+  z-index: 1;
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 286px;
+  padding: 14px 14px 12px;
+  background:
+    repeating-linear-gradient(to bottom, transparent 0 29px, rgba(60, 110, 200, .14) 29px 30px) 0 56px / 100% calc(100% - 56px) no-repeat,
+    #FFFDF5;
+  color: #161616;
+  border: 2.5px solid #161616;
+  border-radius: 6px;
+  box-shadow: 4px 4px 0 #161616;
+}
+.idx-title {
+  margin: 0;
+  font-family: "Gaegu", var(--kr);
+  font-weight: 700;
+  font-size: 27px;
+  line-height: 1.1;
+  letter-spacing: -.02em;
+}
+.idx-panel[hidden] { display: none; }
+/* 스크립트가 안 돌면 분류별 목록이 차례로 다 보인다 */
+html:not(.has-idx) .idx-panel + .idx-panel { margin-top: 14px; padding-top: 12px; border-top: 2px dashed rgba(22, 22, 22, .2); }
+.idx-panel-name {
+  display: inline-block;
+  margin: 8px 0 0;
+  padding: 1px 10px;
+  border-radius: 999px;
+  background: var(--idx);
+  font-weight: 900;
+  font-size: 13px;
+  line-height: 22px;
+}
+.idx-list { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 6px; }
+.idx-item {
+  display: grid;
+  grid-template-columns: 46px minmax(0, 1fr);
+  column-gap: 10px;
+  align-items: center;
+  min-height: 52px;
+  padding: 3px 4px 3px 3px;
+  border-radius: 10px;
+  color: #161616;
+  text-decoration: none;
+  -webkit-tap-highlight-color: rgba(22, 22, 22, .1);
+}
+.idx-item:active { background: rgba(22, 22, 22, .06); }
+.idx-item:focus-visible, .idx-more:focus-visible, .idx-tab:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+@media (hover: hover) { .idx-item:hover { background: rgba(22, 22, 22, .05); } }
+.idx-thumb {
+  display: block;
+  width: 46px; height: 46px;
+  border-radius: 8px;
+  border: 2px solid #161616;
+  object-fit: cover;
+  background: var(--disc);
+}
+.idx-thumb-empty { background: radial-gradient(var(--dot) 1.3px, transparent 1.7px) 0 0 / 7px 7px, var(--disc); }
+.idx-item-title {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+  font-weight: 800;
+  font-size: 14.5px;
+  line-height: 1.32;
+  letter-spacing: -.025em;
+}
+.idx-more {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  margin-top: 4px;
+  color: var(--accent);
+  font-weight: 800;
+  font-size: 13.5px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+/* 포스트잇 인덱스: 메모지 오른쪽 가장자리에 살짝 겹쳐 붙인다 */
+.idx-tabs {
+  position: relative;
+  z-index: 2;
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 54px;
+  margin: 46px 0 0 -8px;
+}
+.idx-tab {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 58px;
+  padding: 6px 4px 6px 10px;
+  background: var(--idx);
+  color: #161616;
+  text-align: center;
+  text-decoration: none;
+  font-family: "Gaegu", var(--kr);
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 1.05;
+  border: 2px solid transparent;
+  border-left: 0;
+  border-radius: 0 7px 7px 0;
+  box-shadow: 2px 2px 0 rgba(22, 22, 22, .22);
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform .1s ease-out;
+}
+/* 메모지와 포스트잇이 겹친 곳에 투명 테이프 */
+.idx-tab::before {
+  content: "";
+  position: absolute;
+  left: -4px; top: 50%;
+  width: 18px; height: 20px;
+  margin-top: -10px;
+  background: rgba(255, 255, 255, .62);
+  box-shadow: 0 0 0 1px rgba(22, 22, 22, .07);
+  transform: rotate(-5deg);
+}
+.has-idx .idx-tab[aria-selected="true"] { border-color: #161616; box-shadow: 3px 3px 0 #161616; transform: translateX(2px); }
+.has-idx .idx-tab[aria-selected="false"] { opacity: .82; }
+.idx-tab:active { transform: translateX(1px) scale(.98); }
+/* 분류별 포스트잇 색 */
+.idx-cafe, .idx-tab-cafe { --idx: #E6FF5C; }
+.idx-snack, .idx-tab-snack { --idx: #FFC27A; }
+.idx-info, .idx-tab-info { --idx: #A3ECAE; }
+.idx-snacknews, .idx-tab-snacknews { --idx: #FFB8D1; }
 .more-all { margin-top: 12px; }
 
 /* 블로그 머리: 왼쪽 로고(링크 페이지로), 오른쪽 목록 */
