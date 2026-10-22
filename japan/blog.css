@@ -401,7 +401,52 @@ html:not(.has-idx) .idx-panel + .idx-panel { margin-top: 14px; padding-top: 12px
 }
 .place-name { margin-top: 6px !important; font-weight: 900; font-size: 19px; line-height: 1.3; letter-spacing: -.02em; }
 .place-area { margin-top: 2px !important; font-weight: 700; font-size: 14px; }
+.place-name-ja { font-weight: 700; font-size: 13px; opacity: .7; letter-spacing: 0; }
 .place-note { margin-top: 6px !important; font-weight: 600; font-size: 13px; line-height: 1.5; opacity: .85; }
+/* 주소·가는 법·영업시간·쉬는 날 (공식 자료로 확인한 것만) */
+.place-facts {
+  margin: 10px 0 0;
+  padding: 10px 12px;
+  display: grid;
+  gap: 6px;
+  background: rgba(255, 255, 255, .7);
+  border-radius: 10px;
+}
+.place-facts > div { display: grid; grid-template-columns: 4.6em minmax(0, 1fr); column-gap: 8px; align-items: baseline; }
+.place-facts dt { font-weight: 900; font-size: 12.5px; line-height: 1.5; }
+.place-facts dd { margin: 0; font-weight: 600; font-size: 13.5px; line-height: 1.5; overflow-wrap: anywhere; }
+.place-checked { margin-top: 8px !important; font-weight: 600; font-size: 12px; line-height: 1.5; opacity: .75; }
+/* 지도 버튼 + 공식 링크 */
+.place-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.place-actions .place-map { flex: 1 1 60%; margin-top: 0; }
+.place-official {
+  flex: 1 1 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 0 10px;
+  border-radius: 10px;
+  border: 2px solid var(--line);
+  background: #fff;
+  color: #161616;
+  font-weight: 800;
+  font-size: 14px;
+  text-decoration: none;
+}
+.place-official:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+/* 여러 가게를 소개한 글: 가게 정보 묶음 */
+.places { margin-top: 26px; }
+.places-title {
+  margin: 0;
+  padding-left: 10px;
+  border-left: 5px solid var(--accent);
+  font-weight: 900;
+  font-size: 18.5px;
+  line-height: 1.35;
+  letter-spacing: -.03em;
+}
+.places .place { margin-top: 12px; }
 .place-map {
   display: flex;
   align-items: center;
