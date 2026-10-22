@@ -141,6 +141,20 @@ def check_public(urls: list[str], limit=300, every=15):
             time.sleep(every)
 
 
+RETRY_SLEEP = 30
+
+
+def child(uid: str, url: str, tok: str) -> str:
+    """캐러셀 사진 한 장 — 인스타가 잠깐 못 읽으면(10/21 점심 '400 Only photo or video') 두 번 더. 게시 전이라 안전"""
+    for n in range(3):
+        try:
+            return call("POST", f"{uid}/media", {"image_url": url, "is_carousel_item": "true", "access_token": tok})["id"]
+        except Fail:
+            if n == 2:
+                raise
+            time.sleep(RETRY_SLEEP)
+
+
 def publish(q: dict, tok: str, ready=wait_ready) -> str:
     uid = str(q["ig_user_id"])
     if q["action"] == "reel":
@@ -153,7 +167,7 @@ def publish(q: dict, tok: str, ready=wait_ready) -> str:
         if len(imgs) < 2:
             raise Fail("캐러셀은 사진 2장 이상이어야 해요")
         check_public(imgs)
-        kids = [call("POST", f"{uid}/media", {"image_url": u, "is_carousel_item": "true", "access_token": tok})["id"] for u in imgs]
+        kids = [child(uid, u, tok) for u in imgs]
         c = call("POST", f"{uid}/media", {"media_type": "CAROUSEL", "children": ",".join(kids), "caption": q["caption"], "access_token": tok})
         ready(c["id"], tok)
     m = call("POST", f"{uid}/media_publish", {"creation_id": c["id"], "access_token": tok})
