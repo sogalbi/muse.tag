@@ -103,7 +103,7 @@
   z-index: 1;
   flex: 1 1 auto;
   min-width: 0;
-  min-height: 286px;
+  min-height: 370px; /* 정리탭 포스트잇 5장(꿀팁 추가, 10/22) */
   padding: 14px 14px 12px;
   background:
     repeating-linear-gradient(to bottom, transparent 0 29px, rgba(60, 110, 200, .14) 29px 30px) 0 56px / 100% calc(100% - 56px) no-repeat,
@@ -234,6 +234,7 @@ html:not(.has-idx) .idx-panel + .idx-panel { margin-top: 14px; padding-top: 12px
 .idx-snack, .idx-tab-snack { --idx: #FFC27A; }
 .idx-info, .idx-tab-info { --idx: #A3ECAE; }
 .idx-snacknews, .idx-tab-snacknews { --idx: #FFB8D1; }
+.idx-tip, .idx-tab-tip { --idx: #A9D8FF; }
 .more-all { margin-top: 12px; }
 
 /* 블로그 머리: 왼쪽 로고(링크 페이지로), 오른쪽 목록 */
