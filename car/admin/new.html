@@ -1,0 +1,105 @@
+<!doctype html><html lang="ko" data-static="1"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>새 시공 사례 등록 · CARBLISS 관리자</title>
+<link rel="icon" href="../img/brand/favicon-64.png">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500&family=Noto+Sans+KR:wght@400;500;700;800&display=swap">
+<link rel="stylesheet" href="../css/admin.css">
+</head><body>
+<div class="adm">
+  <aside class="side">
+    <a class="side-brand" href="../admin/index.html"><img src="../img/brand/emblem.png" alt="" width="34" height="34"><span>CARBLISS<small>통합 관리</small></span></a>
+    <nav><a href="../admin/index.html" class=" "><svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg><span>대시보드</span></a><a href="../admin/new.html" class="on primary"><svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.9 5.8L20 11l-6.1 2.2L12 19l-1.9-5.8L4 11l6.1-2.2z"/></svg><span>시공 사례 등록</span></a><a href="../admin/cases.html" class=" "><svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l10 5-10 5L2 7z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg><span>시공 사례 관리</span></a><a href="../admin/inquiries.html" class=" "><svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3C6.5 3 2 6.6 2 11c0 2.8 1.8 5.3 4.6 6.7L5.7 21l4-2.6c.7.1 1.5.2 2.3.2 5.5 0 10-3.6 10-8s-4.5-8-10-8z"/></svg><span>문의 관리</span><b class="cnt">1</b></a><a href="../admin/content.html" class=" "><svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg><span>콘텐츠</span></a><a href="../admin/settings.html" class=" "><svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>설정</span></a></nav>
+    <div class="side-foot">
+      <a href="../index.html"><svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg><span>홈페이지 보기</span></a>
+    </div>
+  </aside>
+  <main class="main">
+    <div class="warn demo"><svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.9 5.8L20 11l-6.1 2.2L12 19l-1.9-5.8L4 11l6.1-2.2z"/></svg> 관리자 화면 미리보기입니다. <b>사진 올리기와 “자동 생성”은 실제로 체험할 수 있고</b>, 저장·게시는 운영 서버에서만 됩니다.</div>
+    
+    
+<header class="ph"><div><p class="crumb"><a href="../admin/cases.html">시공 사례</a> / 새 사례 등록</p><h1>새 시공 사례 등록</h1></div>
+  <div class="ph-actions"></div></header>
+
+<div class="editor">
+  <div class="ed-left">
+    <section class="card">
+      <div class="card-h"><h2><span class="num">1</span>시공 사진</h2><small>여러 장을 한 번에 올릴 수 있습니다 · 첫 사진이 대표 이미지</small></div>
+      <label class="drop" data-drop>
+        <input type="file" accept="image/*" multiple data-file>
+        <svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><b>사진을 끌어다 놓거나 클릭해서 선택</b><small>JPG · PNG · WEBP / 1장 30MB 이하 / 위치정보(EXIF)는 자동 제거</small>
+      </label>
+      <div class="photos" data-photos></div>
+    </section>
+
+    <section class="card">
+      <div class="card-h"><h2><span class="num">2</span>차량 · 시공 정보</h2><small>메모만 적어도 차종·시공을 자동으로 찾아냅니다</small></div>
+      <div class="fgrid">
+        <label><span>브랜드</span><select name="brand" data-f></select></label>
+        <label><span>차종</span><input name="model" data-f list="model-list" placeholder="예) 5시리즈, G80, EV9"><datalist id="model-list"></datalist></label>
+        <div class="wide"><span class="lbl">시공 종류 (여러 개 선택 가능)</span><div class="chips" data-svc-chips></div></div>
+        <label><span>지역</span><select name="region" data-f></select></label>
+        <label><span>작업일</span><input type="date" name="date" data-f></label>
+        <label class="wide"><span>옵션 · 컬러 · 필름 <small>(선택)</small></span><input name="detail" data-f placeholder="예) 형광 라임 / 고광택 크롬레드 / 전면 35%·측후면 15%"></label>
+        <label class="wide"><span>간단한 설명 <small>(고객 요청, 작업 특징 등 1~3문장)</small></span><textarea name="memo" rows="4" data-f placeholder="예) 출고 직후 입고되어 전체 PPF와 썬팅을 함께 진행했습니다. 고객님이 도어엣지 스크래치를 특히 걱정하셨습니다."></textarea></label>
+      </div>
+      <div class="gen-row">
+        <button class="b primary lg" type="button" data-generate><svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.9 5.8L20 11l-6.1 2.2L12 19l-1.9-5.8L4 11l6.1-2.2z"/></svg> 자동 생성</button>
+        <span class="hint">AI 문장 다듬기는 .env에 Claude API 키를 넣으면 켜집니다 (선택 사항)</span>
+      </div>
+    </section>
+  </div>
+
+  <div class="ed-right">
+    <section class="card result" data-result hidden>
+      <div class="card-h"><h2><span class="num">3</span>생성 결과 <small>모두 직접 수정할 수 있습니다</small></h2></div>
+      <div class="where" data-where></div>
+      <div class="tabs" role="tablist">
+        <button type="button" class="on" data-tab="page">홈페이지</button><button type="button" data-tab="seo">검색(SEO)</button><button type="button" data-tab="blog">블로그</button><button type="button" data-tab="insta">인스타그램</button><button type="button" data-tab="kakao">카카오</button>
+      </div>
+      <div class="pane on" data-pane="page">
+        <label><span>제목</span><input data-r="title"></label>
+        <label><span>카드 제목 (목록에 표시)</span><input data-r="headline"></label>
+        <label><span>요약</span><textarea rows="3" data-r="summary"></textarea></label>
+        <div class="sections" data-sections></div>
+        <button type="button" class="b sm" data-add-section><svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg> 본문 단락 추가</button>
+        <div class="ba-pick" data-ba-pick></div>
+      </div>
+      <div class="pane" data-pane="seo">
+        <label><span>검색 제목 <small data-count-for="seo.title" data-max="60"></small></span><input data-r="seo.title"></label>
+        <label><span>검색 설명 <small data-count-for="seo.description" data-max="155"></small></span><textarea rows="3" data-r="seo.description"></textarea></label>
+        <label><span>키워드 (쉼표로 구분)</span><textarea rows="2" data-r="seo.keywords"></textarea></label>
+        <label><span>주소 (URL)</span><div class="slug"><em>/portfolio/</em><input data-r="slug"></div></label>
+        <div class="serp" data-serp></div>
+      </div>
+      <div class="pane" data-pane="blog">
+        <div class="copy-h"><span>네이버 블로그 초안</span><button type="button" class="b sm" data-copy="drafts.blog"><svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg> 복사</button></div>
+        <textarea rows="22" data-r="drafts.blog" class="mono"></textarea>
+      </div>
+      <div class="pane" data-pane="insta">
+        <div class="copy-h"><span>인스타그램 캡션</span><button type="button" class="b sm" data-copy="drafts.instagram"><svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg> 복사</button></div>
+        <textarea rows="12" data-r="drafts.instagram" class="mono"></textarea>
+      </div>
+      <div class="pane" data-pane="kakao">
+        <div class="copy-h"><span>카카오 채널 알림 문구</span><button type="button" class="b sm" data-copy="drafts.kakao"><svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg> 복사</button></div>
+        <textarea rows="5" data-r="drafts.kakao" class="mono"></textarea>
+      </div>
+      <div class="publish">
+        <label class="sw-row"><label class="sw"><input type="checkbox" data-r="published" checked><i></i></label>홈페이지에 게시</label>
+        <label class="sw-row"><label class="sw"><input type="checkbox" data-r="featured"><i></i></label>메인 대표 사례로 노출</label>
+        <button class="b primary lg" type="button" data-save>저장하고 게시</button>
+      </div>
+    </section>
+    <section class="card placeholder" data-placeholder >
+      <svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.9 5.8L20 11l-6.1 2.2L12 19l-1.9-5.8L4 11l6.1-2.2z"/></svg>
+      <h2>왼쪽에 사진과 정보를 입력하고<br>“자동 생성”을 눌러 주세요</h2>
+      <ul><li>포트폴리오 페이지 자동 작성</li><li>차종별 · 시공별 목록 자동 분류</li><li>해당 서비스 페이지에 사례 자동 노출</li><li>검색엔진용 제목 · 설명 · 키워드</li><li>블로그 · 인스타그램 · 카카오 문구 초안</li></ul>
+    </section>
+  </div>
+</div>
+  </main>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script type="application/json" id="adm-data">{"mode":"new","case":null,"aiAvailable":false,"services":[{"slug":"ppf","ko":"PPF","en":"PAINT PROTECTION FILM"},{"slug":"wrapping","ko":"랩핑","en":"WRAPPING"},{"slug":"tinting","ko":"썬팅","en":"WINDOW TINTING"},{"slug":"seatbelt","ko":"컬러 안전벨트","en":"COLOR SEAT BELTS"},{"slug":"leather-restoration","ko":"가죽 복원","en":"LEATHER RESTORATION"},{"slug":"leather-coloring","ko":"가죽 염색","en":"LEATHER COLORING"},{"slug":"newcar","ko":"신차패키지","en":"NEW CAR PACKAGE"},{"slug":"headliner","ko":"천장 · 헤드라이너","en":"HEADLINER"},{"slug":"ambient","ko":"앰비언트 · 풋등","en":"AMBIENT LIGHT"},{"slug":"care","ko":"에바크리닝","en":"A/C CARE"}],"brands":[{"slug":"mercedes-benz","ko":"벤츠"},{"slug":"bmw","ko":"BMW"},{"slug":"porsche","ko":"포르쉐"},{"slug":"audi","ko":"아우디"},{"slug":"land-rover","ko":"랜드로버"},{"slug":"genesis","ko":"제네시스"},{"slug":"hyundai","ko":"현대"},{"slug":"kia","ko":"기아"},{"slug":"tesla","ko":"테슬라"},{"slug":"ford","ko":"포드"},{"slug":"mini","ko":"미니"},{"slug":"volkswagen","ko":"폭스바겐"},{"slug":"renault","ko":"르노"},{"slug":"volvo","ko":"볼보"},{"slug":"lexus","ko":"렉서스"},{"slug":"etc","ko":"기타"}],"regions":[{"slug":"changwon","ko":"창원"},{"slug":"gimhae","ko":"김해"},{"slug":"masan","ko":"마산"},{"slug":"jinhae","ko":"진해"},{"slug":"gyeongnam","ko":"경남"}],"models":[{"brand":"mercedes-benz","name":"G-클래스"},{"brand":"mercedes-benz","name":"GLE"},{"brand":"mercedes-benz","name":"GLC"},{"brand":"mercedes-benz","name":"GLS"},{"brand":"mercedes-benz","name":"E-클래스"},{"brand":"mercedes-benz","name":"S-클래스"},{"brand":"bmw","name":"5시리즈"},{"brand":"bmw","name":"3시리즈"},{"brand":"bmw","name":"7시리즈"},{"brand":"bmw","name":"X5"},{"brand":"bmw","name":"X7"},{"brand":"porsche","name":"카이엔"},{"brand":"porsche","name":"타이칸"},{"brand":"genesis","name":"GV80"},{"brand":"genesis","name":"GV70"},{"brand":"genesis","name":"G90"},{"brand":"genesis","name":"G80"},{"brand":"hyundai","name":"그랜저 HG"},{"brand":"hyundai","name":"그랜저"},{"brand":"hyundai","name":"아반떼 N"},{"brand":"hyundai","name":"아반떼"},{"brand":"hyundai","name":"싼타페"},{"brand":"hyundai","name":"팰리세이드"},{"brand":"hyundai","name":"아이오닉 5"},{"brand":"hyundai","name":"아이오닉 6"},{"brand":"hyundai","name":"쏘나타"},{"brand":"kia","name":"EV9"},{"brand":"kia","name":"EV6"},{"brand":"kia","name":"카니발"},{"brand":"kia","name":"K5"},{"brand":"kia","name":"K7"},{"brand":"kia","name":"K8"},{"brand":"kia","name":"쏘렌토"},{"brand":"tesla","name":"모델 Y"},{"brand":"tesla","name":"모델 X"},{"brand":"tesla","name":"모델 3"},{"brand":"ford","name":"머스탱"},{"brand":"mini","name":"쿠퍼 컨버터블"},{"brand":"mini","name":"쿠퍼"},{"brand":"volkswagen","name":"CC"},{"brand":"renault","name":"QM3"},{"brand":"renault","name":"QM6"}],"settings":{"brandName":"CARBLISS","brandKo":"카블리스","address":"경상남도 창원시 의창구 지귀로 51 1층","phone":"0507-1437-2897","bookingUrl":"https://booking.naver.com/booking/6/bizes/1305078","instagramUrl":"https://www.instagram.com/car.bliss/"}}</script>
+<script src="../js/cb-generator.js" defer></script>
+<script src="../js/admin.js" defer></script>
+</body></html>
