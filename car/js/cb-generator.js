@@ -341,11 +341,15 @@ const THEMES = [
   { slug: 'rangerover', name: 'RANGE ROVER STYLE', ko: '레인지로버 스타일', desc: '밝은 스톤 톤과 넓은 자간, 여유로운 여백. 공간과 차량 중심의 절제된 럭셔리.', hero: 'hero-rr' },
 ];
 
+const STORE_TYPES = { hq: { ko: '본점', en: 'FLAGSHIP' }, franchise: { ko: '체인점', en: 'FRANCHISE' }, partner: { ko: '협력점', en: 'PARTNER' } };
+const STORE_STATUS = { open: '영업 중', soon: '오픈 예정', hidden: '숨김' };
+const WARRANTY_STATUS = { active: '유효', void: '해지' };
+
 const byslug = (arr, slug) => arr.find(x => x.slug === slug);
 
 module.exports = {
   SERVICES, EXTRA_SERVICES, ALL_SERVICE_TAGS, BRANDS, MODELS, REGIONS, ACADEMY, PARTNERSHIP,
-  INQUIRY_TYPES, INQUIRY_STATUS, THEMES,
+  INQUIRY_TYPES, INQUIRY_STATUS, THEMES, STORE_TYPES, STORE_STATUS, WARRANTY_STATUS,
   service: slug => byslug(SERVICES, slug) || byslug(EXTRA_SERVICES, slug),
   brand: slug => byslug(BRANDS, slug),
   region: slug => byslug(REGIONS, slug),
