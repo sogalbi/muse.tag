@@ -18,12 +18,13 @@
     // 포트폴리오 필터 (브라우저에서 처리)
     const grid = $('[data-static-portfolio]');
     if (grid) {
-      const state = { service: p.get('service') || '', brand: p.get('brand') || '' };
+      const state = { service: p.get('service') || '', brand: p.get('brand') || '', store: p.get('store') || '' };
       const cards = $$('.case-card', grid);
-      const match = (c, sv, br) => (!sv || c.dataset.services.split(' ').includes(sv)) && (!br || c.dataset.brand === br);
+      const match = (c, sv, br) => (!sv || c.dataset.services.split(' ').includes(sv)) && (!br || c.dataset.brand === br) && (!state.store || c.dataset.store === state.store);
       const apply = () => {
         let n = 0;
         cards.forEach(c => { const ok = match(c, state.service, state.brand); c.hidden = !ok; if (ok) { n++; c.classList.add('in'); } });
+        $$('[data-f-store]').forEach(a => a.classList.toggle('on', a.dataset.fStore === state.store));
         $$('[data-f-service]').forEach(a => {
           a.classList.toggle('on', a.dataset.fService === state.service);
           const sm = $('small', a); if (sm) sm.textContent = cards.filter(c => match(c, a.dataset.fService, state.brand)).length;
@@ -32,9 +33,11 @@
         const empty = $('[data-empty]'); if (empty) empty.hidden = n > 0;
       };
       document.addEventListener('click', e => {
-        const a = e.target.closest('[data-f-service],[data-f-brand]'); if (!a) return;
+        const a = e.target.closest('[data-f-service],[data-f-brand],[data-f-store]'); if (!a) return;
         e.preventDefault();
-        if (a.hasAttribute('data-f-service')) state.service = a.dataset.fService; else state.brand = a.dataset.fBrand;
+        if (a.hasAttribute('data-f-service')) state.service = a.dataset.fService;
+        else if (a.hasAttribute('data-f-brand')) state.brand = a.dataset.fBrand;
+        else state.store = a.dataset.fStore;
         apply();
       });
       apply();
@@ -186,6 +189,26 @@
         msg.classList.add('err'); msg.textContent = err.message;
       } finally { btn.disabled = false; btn.innerHTML = label; }
     });
+  });
+
+  // 보증서 인쇄
+  $$('[data-print]').forEach(b => b.addEventListener('click', () => window.print()));
+  // 지점 찾기: 지역 필터
+  const sf = $('[data-store-filter]');
+  if (sf) sf.addEventListener('click', e => {
+    const b = e.target.closest('[data-region]'); if (!b) return;
+    $$('[data-region]', sf).forEach(x => x.classList.toggle('on', x === b));
+    $$('.store-card').forEach(c => { c.hidden = !!b.dataset.region && c.dataset.region !== b.dataset.region; });
+  });
+  // 정적 미리보기: 보증서 번호 조회는 브라우저에서 처리 (예시 보증서만 존재)
+  const wl = $('[data-warranty-lookup]');
+  if (wl && STATIC) wl.addEventListener('submit', e => {
+    e.preventDefault();
+    const code = wl.code.value.trim().toUpperCase();
+    const known = (wl.dataset.codes || '').split(',').filter(Boolean);
+    const msg = $('.inq-msg', wl);
+    if (known.includes(code)) location.href = `w/${code}.html`;
+    else { msg.className = 'inq-msg err'; msg.textContent = `미리보기에는 예시 보증서(${known.join(', ')})만 있어요. 운영 서버에서는 실제 발급된 번호로 조회됩니다.`; }
   });
 
   // 파트너십 카드 → 폼 유형 선택
