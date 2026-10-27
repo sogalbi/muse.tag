@@ -1,52 +1,77 @@
 {
   "channel": {
-    "tagline": "웃긴 거 보면 일단 여기 저장",
+    "tagline": "써 보고 괜찮은 것만 남겼어요. 고민은 짧게, 만족은 길게.",
     "handle": "",
     "instagram": "",
     "threads": ""
   },
   "links": [
     {
+      "id": "dmvqq5q2z309",
+      "url": "https://link.coupang.com/a/ibY0phGoDY",
+      "name": "랜덤",
+      "note": "뭐가 나올지는 눌러 봐야 앎",
+      "random": true,
+      "added": "2026-10-27"
+    },
+    {
       "id": "dmvqq5q2t9l3",
       "url": "https://link.coupang.com/a/ibYHuTBUs0",
-      "name": "랜덤",
-      "note": "뭐가 나올지 눌러 봐야 앎",
+      "brand": "페리오",
+      "name": "46cm 마우스 스프레이 롱래스팅 쿨민트 6.2ml 2개",
+      "note": "가까이 말할 일 생기기 전에 칙. 주머니에 하나는 기본",
+      "badge": "한 달 2,000명+ 구매",
+      "img": "img/perioe-46cm-spray.jpg",
       "added": "2026-10-27"
     },
     {
       "id": "dmvqq5q2ucjn",
       "url": "https://link.coupang.com/a/ibYPsdKqtw",
-      "name": "드립템 02",
+      "brand": "퓨어덤",
+      "name": "옴므 아쿠아 올인원 로션 500ml",
+      "note": "스킨·로션 고민 끝. 아침 10초 컷",
+      "badge": "한 달 1만 명+ 구매",
+      "img": "img/purederm-homme-lotion.jpg",
       "added": "2026-10-27"
     },
     {
       "id": "dmvqq5q2vt0q",
       "url": "https://link.coupang.com/a/ibYQ7XhFFk",
-      "name": "드립템 03",
+      "brand": "페브리즈",
+      "name": "섬유탈취제 맨 쿨 아쿠아향 370ml 2개",
+      "note": "고기 냄새 밴 옷도 칙칙. 다음 날 또 입고 나감",
+      "badge": "한 달 3,000명+ 구매",
+      "img": "img/febreze-men-aqua.jpg",
       "added": "2026-10-27"
     },
     {
       "id": "dmvqq5q2w0wx",
       "url": "https://link.coupang.com/a/ibYR6dG9fN",
-      "name": "드립템 04",
+      "brand": "캘빈클라인",
+      "name": "CK BE 오드뚜왈렛 100ml",
+      "note": "튀지 않는데 꼭 \"무슨 향이야?\" 소리 듣는 향",
+      "badge": "한 달 2,000명+ 구매",
+      "img": "img/ck-be-edt.jpg",
       "added": "2026-10-27"
     },
     {
       "id": "dmvqq5q2x8bp",
       "url": "https://link.coupang.com/a/ibYUeq1sbI",
-      "name": "드립템 05",
+      "brand": "다슈",
+      "name": "아쿠아 딥 씨워터 폼클렌징 150ml 2개",
+      "note": "세수 한 번에 개운함 끝. 2개라 쟁여 두기 딱",
+      "badge": "한 달 7,000명+ 구매",
+      "img": "img/dashu-aqua-foam.jpg",
       "added": "2026-10-27"
     },
     {
       "id": "dmvqq5q2y3vo",
       "url": "https://link.coupang.com/a/ibYWTIeYdE",
-      "name": "드립템 06",
-      "added": "2026-10-27"
-    },
-    {
-      "id": "dmvqq5q2z309",
-      "url": "https://link.coupang.com/a/ibY0phGoDY",
-      "name": "드립템 07",
+      "brand": "제주삼다수",
+      "name": "그린 무라벨 500ml 20병",
+      "note": "물은 떨어지기 전에 사는 거다. 망설이면 목마름",
+      "badge": "한 달 10만 명+ 구매",
+      "img": "img/samdasoo-green.jpg",
       "added": "2026-10-27"
     }
   ]

@@ -1,5 +1,6 @@
 /* 드립 채널 공용 코드 — links.json 의 링크를 카드로 그린다.
-   채널 페이지(drip/)와 링크 추가 페이지(drip/add/)가 같이 쓴다. */
+   채널 페이지(drip/)와 링크 추가 페이지(drip/add/)가 같이 쓴다.
+   링크 한 개: { id, url, name, brand?, note?, badge?, img?, random?, added } */
 (function () {
   'use strict';
 
@@ -19,6 +20,9 @@
 
   var COUPANG_NOTICE = '이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.';
   var OTHER_NOTICE = '이 페이지의 링크는 제휴 링크라, 링크로 구매하면 일정액의 수수료를 받을 수 있어요.';
+  var BADGE_NOTICE = '구매 수 같은 숫자는 링크를 올린 날 판매 페이지 기준이에요.';
+
+  var BOLT = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 2 4 14h7l-1.5 8L20 10h-7z"/></svg>';
 
   function parse(url) {
     try {
@@ -70,60 +74,80 @@
     return n;
   }
 
-  function placeholder() {
-    var p = el('span', 'item-img item-img-empty', 'ㅋㅋ');
-    p.setAttribute('aria-hidden', 'true');
-    return p;
+  function src(img, base) {
+    return /^(https?:|blob:|data:)/.test(img) ? img : (base || '') + img;
   }
 
-  // 카드 하나. base 는 사진 상대 경로 앞에 붙일 경로(drip/add/ 에서는 '../').
+  // 사진 한 장(없으면 '?' 칸). cls 는 'item-img' 또는 'thumb'.
+  function thumb(link, base, cls) {
+    cls = cls || 'item-img';
+    var empty = function () {
+      var p = el('span', cls + ' ' + cls + '-empty', '?');
+      p.setAttribute('aria-hidden', 'true');
+      return p;
+    };
+    if (!link.img) return empty();
+    var img = el('img', cls);
+    img.src = src(link.img, base);
+    img.alt = '';
+    img.loading = 'lazy';
+    img.decoding = 'async';
+    img.addEventListener('error', function () { img.replaceWith(empty()); });
+    return img;
+  }
+
+  // 상품 카드 하나. base 는 사진 상대 경로 앞에 붙일 경로(drip/add/ 에서는 '../').
   function card(link, index, base) {
     var s = store(link.url) || { id: 'etc', name: '링크' };
     var li = el('li', 'item');
+    li.style.setProperty('--i', index);
     var a = el('a', 'item-link');
     a.href = parse(link.url) ? parse(link.url).href : '#';
     a.rel = 'sponsored noopener';
 
-    if (link.img) {
-      var img = el('img', 'item-img');
-      img.src = /^(https?:|blob:|data:)/.test(link.img) ? link.img : (base || '') + link.img;
-      img.alt = '';
-      img.width = 84;
-      img.height = 84;
-      img.loading = 'lazy';
-      img.decoding = 'async';
-      img.addEventListener('error', function () { img.replaceWith(placeholder()); });
-      a.appendChild(img);
-    } else {
-      a.appendChild(placeholder());
-    }
+    var pic = el('span', 'item-pic');
+    pic.appendChild(thumb(link, base));
+    pic.appendChild(el('span', 'item-no', String(index + 1).padStart(2, '0')));
+    a.appendChild(pic);
 
     var body = el('span', 'item-body');
-    var meta = el('span', 'item-meta');
-    meta.appendChild(el('span', 'item-no', '#' + String(index + 1).padStart(2, '0')));
-    meta.appendChild(el('span', 'chip chip-' + s.id, s.name));
-    var r = Number(link.rating);
-    if (link.rating !== '' && link.rating != null && r > 0) {
-      var rating = el('span', 'rating');
-      var star = el('span', null, '★ ');
-      star.setAttribute('aria-hidden', 'true');
-      rating.appendChild(star);
-      rating.appendChild(document.createTextNode(r.toFixed(1)));
-      rating.appendChild(el('span', 'visually-hidden', ' 별점'));
-      meta.appendChild(rating);
-    }
-    body.appendChild(meta);
+    body.appendChild(el('span', 'item-brand', (link.brand ? link.brand + ' · ' : '') + s.name));
     body.appendChild(el('span', 'item-name', link.name || '이름 없음'));
     if (link.note) body.appendChild(el('span', 'item-note', link.note));
-    a.appendChild(body);
 
+    var foot = el('span', 'item-foot');
+    if (link.badge) {
+      var badge = el('span', 'item-badge');
+      badge.innerHTML = BOLT;
+      badge.appendChild(document.createTextNode(link.badge));
+      foot.appendChild(badge);
+    }
     var go = el('span', 'item-go');
     go.setAttribute('aria-hidden', 'true');
     go.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
-    a.appendChild(go);
+    foot.appendChild(go);
+    body.appendChild(foot);
+    a.appendChild(body);
 
     li.appendChild(a);
     return li;
+  }
+
+  // 랜덤 뽑기 배너
+  function lucky(link) {
+    var a = el('a', 'lucky');
+    a.href = parse(link.url) ? parse(link.url).href : '#';
+    a.rel = 'sponsored noopener';
+    var q = el('span', 'lucky-q', '?');
+    q.setAttribute('aria-hidden', 'true');
+    a.appendChild(q);
+    var t = el('span', 'lucky-text');
+    t.appendChild(el('span', 'lucky-kicker', 'RANDOM PICK'));
+    t.appendChild(el('span', 'lucky-title', '오늘의 랜덤 추천템'));
+    t.appendChild(el('span', 'lucky-note', link.note || '뭐가 나올지는 눌러 봐야 앎'));
+    a.appendChild(t);
+    a.appendChild(el('span', 'lucky-go', '뽑기 →'));
+    return a;
   }
 
   // 주소가 올바른 링크만 남긴다.
@@ -131,21 +155,30 @@
     return (links || []).filter(function (l) { return l && parse(l.url); });
   }
 
-  function render(listEl, links, base) {
+  // 랜덤 링크(맨 앞 하나)와 나머지 상품 목록으로 나눈다.
+  function split(links) {
     var list = valid(links);
+    var random = null;
+    var items = list.filter(function (l) {
+      if (l.random && !random) { random = l; return false; }
+      return true;
+    });
+    return { random: random, items: items };
+  }
+
+  function render(listEl, items, base) {
     listEl.textContent = '';
-    list.forEach(function (l, i) { listEl.appendChild(card(l, i, base)); });
-    return list.length;
+    items.forEach(function (l, i) { listEl.appendChild(card(l, i, base)); });
+    return items.length;
   }
 
   // 목록에 맞는 고지 문구. 쿠팡 링크가 있으면 쿠팡 파트너스 공식 문구를 꼭 넣는다.
   function disclosure(links) {
     var list = valid(links);
     var out = [];
-    var coupang = list.some(function (l) { return store(l.url).id === 'coupang'; });
-    var other = list.some(function (l) { return store(l.url).id !== 'coupang'; });
-    if (coupang) out.push(COUPANG_NOTICE);
-    if (other) out.push(OTHER_NOTICE);
+    if (list.some(function (l) { return store(l.url).id === 'coupang'; })) out.push(COUPANG_NOTICE);
+    if (list.some(function (l) { return store(l.url).id !== 'coupang'; })) out.push(OTHER_NOTICE);
+    if (list.some(function (l) { return l.badge; })) out.push(BADGE_NOTICE);
     return out;
   }
 
@@ -154,7 +187,10 @@
     parse: parse,
     store: store,
     affiliate: affiliate,
+    thumb: thumb,
     card: card,
+    lucky: lucky,
+    split: split,
     render: render,
     valid: valid,
     disclosure: disclosure

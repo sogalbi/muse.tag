@@ -5,14 +5,14 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>링크 추가 | 드립</title>
 <meta name="robots" content="noindex,nofollow">
-<meta name="theme-color" content="#C2F23D">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%23121212'/%3E%3Cpath d='M10 9.5H22V24M10 16.5H22' fill='none' stroke='%23C2F23D' stroke-width='4'/%3E%3C/svg%3E">
+<meta name="theme-color" content="#0C0D0B">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%230C0D0B'/%3E%3Cpath d='M10 9.5H22V24M10 16.5H22' fill='none' stroke='%23C8F53C' stroke-width='4'/%3E%3C/svg%3E">
 <link rel="apple-touch-icon" href="../../apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gasoek+One&display=swap&text=%EB%93%9C%EB%A6%BD%EC%A7%81%EC%A0%91%EC%8D%A8%EB%B3%B8%EC%B6%94%EC%B2%9C%ED%85%9C%EB%B0%9B%EC%95%84%EB%B3%B4%EA%B8%B0%EB%A7%81%ED%81%AC%EA%B0%80%20">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gasoek+One&display=swap&text=%EB%93%9C%EB%A6%BD%EB%A7%81%ED%81%AC%EC%B6%94%EA%B0%80%20">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-<link rel="stylesheet" href="../drip.css?v=2">
+<link rel="stylesheet" href="../drip.css?v=3">
 <style>
 /* 링크 추가 페이지 — 채널 페이지와 같은 색·카드. 폰 한 손 입력 기준 */
 .top {
@@ -99,8 +99,7 @@
   background: var(--chip);
 }
 .check[data-ok="true"] { background: var(--bubble); }
-.check[data-ok="false"] { background: #FFE3DE; color: #7A1A0C; }
-@media (prefers-color-scheme: dark) { .check[data-ok="false"] { background: #3A1A14; color: #FFB4A6; } }
+.check[data-ok="false"] { background: #3A1A14; color: #FFB4A6; }
 .check a { font-weight: 700; }
 .steps { margin: 0; padding-left: 20px; font-size: 14px; line-height: 1.7; }
 .status {
@@ -111,8 +110,7 @@
   font-weight: 600;
   background: var(--bubble);
 }
-.status[data-kind="error"] { background: #FFE3DE; color: #7A1A0C; }
-@media (prefers-color-scheme: dark) { .status[data-kind="error"] { background: #3A1A14; color: #FFB4A6; } }
+.status[data-kind="error"] { background: #3A1A14; color: #FFB4A6; }
 .conn { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
 .conn-state { font-size: 14px; font-weight: 700; }
 .conn-state::before { content: "● "; color: #8A8F84; }
@@ -144,7 +142,14 @@
 }
 .m-row[data-gone="true"] { opacity: .45; }
 .m-row[data-gone="true"] .m-name { text-decoration: line-through; }
-.m-row .item-img { width: 48px; height: 48px; border-radius: 10px; font-size: 18px; }
+.thumb { width: 48px; height: 48px; border-radius: 10px; object-fit: cover; background: var(--tile); }
+.thumb.thumb-empty { font-size: 20px; background: var(--surface-2); }
+#preview .item { animation: none; }
+.photo-thumb { border-radius: 14px; overflow: hidden; background: var(--tile); }
+.photo-thumb .item-img { width: 84px; height: 84px; }
+.toggle { display: flex; align-items: center; gap: 10px; font-size: 14.5px; font-weight: 700; cursor: pointer; }
+.toggle input { width: 20px; height: 20px; accent-color: var(--lime); margin: 0; }
+.toggle em { font-style: normal; font-weight: 500; color: var(--sub); }
 .m-text { all: unset; cursor: pointer; min-width: 0; display: flex; flex-direction: column; border-radius: 6px; }
 .m-text:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
 .m-name { font-weight: 700; font-size: 14.5px; line-height: 1.3; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -217,11 +222,15 @@ details[open] > summary { margin-bottom: 14px; }
       <p class="check" id="f-check" hidden></p>
     </div>
     <div class="field">
-      <label class="label" for="f-name">이름</label>
-      <input class="input" id="f-name" type="text" maxlength="60" placeholder="예: 무선 미니 청소기">
+      <label class="label" for="f-brand">브랜드 <em>· 비워도 돼요</em></label>
+      <input class="input" id="f-brand" type="text" maxlength="30" placeholder="예: 페리오">
     </div>
     <div class="field">
-      <label class="label" for="f-note">한 줄 평 <em>· 카드 말풍선에 들어가요</em></label>
+      <label class="label" for="f-name">이름</label>
+      <input class="input" id="f-name" type="text" maxlength="60" placeholder="예: 46cm 마우스 스프레이 쿨민트 2개">
+    </div>
+    <div class="field">
+      <label class="label" for="f-note">한 줄 평 <em>· 카드 이름 아래에 들어가요</em></label>
       <textarea class="textarea" id="f-note" maxlength="80" placeholder="예: 써 보면 앎. 고민할 시간에 사라"></textarea>
     </div>
     <div class="field">
@@ -235,12 +244,13 @@ details[open] > summary { margin-bottom: 14px; }
       </div>
     </div>
     <div class="field">
-      <label class="label" for="f-rating">별점 <em>· 비워도 돼요</em></label>
-      <input class="input" id="f-rating" type="number" inputmode="decimal" min="0" max="5" step="0.1" placeholder="4.8" style="max-width:120px">
+      <label class="label" for="f-badge">뱃지 <em>· 라임색 한 줄, 비워도 돼요</em></label>
+      <input class="input" id="f-badge" type="text" maxlength="24" placeholder="예: 한 달 2,000명+ 구매">
     </div>
+    <label class="toggle"><input id="f-random" type="checkbox"> 랜덤 뽑기 배너로 보이기 <em>· 맨 위에 하나만</em></label>
 
     <p class="preview-label">미리보기</p>
-    <ol class="items" id="preview"></ol>
+    <div id="preview"></div>
 
     <div class="btns">
       <button class="btn btn-main" id="f-save" type="button">드립 채널에 올리기</button>
@@ -285,7 +295,7 @@ details[open] > summary { margin-bottom: 14px; }
   </section>
 </main>
 
-<script src="../drip.js?v=2"></script>
+<script src="../drip.js?v=3"></script>
 <script>
 (function () {
   'use strict';
@@ -426,22 +436,37 @@ details[open] > summary { margin-bottom: 14px; }
   }
 
   /* ── 폼 ── */
+  // 고칠 때는 원래 값(폼에 없는 칸 포함)을 그대로 두고 폼 칸만 바꾼다
   function formLink() {
-    var rating = $('f-rating').value.trim();
-    var link = {
+    var old = state.editing ? find(state.editing) : null;
+    var link = Object.assign({}, old || {}, {
       id: state.editing || ('d' + Date.now().toString(36) + Math.random().toString(36).slice(2, 5)),
       url: $('f-url').value.trim(),
       name: $('f-name').value.trim(),
-      note: $('f-note').value.trim(),
-      img: $('f-img').value.trim(),
-      added: today()
-    };
-    if (rating && Number(rating) > 0) link.rating = Math.min(5, Math.round(Number(rating) * 10) / 10);
-    if (state.editing) {
-      var old = find(state.editing);
-      if (old && old.added) link.added = old.added;
+      added: (old && old.added) || today()
+    });
+    ['brand', 'note', 'badge', 'img'].forEach(function (k) {
+      var v = $('f-' + k).value.trim();
+      if (v) link[k] = v; else delete link[k];
+    });
+    if ($('f-random').checked) {
+      link.random = true;
+      if (!link.name) link.name = '랜덤';
+    } else {
+      delete link.random;
     }
     return link;
+  }
+
+  // 목록에서 몇 번째 상품인지(랜덤 배너는 번호 없음)
+  function itemIndex(id) {
+    var n = 0;
+    for (var i = 0; i < state.order.length; i++) {
+      if (state.order[i] === id) return n;
+      var l = find(state.order[i]);
+      if (l && !l.random) n++;
+    }
+    return 0;
   }
 
   function find(id) {
@@ -459,23 +484,17 @@ details[open] > summary { margin-bottom: 14px; }
     if (!Drip.parse(view.url)) view.url = 'https://example.com/';
     if (!view.name) view.name = '이름을 적어 주세요';
     $('preview').textContent = '';
-    $('preview').appendChild(Drip.card(view, state.editing ? Math.max(0, state.order.indexOf(state.editing)) : 0, '../'));
-
-    var thumb = $('f-thumb');
-    thumb.textContent = '';
-    var src = state.photo ? photoURL : (link.img ? (/^https?:\/\//.test(link.img) ? link.img : '../' + link.img) : '');
-    if (src) {
-      var im = document.createElement('img');
-      im.className = 'item-img';
-      im.src = src;
-      im.alt = '';
-      thumb.appendChild(im);
+    if (view.random) {
+      $('preview').appendChild(Drip.lucky(view));
     } else {
-      var ph = document.createElement('span');
-      ph.className = 'item-img item-img-empty';
-      ph.textContent = 'ㅋㅋ';
-      thumb.appendChild(ph);
+      var ol = document.createElement('ol');
+      ol.className = 'items';
+      ol.appendChild(Drip.card(view, state.editing ? itemIndex(state.editing) : 0, '../'));
+      $('preview').appendChild(ol);
     }
+
+    $('f-thumb').textContent = '';
+    $('f-thumb').appendChild(Drip.thumb(view, '../'));
 
     var url = $('f-url').value.trim();
     var check = $('f-check');
@@ -501,8 +520,9 @@ details[open] > summary { margin-bottom: 14px; }
   }
 
   function resetForm() {
-    ['f-url', 'f-name', 'f-note', 'f-img', 'f-rating'].forEach(function (id) { $(id).value = ''; });
+    ['f-url', 'f-brand', 'f-name', 'f-note', 'f-badge', 'f-img'].forEach(function (id) { $(id).value = ''; });
     $('f-file').value = '';
+    $('f-random').checked = false;
     setPhoto(null);
     state.editing = null;
     $('form-mode').textContent = '';
@@ -526,7 +546,9 @@ details[open] > summary { margin-bottom: 14px; }
     $('f-name').value = l.name || '';
     $('f-note').value = l.note || '';
     $('f-img').value = l.img || '';
-    $('f-rating').value = l.rating || '';
+    $('f-brand').value = l.brand || '';
+    $('f-badge').value = l.badge || '';
+    $('f-random').checked = !!l.random;
     setPhoto(null);
     $('form-title').firstChild.textContent = '링크 고치기';
     $('f-save').textContent = '고친 내용 올리기';
@@ -630,9 +652,7 @@ details[open] > summary { margin-bottom: 14px; }
       row.className = 'm-row';
       row.dataset.gone = state.gone[id] ? 'true' : 'false';
 
-      var card = Drip.card(l, i, '../');
-      var pic = card.querySelector('.item-img');
-      row.appendChild(pic);
+      row.appendChild(Drip.thumb(l, '../', 'thumb'));
 
       var text = document.createElement('button');
       text.type = 'button';
@@ -642,7 +662,7 @@ details[open] > summary { margin-bottom: 14px; }
       name.textContent = l.name || '이름 없음';
       var sub = document.createElement('span');
       sub.className = 'm-sub';
-      sub.textContent = '#' + String(i + 1).padStart(2, '0') + ' · ' + Drip.store(l.url).name + (l.added ? ' · ' + l.added : '');
+      sub.textContent = (l.random ? '랜덤 배너' : '#' + String(itemIndex(id) + 1).padStart(2, '0')) + ' · ' + Drip.store(l.url).name + (l.added ? ' · ' + l.added.slice(5).replace('-', '.') : '');
       text.appendChild(name);
       text.appendChild(sub);
       text.setAttribute('aria-label', (l.name || '이름 없음') + ' 고치기');
@@ -754,7 +774,8 @@ details[open] > summary { margin-bottom: 14px; }
   }
 
   /* ── 시작 ── */
-  ['f-url', 'f-name', 'f-note', 'f-img', 'f-rating'].forEach(function (id) { $(id).addEventListener('input', refresh); });
+  ['f-url', 'f-brand', 'f-name', 'f-note', 'f-badge', 'f-img'].forEach(function (id) { $(id).addEventListener('input', refresh); });
+  $('f-random').addEventListener('change', refresh);
   $('f-img').addEventListener('input', function () { if ($('f-img').value.trim()) { setPhoto(null); $('f-file').value = ''; refresh(); } });
   $('f-file').addEventListener('change', function () {
     var f = $('f-file').files[0];
