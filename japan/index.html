@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="style.css?v=d6265fc1">
-<link rel="stylesheet" href="blog.css?v=86ada760">
+<link rel="stylesheet" href="blog.css?v=467912b6">
 </head>
 <body data-theme="konbini">
 <header class="masthead">
@@ -89,6 +89,18 @@
   <section class="idx-book" aria-labelledby="idx-title">
     <div class="idx-paper">
       <h2 class="idx-title" id="idx-title">스낵재팬 정리탭</h2>
+      <div class="idx-cities-wrap">
+        <p class="idx-cities-label" id="idx-cities-label">어디 가요?</p>
+        <div class="idx-cities" role="tablist" aria-labelledby="idx-cities-label">
+          <a class="idx-city" role="tab" id="idx-city-tokyo" href="#idx-area-tokyo" aria-controls="idx-area-tokyo" aria-selected="false">도쿄</a>
+          <a class="idx-city" role="tab" id="idx-city-osaka" href="#idx-area-osaka" aria-controls="idx-area-osaka" aria-selected="false">오사카</a>
+          <a class="idx-city" role="tab" id="idx-city-kyoto" href="#idx-area-kyoto" aria-controls="idx-area-kyoto" aria-selected="false">교토</a>
+          <a class="idx-city" role="tab" id="idx-city-nara" href="#idx-area-nara" aria-controls="idx-area-nara" aria-selected="false">나라</a>
+          <a class="idx-city" role="tab" id="idx-city-nagoya" href="#idx-area-nagoya" aria-controls="idx-area-nagoya" aria-selected="false">나고야</a>
+          <a class="idx-city" role="tab" id="idx-city-fukuoka" href="#idx-area-fukuoka" aria-controls="idx-area-fukuoka" aria-selected="false">후쿠오카</a>
+          <a class="idx-city" role="tab" id="idx-city-hokkaido" href="#idx-area-hokkaido" aria-controls="idx-area-hokkaido" aria-selected="false">홋카이도</a>
+        </div>
+      </div>
       <div class="idx-panel idx-cafe" id="idx-cafe" role="tabpanel" aria-labelledby="idx-tab-cafe">
         <p class="idx-panel-name">맛집 추천</p>
         <ol class="idx-list">
@@ -112,21 +124,22 @@
       <div class="idx-panel idx-info" id="idx-info" role="tabpanel" aria-labelledby="idx-tab-info">
         <p class="idx-panel-name">일본 정보</p>
         <ol class="idx-list">
+          <li><a class="idx-item" href="blog/suica-penguin-newdays-campaign/"><img class="idx-thumb" src="blog/img/suica-penguin-newdays-campaign-thumb.jpg" alt="" width="46" height="46" loading="lazy"><span class="idx-item-title">Suica 펭귄 졸업 발표, 일본 역 편의점 NewDays 펭귄 마카롱·어린이 런치 캠페인</span></a></li>
+          <li><a class="idx-item" href="blog/tokyo-station-chiikawa-tokyobanana/"><img class="idx-thumb" src="blog/img/tokyo-station-chiikawa-tokyobanana-thumb.jpg" alt="" width="46" height="46" loading="lazy"><span class="idx-item-title">도쿄역 치이카와 도쿄바나나 팝업, 지하 1층 스퀘어 제로에서 11/2까지만</span></a></li>
           <li><a class="idx-item" href="blog/japan-tax-free-refund/"><img class="idx-thumb" src="blog/img/japan-tax-free-refund-thumb.jpg" alt="" width="46" height="46" loading="lazy"><span class="idx-item-title">일본 면세 리펀드 방식 11월 1일부터 시작, 과자 산 사람 꼭 알아 둘 것</span></a></li>
           <li><a class="idx-item" href="blog/fukuoka-chiikawa-sushi-popup/"><img class="idx-thumb" src="blog/img/fukuoka-chiikawa-sushi-popup-thumb.jpg" alt="" width="46" height="46" loading="lazy"><span class="idx-item-title">후쿠오카 치이카와 스시 팝업, 미쓰코시 9층에서 치이카와가 초밥이 됐어요</span></a></li>
-          <li><a class="idx-item" href="blog/dotonbori-glico-sign/"><span class="idx-thumb idx-thumb-empty" aria-hidden="true"></span><span class="idx-item-title">오사카 도톤보리 글리코 간판 교체 공사, 지금 간판은 11월까지</span></a></li>
         </ol>
-        <a class="idx-more" href="blog/#cat-info">일본 정보 전체 보기 · 3개</a>
+        <a class="idx-more" href="blog/#cat-info">일본 정보 전체 보기 · 5개</a>
       </div>
       <div class="idx-panel idx-snacknews" id="idx-snacknews" role="tabpanel" aria-labelledby="idx-tab-snacknews">
         <p class="idx-panel-name">과자 정보</p>
         <ol class="idx-list">
-          <li><a class="idx-item" href="blog/katsuya-katsudon-potato-chips/"><img class="idx-thumb" src="blog/img/katsuya-katsudon-potato-chips-thumb.jpg" alt="" width="46" height="46" loading="lazy"><span class="idx-item-title">일본 가츠야 가츠동 맛 감자칩 출시, 돈가스집이 가게에서 직접 튀긴다</span></a></li>
-          <li><a class="idx-item" href="blog/snack-jokbo-02-no1-proof/"><img class="idx-thumb" src="blog/img/snack-jokbo-02-no1-proof-thumb.jpg" alt="" width="46" height="46" loading="lazy"><span class="idx-item-title">일본 과자 &#39;No.1&#39; 근거 정리, 자가리코·킷캣·도쿄 바나나 1위의 진짜 뜻</span></a></li>
-          <li><a class="idx-item" href="blog/haagen-dazs-classy-night/"><img class="idx-thumb" src="blog/img/haagen-dazs-classy-night-thumb.jpg" alt="" width="46" height="46" loading="lazy"><span class="idx-item-title">일본 하겐다즈 클래시 나이트 출시, 사나가 광고하는 &#39;향&#39; 테마 새 시리즈</span></a></li>
-          <li><a class="idx-item" href="blog/japan-christmas-snacks-2026/"><img class="idx-thumb" src="blog/img/japan-christmas-snacks-2026-thumb.jpg" alt="" width="46" height="46" loading="lazy"><span class="idx-item-title">일본 크리스마스 과자 2026, 칼디 어드벤트 캘린더부터 도쿄 바나나 미키 캔까지</span></a></li>
+          <li><a class="idx-item" href="blog/seven-black-chipstar/"><img class="idx-thumb" src="blog/img/seven-black-chipstar-thumb.jpg" alt="" width="46" height="46" loading="lazy"><span class="idx-item-title">일본 세븐일레븐 검은 칩스타 출시, 통도 칩도 새까만 칩스타 50주년</span></a></li>
+          <li><a class="idx-item" href="blog/ginza-cozy-corner-harry-potter/"><img class="idx-thumb" src="blog/img/ginza-cozy-corner-harry-potter-thumb.jpg" alt="" width="46" height="46" loading="lazy"><span class="idx-item-title">긴자 코지코너 해리 포터 케이크 출시, 호그와트가 케이크 상자에 (11월 한정)</span></a></li>
+          <li><a class="idx-item" href="blog/japan-konbini-korea-finds/"><img class="idx-thumb" src="blog/img/japan-konbini-korea-finds-thumb.jpg" alt="" width="46" height="46" loading="lazy"><span class="idx-item-title">일본 편의점 한국 맛 총정리, 한글 써진 된장국 컵부터 &#39;Mukbang&#39; 구미까지</span></a></li>
+          <li><a class="idx-item" href="blog/japan-local-snacks-map-november/"><img class="idx-thumb" src="blog/img/japan-local-snacks-map-november-thumb.jpg" alt="" width="46" height="46" loading="lazy"><span class="idx-item-title">일본 지역 한정 편의점 신상 지도, 홋카이도·나가노·시즈오카 가야 있는 것</span></a></li>
         </ol>
-        <a class="idx-more" href="blog/#cat-snacknews">과자 정보 전체 보기 · 28개</a>
+        <a class="idx-more" href="blog/#cat-snacknews">과자 정보 전체 보기 · 38개</a>
       </div>
       <div class="idx-panel idx-tip" id="idx-tip" role="tabpanel" aria-labelledby="idx-tab-tip">
         <p class="idx-panel-name">일본 꿀팁</p>
@@ -135,6 +148,70 @@
           <li><a class="idx-item" href="blog/japan-tax-free-bag-tip/"><img class="idx-thumb" src="blog/img/japan-tax-free-bag-tip-thumb.jpg" alt="" width="46" height="46" loading="lazy"><span class="idx-item-title">일본 면세 봉투 11월부터 없어져도, 과자 뜯어 먹으면 안 되는 이유</span></a></li>
         </ol>
         <a class="idx-more" href="blog/#cat-tip">일본 꿀팁 전체 보기 · 2개</a>
+      </div>
+      <div class="idx-panel idx-area" id="idx-area-tokyo" role="tabpanel" aria-labelledby="idx-city-tokyo">
+        <p class="idx-panel-name">도쿄</p>
+        <ol class="idx-list">
+          <li><a class="idx-item" href="blog/ginza-cozy-corner-harry-potter/"><img class="idx-thumb" src="blog/img/ginza-cozy-corner-harry-potter-thumb.jpg" alt="" width="46" height="46" loading="lazy"><span class="idx-item-title">긴자 코지코너 해리 포터 케이크 출시, 호그와트가 케이크 상자에 (11월 한정)</span></a></li>
+          <li><a class="idx-item" href="blog/lawson-butterscotch-burger/"><img class="idx-thumb" src="blog/img/lawson-butterscotch-burger-thumb.jpg" alt="" width="46" height="46" loading="lazy"><span class="idx-item-title">일본 로손 버터스카치 버거 출시, 도쿄역 햄버거 모양 과자가 전국 로손으로</span></a></li>
+          <li><a class="idx-item" href="blog/suica-penguin-newdays-campaign/"><img class="idx-thumb" src="blog/img/suica-penguin-newdays-campaign-thumb.jpg" alt="" width="46" height="46" loading="lazy"><span class="idx-item-title">Suica 펭귄 졸업 발표, 일본 역 편의점 NewDays 펭귄 마카롱·어린이 런치 캠페인</span></a></li>
+          <li><a class="idx-item" href="blog/tokyo-nagoya-station-new-snacks/"><img class="idx-thumb" src="blog/img/tokyo-nagoya-station-new-snacks-thumb.jpg" alt="" width="46" height="46" loading="lazy"><span class="idx-item-title">도쿄역·나고야역 역 안 가게 신상 6, 기네스 기록 치즈케이크부터 지역 맛 버터샌드까지</span></a></li>
+        </ol>
+        <a class="idx-more" href="blog/#area-tokyo">도쿄 글 전체 보기 · 9개</a>
+      </div>
+      <div class="idx-panel idx-area" id="idx-area-osaka" role="tabpanel" aria-labelledby="idx-city-osaka">
+        <p class="idx-panel-name">오사카</p>
+        <ol class="idx-list">
+          <li><a class="idx-item" href="blog/osaka-cafe-4-picks/"><img class="idx-thumb" src="blog/img/osaka-cafe-4-picks-thumb.jpg" alt="" width="46" height="46" loading="lazy"><span class="idx-item-title">오사카 감성 카페 4곳, 사진도 맛도 다 챙기는 저장용 리스트 (주소·영업시간 정리)</span></a></li>
+          <li><a class="idx-item" href="blog/glico-pocky-yubari-melon/"><img class="idx-thumb" src="blog/img/glico-pocky-yubari-melon-thumb.jpg" alt="" width="46" height="46" loading="lazy"><span class="idx-item-title">일본 한정 포키 유바리 멜론, 하나만 먹으려다 그 자리에서 다 먹은 후기</span></a></li>
+          <li><a class="idx-item" href="blog/osaka-melt-chocolate/"><img class="idx-thumb" src="blog/img/osaka-melt-chocolate-thumb.jpg" alt="" width="46" height="46" loading="lazy"><span class="idx-item-title">오사카 초콜릿 카페 Melt Chocolate, 초콜릿 수북한 음료와 생초콜릿 후기</span></a></li>
+          <li><a class="idx-item" href="blog/japan-regional-limited-snacks/"><img class="idx-thumb" src="blog/img/japan-regional-limited-snacks-thumb.jpg" alt="" width="46" height="46" loading="lazy"><span class="idx-item-title">일본 지역 한정 과자 5가지, 도쿄·오사카·후쿠오카 파는 맛이 달라요</span></a></li>
+        </ol>
+        <a class="idx-more" href="blog/#area-osaka">오사카 글 전체 보기 · 10개</a>
+      </div>
+      <div class="idx-panel idx-area" id="idx-area-kyoto" role="tabpanel" aria-labelledby="idx-city-kyoto">
+        <p class="idx-panel-name">교토</p>
+        <ol class="idx-list">
+          <li><a class="idx-item" href="blog/kyoto-drink-drank-kaki/"><img class="idx-thumb" src="blog/img/kyoto-drink-drank-kaki-thumb.jpg" alt="" width="46" height="46" loading="lazy"><span class="idx-item-title">교토 니시키 시장 근처 DRINK DRANK, 가을 한정 감 스무디 후기</span></a></li>
+          <li><a class="idx-item" href="blog/kyoto-ninenzaka-gokago/"><img class="idx-thumb" src="blog/img/kyoto-ninenzaka-gokago-thumb.jpg" alt="" width="46" height="46" loading="lazy"><span class="idx-item-title">교토 기요미즈자카 GOKAGO, 눈앞에서 한 잔씩 만드는 진한 말차 후기</span></a></li>
+          <li><a class="idx-item" href="blog/kyoto-arashiyama-miffy-bakery/"><img class="idx-thumb" src="blog/img/kyoto-arashiyama-miffy-bakery-thumb.jpg" alt="" width="46" height="46" loading="lazy"><span class="idx-item-title">교토 아라시야마 미피 사쿠라 베이커리, 미피 빵·굿즈 구경 후기</span></a></li>
+        </ol>
+        <a class="idx-more" href="blog/#area-kyoto">교토 글 전체 보기 · 3개</a>
+      </div>
+      <div class="idx-panel idx-area" id="idx-area-nara" role="tabpanel" aria-labelledby="idx-city-nara">
+        <p class="idx-panel-name">나라</p>
+        <ol class="idx-list">
+          <li><a class="idx-item" href="blog/nara-good-knight-ice/"><img class="idx-thumb" src="blog/img/nara-good-knight-ice-thumb.jpg" alt="" width="46" height="46" loading="lazy"><span class="idx-item-title">나라 밤 디저트 good knight ice, 밤늦게까지 하는 아이스크림 파르페 가게 후기</span></a></li>
+        </ol>
+        <a class="idx-more" href="blog/#area-nara">나라 글 전체 보기 · 1개</a>
+      </div>
+      <div class="idx-panel idx-area" id="idx-area-nagoya" role="tabpanel" aria-labelledby="idx-city-nagoya">
+        <p class="idx-panel-name">나고야</p>
+        <ol class="idx-list">
+          <li><a class="idx-item" href="blog/japan-local-snacks-map-november/"><img class="idx-thumb" src="blog/img/japan-local-snacks-map-november-thumb.jpg" alt="" width="46" height="46" loading="lazy"><span class="idx-item-title">일본 지역 한정 편의점 신상 지도, 홋카이도·나가노·시즈오카 가야 있는 것</span></a></li>
+          <li><a class="idx-item" href="blog/tokyo-nagoya-station-new-snacks/"><img class="idx-thumb" src="blog/img/tokyo-nagoya-station-new-snacks-thumb.jpg" alt="" width="46" height="46" loading="lazy"><span class="idx-item-title">도쿄역·나고야역 역 안 가게 신상 6, 기네스 기록 치즈케이크부터 지역 맛 버터샌드까지</span></a></li>
+          <li><a class="idx-item" href="blog/nagoya-piyorin-godzilla/"><img class="idx-thumb" src="blog/img/nagoya-piyorin-godzilla-thumb.jpg" alt="" width="46" height="46" loading="lazy"><span class="idx-item-title">나고야역 피요린 고질라 출시, 노란 병아리 푸딩이 검은 고질라로 변신</span></a></li>
+          <li><a class="idx-item" href="blog/japan-halloween-last-chance/"><img class="idx-thumb" src="blog/img/japan-halloween-last-chance-thumb.jpg" alt="" width="46" height="46" loading="lazy"><span class="idx-item-title">일본 할로윈 한정 과자 막차 8가지, 언제까지 파는지 공식 표기로 정리</span></a></li>
+        </ol>
+        <a class="idx-more" href="blog/#area-nagoya">나고야 글 전체 보기 · 4개</a>
+      </div>
+      <div class="idx-panel idx-area" id="idx-area-fukuoka" role="tabpanel" aria-labelledby="idx-city-fukuoka">
+        <p class="idx-panel-name">후쿠오카</p>
+        <ol class="idx-list">
+          <li><a class="idx-item" href="blog/fukuoka-chiikawa-sushi-popup/"><img class="idx-thumb" src="blog/img/fukuoka-chiikawa-sushi-popup-thumb.jpg" alt="" width="46" height="46" loading="lazy"><span class="idx-item-title">후쿠오카 치이카와 스시 팝업, 미쓰코시 9층에서 치이카와가 초밥이 됐어요</span></a></li>
+          <li><a class="idx-item" href="blog/japan-regional-limited-snacks/"><img class="idx-thumb" src="blog/img/japan-regional-limited-snacks-thumb.jpg" alt="" width="46" height="46" loading="lazy"><span class="idx-item-title">일본 지역 한정 과자 5가지, 도쿄·오사카·후쿠오카 파는 맛이 달라요</span></a></li>
+        </ol>
+        <a class="idx-more" href="blog/#area-fukuoka">후쿠오카 글 전체 보기 · 2개</a>
+      </div>
+      <div class="idx-panel idx-area" id="idx-area-hokkaido" role="tabpanel" aria-labelledby="idx-city-hokkaido">
+        <p class="idx-panel-name">홋카이도</p>
+        <ol class="idx-list">
+          <li><a class="idx-item" href="blog/japan-local-snacks-map-november/"><img class="idx-thumb" src="blog/img/japan-local-snacks-map-november-thumb.jpg" alt="" width="46" height="46" loading="lazy"><span class="idx-item-title">일본 지역 한정 편의점 신상 지도, 홋카이도·나가노·시즈오카 가야 있는 것</span></a></li>
+          <li><a class="idx-item" href="blog/japan-konbini-drinks-16/"><img class="idx-thumb" src="blog/img/japan-konbini-drinks-16-thumb.jpg" alt="" width="46" height="46" loading="lazy"><span class="idx-item-title">일본 편의점 음료 16가지 총정리, 홋카이도 한정 가라나·자판기 한정 고디바까지</span></a></li>
+          <li><a class="idx-item" href="blog/hokkaido-limited-snacks-7/"><img class="idx-thumb" src="blog/img/hokkaido-limited-snacks-7-thumb.jpg" alt="" width="46" height="46" loading="lazy"><span class="idx-item-title">홋카이도 여행 편의점 간식 7가지, 세이코마트 신상부터 도민 음료까지</span></a></li>
+          <li><a class="idx-item" href="blog/japan-regional-limited-snacks/"><img class="idx-thumb" src="blog/img/japan-regional-limited-snacks-thumb.jpg" alt="" width="46" height="46" loading="lazy"><span class="idx-item-title">일본 지역 한정 과자 5가지, 도쿄·오사카·후쿠오카 파는 맛이 달라요</span></a></li>
+        </ol>
+        <a class="idx-more" href="blog/#area-hokkaido">홋카이도 글 전체 보기 · 4개</a>
       </div>
     </div>
     <div class="idx-tabs" role="tablist" aria-label="정리탭 분류">
@@ -147,7 +224,7 @@
   </section>
   <script>
   (function () {
-    var tabs = document.querySelectorAll('.idx-tab');
+    var tabs = document.querySelectorAll('.idx-tab, .idx-city');
     function show(id) {
       for (var n = 0; n < tabs.length; n++) {
         var on = tabs[n].getAttribute('aria-controls') === id;
@@ -158,7 +235,7 @@
     for (var n = 0; n < tabs.length; n++) {
       tabs[n].addEventListener('click', function (e) { e.preventDefault(); show(this.getAttribute('aria-controls')); });
     }
-    if (tabs.length) { document.documentElement.classList.add('has-idx'); show(tabs[0].getAttribute('aria-controls')); }
+    if (tabs.length) { document.documentElement.classList.add('has-idx'); show((document.querySelector('.idx-tab') || tabs[0]).getAttribute('aria-controls')); }
   })();
   </script>
 
