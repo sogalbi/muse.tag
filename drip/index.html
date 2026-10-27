@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>드립 | 드립 저장소 · muse.tag</title>
+<meta name="description" content="웃긴 거 보면 일단 여기 저장. 보자마자 웃겨서 산 것들 모음.">
+<link rel="canonical" href="https://musetag.kr/drip/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="muse.tag">
+<meta property="og:title" content="드립 | 드립 저장소">
+<meta property="og:description" content="웃긴 거 보면 일단 여기 저장. 보자마자 웃겨서 산 것들 모음.">
+<meta property="og:url" content="https://musetag.kr/drip/">
+<meta name="theme-color" content="#C2F23D">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%23121212'/%3E%3Cpath d='M10 9.5H22V24M10 16.5H22' fill='none' stroke='%23C2F23D' stroke-width='4'/%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gasoek+One&display=swap&text=%EB%93%9C%EB%A6%BD%EC%9B%83%EA%B2%A8%EC%84%9C%EC%82%B0%EA%B1%B0%EB%B0%9B%EC%95%84%EB%B3%B4%EA%B8%B0%E3%85%8B%EB%A7%81%ED%81%AC%EC%B6%94%EA%B0%80%EC%98%AC%EB%9D%BC%EA%B0%84%20">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="drip.css?v=1">
+</head>
+<body>
+<header class="band">
+  <div class="band-inner">
+    <p class="eyebrow"><a href="../">muse.tag</a> 채널</p>
+    <h1 class="logo">드립</h1>
+    <p class="title-line">드립 저장소</p>
+    <p class="tagline" id="tagline">웃긴 거 보면 일단 여기 저장</p>
+    <a class="handle" id="handle" hidden></a>
+    <span class="sticker" aria-hidden="true">ㅋㅋ</span>
+  </div>
+</header>
+
+<main class="main">
+  <section aria-labelledby="buy-title">
+    <div class="sec-head">
+      <h2 class="sec-title" id="buy-title">웃겨서 산 거</h2>
+      <span class="count" id="count" hidden></span>
+    </div>
+    <p class="sec-sub">보자마자 웃겨서 장바구니 직행한 것들</p>
+    <div class="disclosure" id="disclosure"></div>
+    <ol class="items" id="items"></ol>
+    <div class="empty" id="empty" hidden>
+      <strong>아직 저장된 게 없어요</strong>
+      웃긴 거 찾는 중이에요. 곧 채워 둘게요.
+    </div>
+  </section>
+
+  <section id="follow-sec" aria-labelledby="follow-title" hidden>
+    <h2 class="sec-title" id="follow-title">드립 받아보기</h2>
+    <ul class="follow" id="follow"></ul>
+  </section>
+</main>
+
+<footer class="foot">
+  <p>드립 · <a href="../">muse.tag</a></p>
+</footer>
+
+<script src="drip.js?v=1"></script>
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+
+  function show(data) {
+    var ch = (data && data.channel) || {};
+    var links = (data && data.links) || [];
+
+    if (ch.tagline) $('tagline').textContent = ch.tagline;
+
+    var handle = String(ch.handle || '').replace(/^@/, '').trim();
+    if (handle) {
+      $('handle').textContent = '@' + handle;
+      var home = Drip.parse(ch.instagram) || Drip.parse(ch.threads);
+      if (home) $('handle').href = home.href; else $('handle').removeAttribute('href');
+      $('handle').hidden = false;
+    }
+
+    var n = Drip.render($('items'), links, '');
+    $('count').textContent = n + '개';
+    $('count').hidden = n === 0;
+    $('empty').hidden = n > 0;
+    var notes = Drip.disclosure(links);
+    $('disclosure').textContent = '';
+    notes.forEach(function (t) {
+      var p = document.createElement('p');
+      p.textContent = t;
+      $('disclosure').appendChild(p);
+    });
+    $('disclosure').hidden = notes.length === 0;
+
+    var follow = [];
+    if (Drip.parse(ch.instagram)) follow.push(['인스타그램' + (handle ? ' @' + handle : ''), ch.instagram]);
+    if (Drip.parse(ch.threads)) follow.push(['Threads' + (handle ? ' @' + handle : ''), ch.threads]);
+    $('follow').textContent = '';
+    follow.forEach(function (f) {
+      var li = document.createElement('li');
+      var a = document.createElement('a');
+      a.href = Drip.parse(f[1]).href;
+      a.rel = 'noopener';
+      a.textContent = f[0];
+      li.appendChild(a);
+      $('follow').appendChild(li);
+    });
+    $('follow-sec').hidden = follow.length === 0;
+  }
+
+  fetch('links.json', { cache: 'no-cache' })
+    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then(show)
+    .catch(function () { show(null); });
+})();
+</script>
+</body>
+</html>
