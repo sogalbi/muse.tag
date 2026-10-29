@@ -104,6 +104,8 @@
     var a = el('a', 'item-link');
     a.href = parse(link.url) ? parse(link.url).href : '#';
     a.rel = 'sponsored noopener';
+    a.dataset.name = (link.brand ? link.brand + ' ' : '') + (link.name || '');
+    a.dataset.no = String(index + 1).padStart(2, '0');
 
     var pic = el('span', 'item-pic');
     pic.appendChild(thumb(link, base));
@@ -138,6 +140,8 @@
     var a = el('a', 'lucky');
     a.href = parse(link.url) ? parse(link.url).href : '#';
     a.rel = 'sponsored noopener';
+    a.dataset.name = '랜덤';
+    a.dataset.no = 'random';
     var q = el('span', 'lucky-q', '?');
     q.setAttribute('aria-hidden', 'true');
     a.appendChild(q);
@@ -182,7 +186,42 @@
     return out;
   }
 
+  // Google 애널리틱스(GA4). 측정 ID(G-…)가 있을 때만 켠다.
+  var GA_ID = /^G-[A-Z0-9]{4,}$/;
+  var gaOn = false;
+  function analytics(id) {
+    id = String(id || '').trim().toUpperCase();
+    if (gaOn || !GA_ID.test(id)) return false;
+    gaOn = true;
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', id);
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(id);
+    document.head.appendChild(s);
+    return true;
+  }
+
+  // 상품 링크를 누르면 'drip_click' 이벤트 (상품 이름·번호 포함)
+  function trackClicks(root) {
+    root.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a.item-link, a.lucky');
+      if (!a || !gaOn) return;
+      window.gtag('event', 'drip_click', {
+        item_name: a.dataset.name || '',
+        item_no: a.dataset.no || '',
+        link_url: a.href,
+        transport_type: 'beacon'
+      });
+    });
+  }
+
   window.Drip = {
+    GA_ID: GA_ID,
+    analytics: analytics,
+    trackClicks: trackClicks,
     STORES: STORES,
     parse: parse,
     store: store,

@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gasoek+One&display=swap&text=%EB%93%9C%EB%A6%BD%EB%A7%81%ED%81%AC%EC%B6%94%EA%B0%80%20">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-<link rel="stylesheet" href="../drip.css?v=3">
+<link rel="stylesheet" href="../drip.css?v=4">
 <style>
 /* 링크 추가 페이지 — 채널 페이지와 같은 색·카드. 폰 한 손 입력 기준 */
 .top {
@@ -210,6 +210,24 @@ details[open] > summary { margin-bottom: 14px; }
     </div>
   </section>
 
+  <!-- 방문자 수 -->
+  <section class="panel" aria-labelledby="stats-title">
+    <div class="conn">
+      <h2 class="panel-title" id="stats-title">방문자 수</h2>
+      <span class="conn-state" id="stats-state">꺼짐</span>
+    </div>
+    <p class="hint" id="stats-on" hidden>Google 애널리틱스로 세고 있어요 (<b id="stats-id"></b>). 방문자·페이지 조회·상품 클릭(drip_click)이 쌓여요.</p>
+    <a class="btn btn-main" id="stats-link" href="https://analytics.google.com/analytics/web/" target="_blank" rel="noopener" hidden>방문자 수 보러 가기 ↗</a>
+    <div id="stats-off">
+      <ol class="steps">
+        <li><a href="https://analytics.google.com/" target="_blank" rel="noopener">Google 애널리틱스</a> 열고 구글 계정으로 로그인</li>
+        <li>관리 → 만들기 → <b>속성</b> (이름 "드립", 시간대 대한민국)</li>
+        <li>데이터 스트림 → <b>웹</b> → 주소 <b>musetag.kr</b></li>
+        <li><b>G-</b> 로 시작하는 측정 ID 복사 → 아래 <b>채널 정보</b>에 붙여넣고 저장</li>
+      </ol>
+    </div>
+  </section>
+
   <!-- 새 링크 -->
   <section class="panel" aria-labelledby="form-title">
     <h2 class="panel-title" id="form-title">새 링크<small id="form-mode"></small></h2>
@@ -289,13 +307,17 @@ details[open] > summary { margin-bottom: 14px; }
           <label class="label" for="c-threads">Threads 주소</label>
           <input class="input" id="c-threads" type="url" inputmode="url" autocomplete="off" spellcheck="false" placeholder="https://www.threads.com/@…">
         </div>
+        <div class="field">
+          <label class="label" for="c-ga">Google 애널리틱스 측정 ID <em>· 방문자 수 세기</em></label>
+          <input class="input" id="c-ga" type="text" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="G-XXXXXXXXXX">
+        </div>
         <button class="btn btn-main" id="c-save" type="button">채널 정보 저장</button>
       </div>
     </details>
   </section>
 </main>
 
-<script src="../drip.js?v=3"></script>
+<script src="../drip.js?v=4"></script>
 <script>
 (function () {
   'use strict';
@@ -628,6 +650,14 @@ details[open] > summary { margin-bottom: 14px; }
     $('c-handle').value = ch.handle || '';
     $('c-instagram').value = ch.instagram || '';
     $('c-threads').value = ch.threads || '';
+    $('c-ga').value = ch.ga || '';
+    var on = Drip.GA_ID.test(String(ch.ga || ''));
+    $('stats-state').textContent = on ? '켜짐' : '꺼짐';
+    $('stats-state').dataset.on = on ? 'true' : 'false';
+    $('stats-id').textContent = ch.ga || '';
+    $('stats-on').hidden = !on;
+    $('stats-link').hidden = !on;
+    $('stats-off').hidden = on;
   }
 
   function dirty() {
@@ -732,15 +762,20 @@ details[open] > summary { margin-bottom: 14px; }
       tagline: $('c-tagline').value.trim(),
       handle: $('c-handle').value.trim().replace(/^@/, ''),
       instagram: $('c-instagram').value.trim(),
-      threads: $('c-threads').value.trim()
+      threads: $('c-threads').value.trim(),
+      ga: $('c-ga').value.trim().toUpperCase()
     };
     if ((ch.instagram && !Drip.parse(ch.instagram)) || (ch.threads && !Drip.parse(ch.threads))) {
       say('SNS 주소는 https:// 로 시작해야 해요.', 'error');
       return;
     }
+    if (ch.ga && !Drip.GA_ID.test(ch.ga)) {
+      say('측정 ID는 G- 로 시작해요. 예: G-AB12CD34EF', 'error');
+      return;
+    }
     busy(true);
     say('저장하는 중…');
-    commit(function (data) { data.channel = ch; }, 'drip: 채널 정보 수정').then(function (data) {
+    commit(function (data) { data.channel = Object.assign({}, data.channel, ch); }, 'drip: 채널 정보 수정').then(function (data) {
       setData(data);
       say('채널 정보를 저장했어요!');
     }).catch(function (e) { say(why(e), 'error'); }).then(function () { busy(false); });
