@@ -55,20 +55,37 @@
   document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeMenu(); });
 
   /* ---------- 1. 첫 화면 사진 ---------- */
+  // [제품, 사진 앞자리, 사진에서 보여 줄 곳(가로 %, 세로 %)] — 화면 가득 펴도 흐리지 않은 큰 사진만
   var HERO = [
-    ["sd-castle-35m", "bb23ef"],
-    ["op-water-slide-2", "e92dd9"],
-    ["rental-a917b15c", "a917b1"],
-    ["rental-78c433d8", "78c433"],
-    ["sd-blue-pengyn-w-1", "dd4f97"],
-    ["rental-8952ef53", "8952ef"]
+    ["so-trolley", "df2354", "58%", "45%"],
+    ["sd-castle-35m", "070ae8", "24%", "40%"],
+    ["promo-airdome-tunnel", "e06e6f", "48%", "38%"],
+    ["rental-10ab1153", "10ab11", "62%", "46%"],
+    ["rental-7737ea71", "7737ea", "60%", "44%"],
+    ["rental-8952ef53", "8952ef", "45%", "42%"]
   ].filter(function (h) { return BY_ID[h[0]]; });
 
-  var stage = $(".hero-stage");
+  var stage = $(".hero-stage"), heroSec = $(".hero");
   if (stage && HERO.length) {
-    var stImg = $(".stage-img", stage), stName = $(".spec-name", stage), stNum = $(".spec-num", stage),
-        stUnit = $(".spec-dim small", stage), stKey = $(".spec-key", stage), thumbs = $(".stage-thumbs", stage);
+    var stImg = $(".stage-img", heroSec), stSpec = $(".spec-hero", stage), stName = $(".spec-name", stage), stNum = $(".spec-num", stage),
+        stUnit = $(".spec-dim small", stage), stKey = $(".spec-key", stage), stScale = $(".spec-scale", stage), thumbs = $(".stage-thumbs", stage);
     var cur = 0, timer = null;
+    // 처음 한 번만 부풀리고, 끝나면 표시를 지워 사진 넘기기(흐려졌다 나타나기)가 그대로 되게
+    [stImg, stSpec].forEach(function (el) {
+      if (!el) return;
+      el.addEventListener("animationend", function () { el.classList.remove("is-first"); }, { once: true });
+      if (reduceMotion) el.classList.remove("is-first");
+    });
+    var stScaleKey = $(".spec-scale-key", stage);
+    var drawScale = function (p) {
+      var ok = window.ASScale && p.w > 0 && p.h > 0;
+      stScale.innerHTML = ok ? window.ASScale.side(Math.max(p.w, p.d || 0), p.h, { compact: true }) : "";
+      if (ok) {
+        var r = p.h / 1.7, times = r >= 3 ? String(Math.round(r)) : String(Math.round(r * 10) / 10);
+        stScaleKey.textContent = "왼쪽이 사람(1.7 m) · 높이는 사람 키의 약 " + times + "배";
+      }
+    };
+    drawScale(BY_ID[HERO[0][0]]);
     HERO.forEach(function (h, i) {
       var p = BY_ID[h[0]], im = findImg(p, h[1]);
       var b = document.createElement("button");
@@ -84,10 +101,14 @@
       var p = BY_ID[HERO[cur][0]], im = findImg(p, HERO[cur][1]), sp = sizeParts(p);
       var next = new Image();
       next.src = imgPath(im[0], "l");
+      var focus = HERO[cur];
       var apply = function () {
+        stImg.classList.remove("is-first");
         stImg.src = next.src;
         stImg.alt = p.name + " 설치 사진";
         stImg.width = im[1]; stImg.height = im[2];
+        stImg.style.setProperty("--fx", focus[2] || "50%");
+        stImg.style.setProperty("--fy", focus[3] || "50%");
         stImg.classList.remove("is-fading");
       };
       stImg.classList.add("is-fading");
@@ -98,6 +119,7 @@
       stNum.textContent = sp.num;
       stUnit.textContent = sp.unit;
       stKey.textContent = p.round ? "지름" : (p.size ? "가로 × 세로 × 높이" : "");
+      drawScale(p);
       $$("button", thumbs).forEach(function (b, k) { b.setAttribute("aria-pressed", k === cur ? "true" : "false"); });
     };
     var restart = function () {
@@ -105,9 +127,9 @@
       if (reduceMotion) return;
       timer = setInterval(function () { if (!document.hidden) show(cur + 1); }, 5200);
     };
-    stage.addEventListener("mouseenter", function () { clearInterval(timer); });
-    stage.addEventListener("mouseleave", restart);
-    stage.addEventListener("focusin", function () { clearInterval(timer); });
+    thumbs.addEventListener("mouseenter", function () { clearInterval(timer); });
+    thumbs.addEventListener("mouseleave", restart);
+    thumbs.addEventListener("focusin", function () { clearInterval(timer); });
     restart();
   }
 
@@ -269,6 +291,9 @@
     mSize.textContent = p.size || "크기는 상담 때 안내";
     $("#m-spec").classList.toggle("is-long", (p.size || "").length > 18);
     mKey.textContent = p.size ? (p.round ? "지름 · 단위 m" : (p.h ? "가로 × 세로 × 높이 · 단위 m" : "가로 × 세로 · 단위 m")) : "";
+    var mScale = $("#m-scale"), fig = window.ASScale ? window.ASScale.figure(p) : "";
+    mScale.innerHTML = fig;
+    mScale.hidden = !fig;
     var mPage = $("#m-page"), pg = pageOf(p);
     if (mPage) { mPage.hidden = !pg; if (pg) mPage.href = pg; }
     mThumbs.innerHTML = "";

@@ -36,6 +36,13 @@
     });
   });
 
+  /* 설치 크기 그림 (사람·주차 1칸과 같은 비율) */
+  var sc = $(".scale-mount");
+  if (sc && window.ASScale) {
+    var d = sc.dataset;
+    sc.innerHTML = window.ASScale.figure({ w: +d.w, d: +d.d, h: +d.h || 0, round: d.round === "1", size: d.size || "" });
+  }
+
   /* 문자: 휴대폰 종류에 맞춰 본문 채우기 */
   $$("[data-sms]").forEach(function (a) {
     var body = a.dataset.sms;
