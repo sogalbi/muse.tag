@@ -29,10 +29,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Black+Han+Sans&family=IBM+Plex+Sans+KR:wght@400;500;700&display=swap">
 <link rel="preload" as="image" href="assets/img/p/df2354d7-l.webp" fetchpriority="high">
-<link rel="stylesheet" href="assets/css/style.css?v=df2250c2">
+<link rel="stylesheet" href="assets/css/style.css?v=eaf7b8c2">
 <!--@jsonld--><script type="application/ld+json">{"@context": "https://schema.org", "@type": "LocalBusiness", "@id": "https://www.asbounce.com/#business", "name": "에어스토리", "alternateName": "AirStory", "description": "에어바운스 주문제작·렌탈. 종합바운스, 슬라이드, 스포츠·장애물, 수상 놀이기구, 에어돔, 에어조형물을 만듭니다.", "url": "https://www.asbounce.com/", "telephone": "+82-10-4445-9040", "email": "airstory2024@gmail.com", "faxNumber": "+82-31-5171-3173", "image": "https://www.asbounce.com/assets/img/og.jpg", "logo": "https://www.asbounce.com/assets/img/brand/airstory-logo.png", "address": {"@type": "PostalAddress", "streetAddress": "김포한강8로 410, 1001-342호", "addressLocality": "김포시", "addressRegion": "경기도", "addressCountry": "KR"}, "areaServed": "KR", "hasOfferCatalog": {"@type": "OfferCatalog", "name": "에어스토리 제품", "itemListElement": [{"@type": "OfferCatalog", "name": "렌탈", "numberOfItems": 23, "url": "https://www.asbounce.com/%EB%A0%8C%ED%83%88%EC%84%9C%EB%B9%84%EC%8A%A4"}, {"@type": "OfferCatalog", "name": "종합바운스", "numberOfItems": 60, "url": "https://www.asbounce.com/blank-1"}, {"@type": "OfferCatalog", "name": "슬라이드", "numberOfItems": 11, "url": "https://www.asbounce.com/blank-4"}, {"@type": "OfferCatalog", "name": "스포츠·장애물", "numberOfItems": 16, "url": "https://www.asbounce.com/blank-5"}, {"@type": "OfferCatalog", "name": "수상", "numberOfItems": 23, "url": "https://www.asbounce.com/%EC%88%98%EC%83%81%EC%9A%A9"}, {"@type": "OfferCatalog", "name": "에어돔", "numberOfItems": 12, "url": "https://www.asbounce.com/%EC%97%90%EC%96%B4%EB%8F%94-%EC%97%90%EC%96%B4%EC%8A%A4%ED%81%AC%EB%A6%B0"}, {"@type": "OfferCatalog", "name": "에어조형물", "numberOfItems": 15, "url": "https://www.asbounce.com/order-product"}]}}</script><!--/@jsonld-->
 </head>
-<body>
+<body class="home">
 <a class="skip" href="#main">본문으로 건너뛰기</a>
 
 <header class="site-header" id="top">
@@ -95,6 +95,30 @@
     </div>
   </section>
 
+  <!-- 1-2. 줄자: 대표 제품을 가장 긴 변 길이 자리에 -->
+  <section class="sec tape-sec" id="tape" aria-labelledby="tape-title" hidden>
+    <div class="wrap">
+      <div class="sec-head sec-head-row">
+        <div>
+          <span class="eyebrow eyebrow-pvc">크기 한눈에</span>
+          <h2 id="tape-title">줄자 위에 올려 봤습니다</h2>
+          <p>대표 제품을 가장 긴 변 길이 자리에 꽂았습니다. 옆으로 밀면 70 m까지 이어집니다. 누르면 사진과 크기 그림을 크게 볼 수 있습니다.</p>
+        </div>
+        <div class="tape-nav">
+          <button class="tape-btn" type="button" data-dir="-1" aria-label="줄자 왼쪽으로">←</button>
+          <button class="tape-btn" type="button" data-dir="1" aria-label="줄자 오른쪽으로">→</button>
+        </div>
+      </div>
+    </div>
+    <div class="tape">
+      <div class="tape-case" aria-hidden="true"><span></span></div>
+      <div class="tape-scroll" role="region" aria-label="제품 길이 줄자, 옆으로 밀어 보기" tabindex="0">
+        <div class="tape-track"></div>
+      </div>
+    </div>
+    <p class="wrap tape-hint" aria-hidden="true">← 옆으로 밀어 보세요 →</p>
+  </section>
+
   <!-- 2. 분류 -->
   <section class="sec cats-sec" aria-labelledby="cats-title">
     <div class="wrap">
@@ -110,7 +134,7 @@
         <a class="cat" href="#products" data-filter="water"><img src="assets/img/p/166e934f-s.webp" alt="" width="720" height="540" loading="lazy"><span class="cat-txt"><span class="cat-name">수상</span><span class="cat-meta">23종 · 2–12 m</span></span></a>
         <a class="cat" href="#dome"><img src="assets/img/p/7648fdf0-s.webp" alt="" width="720" height="540" loading="lazy"><span class="cat-txt"><span class="cat-name">에어돔</span><span class="cat-meta">12종 · 5.3–20 m</span></span></a>
         <a class="cat cat-wide" href="#products" data-filter="sculpture"><img src="assets/img/p/1dd51e02-s.webp" alt="" width="611" height="467" loading="lazy"><span class="cat-txt"><span class="cat-name">에어조형물</span><span class="cat-meta">15종</span></span></a>
-        <a class="cat cat-custom cat-wide cat-m2" href="#inquiry" data-inquiry="주문제작"><span class="cat-txt"><span class="cat-name">찾는 모양이 없나요?</span><p>캐릭터·크기·색을 정해 주시면 새로 만듭니다. 주문제작 사례 25종.</p></span><span class="cat-arrow">주문제작 문의 →</span></a><!--/@cats-->
+        <a class="cat cat-custom cat-wide cat-m2" href="#inquiry" data-inquiry="주문제작"><span class="cat-txt"><span class="cat-name">찾는 모양이 없나요?</span><p>캐릭터·크기·색을 정해 주시면 새로 만듭니다. 주문제작 사례 25종.</p></span><span class="cat-pair" aria-hidden="true"><span class="cp"><img src="assets/img/p/a315f0f2-s.webp" alt="" width="720" height="540" loading="lazy"><em>3D 시안</em></span><span class="cp-arrow">→</span><span class="cp"><img src="assets/img/p/a927dd3a-s.webp" alt="" width="598" height="448" loading="lazy"><em>완성</em></span></span><span class="cat-arrow">주문제작 문의 →</span></a><!--/@cats-->
       </div>
     </div>
   </section>
@@ -462,6 +486,7 @@
               </div>
             </div>
           </div>
+          <div class="pick" id="pick" hidden aria-live="polite"></div>
           <div class="f-row">
             <label class="f">
               <span class="f-label">이름 또는 회사명 <i>*</i></span>
@@ -589,6 +614,6 @@
 
 <script src="assets/js/data.js?v=8d20066f"></script>
 <script src="assets/js/scale.js?v=f87f3c60"></script>
-<script src="assets/js/app.js?v=573e745b"></script>
+<script src="assets/js/app.js?v=c99f91d7"></script>
 </body>
 </html>

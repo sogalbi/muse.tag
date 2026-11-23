@@ -44,10 +44,11 @@
   onScroll();
 
   var menuBtn = $(".menu-btn"), gnb = $("#gnb");
-  function closeMenu() { gnb.classList.remove("is-open"); menuBtn.setAttribute("aria-expanded", "false"); menuBtn.setAttribute("aria-label", "메뉴 열기"); }
+  function closeMenu() { gnb.classList.remove("is-open"); header.classList.remove("is-open"); menuBtn.setAttribute("aria-expanded", "false"); menuBtn.setAttribute("aria-label", "메뉴 열기"); }
   menuBtn.addEventListener("click", function () {
     var open = !gnb.classList.contains("is-open");
     gnb.classList.toggle("is-open", open);
+    header.classList.toggle("is-open", open);   // 메뉴가 열리면 머리글은 흰 바탕
     menuBtn.setAttribute("aria-expanded", String(open));
     menuBtn.setAttribute("aria-label", open ? "메뉴 닫기" : "메뉴 열기");
   });
@@ -131,6 +132,108 @@
     thumbs.addEventListener("mouseleave", restart);
     thumbs.addEventListener("focusin", function () { clearInterval(timer); });
     restart();
+  }
+
+  /* ---------- 1-2. 줄자: 대표 제품을 가장 긴 변 길이 자리에 꽂는다 ---------- */
+  var tapeSec = $("#tape");
+  if (tapeSec) {
+    var tScroll = $(".tape-scroll", tapeSec), tTrack = $(".tape-track", tapeSec);
+    var TAPE_MAX = 72, tapeKey = "";
+    var tapeItems = PRODUCTS.filter(function (p) { return p.w > 0 && p.d > 0 && p.img.length; })
+      .map(function (p) { return { p: p, len: Math.max(p.w, p.d) }; });
+    var rank = function (p) { return (p.promo ? 3 : 0) + (pageOf(p) ? 4 : 0) + (p.rental ? 2 : 0) + Math.min(p.img.length, 6) / 6; };
+    var byLen = tapeItems.slice().sort(function (a, b) { return a.len - b.len; });
+    // 가장 짧은 것과 가장 긴 것을 먼저, 나머지는 분류마다 하나씩 돌아가며(대표성 순) 자리를 찾는다
+    var groups = {};
+    tapeItems.forEach(function (c) { (groups[c.p.cat] = groups[c.p.cat] || []).push(c); });
+    Object.keys(groups).forEach(function (k) { groups[k].sort(function (a, b) { return rank(b.p) - rank(a.p); }); });
+    var tapeOrder = [byLen[0], byLen[byLen.length - 1]];
+    for (var gi = 0, more = true; more; gi++) {
+      more = false;
+      Object.keys(groups).forEach(function (k) { if (groups[k][gi]) { tapeOrder.push(groups[k][gi]); more = true; } });
+    }
+    var lenText = function (v) { return String(+v.toFixed(2)); };
+    var escH = function (s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/"/g, "&quot;"); };
+
+    var tapeBox = $(".tape", tapeSec);
+    var renderTape = function () {
+      var mobile = window.matchMedia("(max-width: 640px)").matches;
+      // 줄자 통은 본문 왼쪽 줄에 맞춘다 (.wrap 과 같은 계산)
+      var lead = mobile ? 16 : Math.max(24, Math.round((document.documentElement.clientWidth - 1200) / 2));
+      var key = (mobile ? "m" : "d") + lead;
+      if (key === tapeKey) return;
+      tapeKey = key;
+      tapeBox.style.setProperty("--lead", lead + "px");
+      var ppm = mobile ? 30 : 42, cardW = mobile ? 148 : 164, cardH = 52, laneH = 62, start = lead + (mobile ? 84 : 106), gap = 8;
+      // 칸 4개: 줄자 위 가까운 칸·아래 가까운 칸·위 먼 칸·아래 먼 칸 (같은 쪽 줄은 서로 가리지 않게)
+      var LANES = [{ up: 1, r: 0 }, { up: 0, r: 0 }, { up: 1, r: 1 }, { up: 0, r: 1 }];
+      var lane = [[], [], [], []], picked = [], seen = {};
+      tapeOrder.forEach(function (c) {
+        if (seen[c.p.id]) return;
+        var x = start + c.len * ppm;
+        for (var k = 0; k < LANES.length; k++) {
+          // 카드는 줄의 오른쪽(a = x-16) 또는 왼쪽(b = x+16)으로 펼친다
+          for (var sd = 0; sd < 2; sd++) {
+            var a = sd === 0 ? x - 16 : x + 16 - cardW, b = a + cardW;
+            if (a < start - 30) continue;
+            var free = lane[k].every(function (iv) { return b + gap <= iv[0] || a >= iv[1] + gap; });
+            var near = k - 2;   // 먼 칸이면 같은 쪽 가까운 칸
+            var lineClear = near < 0 || !lane[near].some(function (iv) { return x >= iv[0] - 6 && x <= iv[1] + 6; });
+            var coversLine = k < 2 && picked.some(function (q) { return q.k === k + 2 && q.x >= a - 6 && q.x <= b + 6; });
+            if (free && lineClear && !coversLine) {
+              lane[k].push([a, b]); picked.push({ c: c, x: x, a: a, k: k }); seen[c.p.id] = 1;
+              return;
+            }
+          }
+        }
+      });
+      var upH = 2 * laneH + 12, tapeTop = upH, tapeH = 60, trackW = start + TAPE_MAX * ppm + cardW;
+      tTrack.style.height = (upH + tapeH + 12 + 2 * laneH) + "px";
+      var html = '<div class="tape-pins">';
+      picked.sort(function (m, n) { return m.x - n.x; }).forEach(function (q) {
+        var p = q.c.p, L = LANES[q.k], pg = pageOf(p), top, lTop, lH;
+        if (L.up) { top = tapeTop - 12 - cardH - L.r * laneH; lTop = top + cardH; lH = tapeTop - lTop; }
+        else { top = tapeTop + tapeH + 12 + L.r * laneH; lTop = tapeTop + tapeH; lH = top - lTop; }
+        html += '<span class="pin-line ' + (L.up ? "is-up" : "is-down") + '" style="left:' + q.x + "px;top:" + lTop + "px;height:" + lH + 'px"></span>' +
+          '<a class="pin" style="left:' + q.a + "px;top:" + top + "px;width:" + cardW + 'px" href="' + (pg || "#p-" + p.id) + '" data-open="' + p.id + '" ' +
+          'aria-label="' + escH(p.name) + ", 가장 긴 변 " + lenText(q.c.len) + ' m">' +
+          '<img src="' + imgPath(p.img[0][0], "s") + '" alt="" width="56" height="42" loading="lazy">' +
+          '<span class="pin-txt"><b>' + escH(p.name) + "</b><span>" + lenText(q.c.len) + " m</span></span></a>";
+      });
+      html += "</div>";
+      var marks = "";
+      for (var m = 0; m <= TAPE_MAX; m += 5) {
+        marks += '<span class="tape-num' + (m % 10 === 0 ? " is-ten" : "") + '" style="left:' + (10 + m * ppm) + 'px">' + m + (m % 10 === 0 && m ? "<small>m</small>" : "") + "</span>";
+      }
+      html += '<div class="tape-strip" style="left:' + (start - 10) + "px;top:" + tapeTop + "px;width:" + (TAPE_MAX * ppm + 24) + "px;--ppm:" + ppm + 'px">' + marks + "</div>";
+      tapeBox.style.setProperty("--tape-mid", (tapeTop + tapeH / 2 + 6) + "px");
+      tTrack.style.width = trackW + "px";
+      tTrack.innerHTML = html;
+    };
+    renderTape();
+    tapeSec.hidden = false;
+    var tapeTimer;
+    window.addEventListener("resize", function () { clearTimeout(tapeTimer); tapeTimer = setTimeout(renderTape, 150); });
+
+    $$(".tape-btn", tapeSec).forEach(function (b) {
+      b.addEventListener("click", function () {
+        tScroll.scrollBy({ left: +b.dataset.dir * tScroll.clientWidth * 0.7, behavior: reduceMotion ? "auto" : "smooth" });
+      });
+    });
+    // 마우스로 끌어서 밀기 (손가락은 기본 가로 넘기기)
+    var drag = null, dragged = false;
+    tScroll.addEventListener("pointerdown", function (e) {
+      if (e.pointerType !== "mouse" || e.button !== 0) return;
+      drag = { x: e.clientX, s: tScroll.scrollLeft }; dragged = false;
+    });
+    window.addEventListener("pointermove", function (e) {
+      if (!drag) return;
+      var dx = e.clientX - drag.x;
+      if (Math.abs(dx) > 5) { dragged = true; tScroll.classList.add("is-dragging"); }
+      if (dragged) tScroll.scrollLeft = drag.s - dx;
+    });
+    window.addEventListener("pointerup", function () { drag = null; tScroll.classList.remove("is-dragging"); });
+    tScroll.addEventListener("click", function (e) { if (dragged) { e.preventDefault(); e.stopPropagation(); dragged = false; } }, true);
   }
 
   /* ---------- 3. 시안과 실물 ---------- */
@@ -354,7 +457,40 @@
       if (r) r.checked = true;
     }
     if (product) fld("product").value = product;
+    updatePick();
   }
+
+  /* 고른 제품 카드 + 적은 공간에 들어가는지 바로 알려 주기 */
+  var BY_NAME = {};
+  PRODUCTS.forEach(function (p) { BY_NAME[p.name] = p; });
+  var pickEl = $("#pick");
+  function numOf(n) { var v = parseFloat(fld(n).value); return v > 0 ? v : 0; }
+  function mText(v) { return String(+(+v).toFixed(2)); }
+  function updatePick() {
+    if (!pickEl) return;
+    var p = BY_NAME[fld("product").value.trim()];
+    if (!p) { pickEl.hidden = true; pickEl.innerHTML = ""; return; }
+    var W = numOf("spaceW"), D = numOf("spaceD"), fit = "";
+    if (p.w > 0 && p.d > 0 && W && D) {
+      var ok = (p.w <= W && p.d <= D) || (p.w <= D && p.d <= W);
+      fit = ok
+        ? '<p class="pick-fit is-ok"><b>들어갑니다</b> 적은 공간 ' + mText(W) + " × " + mText(D) + " m 안에 본체(" + mText(p.w) + " × " + mText(p.d) + " m)가 들어갑니다. 송풍기·안전 공간은 상담 때 함께 확인합니다.</p>"
+        : '<p class="pick-fit is-no"><b>공간이 작습니다</b> 본체(' + mText(p.w) + " × " + mText(p.d) + " m)가 적은 공간 " + mText(W) + " × " + mText(D) + " m보다 큽니다. 더 작은 제품이나 공간에 맞춘 제작을 상담해 드립니다.</p>";
+    } else if (p.w > 0 && p.d > 0) {
+      fit = '<p class="pick-fit">공간 크기(가로 × 세로)를 적으면 들어가는지 바로 알려 드립니다.</p>';
+    }
+    var pg = pageOf(p);
+    pickEl.innerHTML =
+      '<img src="' + imgPath(p.img[0][0], "s") + '" alt="" width="96" height="72">' +
+      '<div class="pick-body"><p class="pick-name">' + p.name.replace(/</g, "&lt;") + "</p>" +
+      '<p class="pick-size">' + (p.size || "크기는 상담 때 안내") + "</p>" + fit +
+      (pg ? '<a class="pick-link" href="' + pg + '" target="_blank" rel="noopener">제품 페이지 보기</a>' : "") + "</div>";
+    pickEl.hidden = false;
+  }
+  ["product", "spaceW", "spaceD"].forEach(function (n) {
+    fld(n).addEventListener("input", updatePick);
+    fld(n).addEventListener("change", updatePick);
+  });
   function goInquiry() {
     var sec = $("#inquiry");
     sec.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth" });
