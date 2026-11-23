@@ -29,10 +29,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Black+Han+Sans&family=IBM+Plex+Sans+KR:wght@400;500;700&display=swap">
 <link rel="preload" as="image" href="assets/img/p/df2354d7-l.webp" fetchpriority="high">
-<link rel="stylesheet" href="assets/css/style.css?v=eaf7b8c2">
+<link rel="stylesheet" href="assets/css/style.css?v=29641849">
 <!--@jsonld--><script type="application/ld+json">{"@context": "https://schema.org", "@type": "LocalBusiness", "@id": "https://www.asbounce.com/#business", "name": "에어스토리", "alternateName": "AirStory", "description": "에어바운스 주문제작·렌탈. 종합바운스, 슬라이드, 스포츠·장애물, 수상 놀이기구, 에어돔, 에어조형물을 만듭니다.", "url": "https://www.asbounce.com/", "telephone": "+82-10-4445-9040", "email": "airstory2024@gmail.com", "faxNumber": "+82-31-5171-3173", "image": "https://www.asbounce.com/assets/img/og.jpg", "logo": "https://www.asbounce.com/assets/img/brand/airstory-logo.png", "address": {"@type": "PostalAddress", "streetAddress": "김포한강8로 410, 1001-342호", "addressLocality": "김포시", "addressRegion": "경기도", "addressCountry": "KR"}, "areaServed": "KR", "hasOfferCatalog": {"@type": "OfferCatalog", "name": "에어스토리 제품", "itemListElement": [{"@type": "OfferCatalog", "name": "렌탈", "numberOfItems": 23, "url": "https://www.asbounce.com/%EB%A0%8C%ED%83%88%EC%84%9C%EB%B9%84%EC%8A%A4"}, {"@type": "OfferCatalog", "name": "종합바운스", "numberOfItems": 60, "url": "https://www.asbounce.com/blank-1"}, {"@type": "OfferCatalog", "name": "슬라이드", "numberOfItems": 11, "url": "https://www.asbounce.com/blank-4"}, {"@type": "OfferCatalog", "name": "스포츠·장애물", "numberOfItems": 16, "url": "https://www.asbounce.com/blank-5"}, {"@type": "OfferCatalog", "name": "수상", "numberOfItems": 23, "url": "https://www.asbounce.com/%EC%88%98%EC%83%81%EC%9A%A9"}, {"@type": "OfferCatalog", "name": "에어돔", "numberOfItems": 12, "url": "https://www.asbounce.com/%EC%97%90%EC%96%B4%EB%8F%94-%EC%97%90%EC%96%B4%EC%8A%A4%ED%81%AC%EB%A6%B0"}, {"@type": "OfferCatalog", "name": "에어조형물", "numberOfItems": 15, "url": "https://www.asbounce.com/order-product"}]}}</script><!--/@jsonld-->
 </head>
-<body class="home">
+<body>
 <a class="skip" href="#main">본문으로 건너뛰기</a>
 
 <header class="site-header" id="top">
@@ -95,78 +95,68 @@
     </div>
   </section>
 
-  <!-- 1-2. 줄자: 대표 제품을 가장 긴 변 길이 자리에 -->
-  <section class="sec tape-sec" id="tape" aria-labelledby="tape-title" hidden>
+  <!-- 2. 분류 아이콘 -->
+  <section class="cat-bar" aria-labelledby="cats-title">
     <div class="wrap">
-      <div class="sec-head sec-head-row">
-        <div>
-          <span class="eyebrow eyebrow-pvc">크기 한눈에</span>
-          <h2 id="tape-title">줄자 위에 올려 봤습니다</h2>
-          <p>대표 제품을 가장 긴 변 길이 자리에 꽂았습니다. 옆으로 밀면 70 m까지 이어집니다. 누르면 사진과 크기 그림을 크게 볼 수 있습니다.</p>
-        </div>
-        <div class="tape-nav">
-          <button class="tape-btn" type="button" data-dir="-1" aria-label="줄자 왼쪽으로">←</button>
-          <button class="tape-btn" type="button" data-dir="1" aria-label="줄자 오른쪽으로">→</button>
-        </div>
-      </div>
-    </div>
-    <div class="tape">
-      <div class="tape-case" aria-hidden="true"><span></span></div>
-      <div class="tape-scroll" role="region" aria-label="제품 길이 줄자, 옆으로 밀어 보기" tabindex="0">
-        <div class="tape-track"></div>
-      </div>
-    </div>
-    <p class="wrap tape-hint" aria-hidden="true">← 옆으로 밀어 보세요 →</p>
-  </section>
-
-  <!-- 2. 분류 -->
-  <section class="sec cats-sec" aria-labelledby="cats-title">
-    <div class="wrap">
-      <div class="sec-head">
-        <h2 id="cats-title">무엇이 필요하세요?</h2>
-        <p>분류를 누르면 아래 제품 목록이 그 분류로 바뀝니다. 크기는 가장 긴 변 기준입니다.</p>
-      </div>
-      <div class="cats">
-        <!--@cats--><a class="cat cat-wide cat-m2" href="#products" data-filter="rental"><img src="assets/img/p/78c433d8-s.webp" alt="" width="720" height="540" loading="lazy"><span class="cat-txt"><span class="cat-name">렌탈</span><span class="cat-meta">23종 · 2–30 m</span></span></a>
-        <a class="cat cat-wide" href="#products" data-filter="bounce"><img src="assets/img/p/04d29f85-s.webp" alt="" width="628" height="470" loading="lazy"><span class="cat-txt"><span class="cat-name">종합바운스</span><span class="cat-meta">60종 · 3–25 m</span></span></a>
-        <a class="cat" href="#products" data-filter="slide"><img src="assets/img/p/127c8960-s.webp" alt="" width="628" height="470" loading="lazy"><span class="cat-txt"><span class="cat-name">슬라이드</span><span class="cat-meta">11종 · 4–70 m</span></span></a>
-        <a class="cat" href="#products" data-filter="sports"><img src="assets/img/p/3ca546d9-s.webp" alt="" width="628" height="470" loading="lazy"><span class="cat-txt"><span class="cat-name">스포츠·장애물</span><span class="cat-meta">16종 · 3–14 m</span></span></a>
-        <a class="cat" href="#products" data-filter="water"><img src="assets/img/p/166e934f-s.webp" alt="" width="720" height="540" loading="lazy"><span class="cat-txt"><span class="cat-name">수상</span><span class="cat-meta">23종 · 2–12 m</span></span></a>
-        <a class="cat" href="#dome"><img src="assets/img/p/7648fdf0-s.webp" alt="" width="720" height="540" loading="lazy"><span class="cat-txt"><span class="cat-name">에어돔</span><span class="cat-meta">12종 · 5.3–20 m</span></span></a>
-        <a class="cat cat-wide" href="#products" data-filter="sculpture"><img src="assets/img/p/1dd51e02-s.webp" alt="" width="611" height="467" loading="lazy"><span class="cat-txt"><span class="cat-name">에어조형물</span><span class="cat-meta">15종</span></span></a>
-        <a class="cat cat-custom cat-wide cat-m2" href="#inquiry" data-inquiry="주문제작"><span class="cat-txt"><span class="cat-name">찾는 모양이 없나요?</span><p>캐릭터·크기·색을 정해 주시면 새로 만듭니다. 주문제작 사례 25종.</p></span><span class="cat-pair" aria-hidden="true"><span class="cp"><img src="assets/img/p/a315f0f2-s.webp" alt="" width="720" height="540" loading="lazy"><em>3D 시안</em></span><span class="cp-arrow">→</span><span class="cp"><img src="assets/img/p/a927dd3a-s.webp" alt="" width="598" height="448" loading="lazy"><em>완성</em></span></span><span class="cat-arrow">주문제작 문의 →</span></a><!--/@cats-->
-      </div>
+      <h2 class="sr-only" id="cats-title">제품 분류</h2>
+      <nav class="cat-icons" aria-label="제품 분류">
+        <!--@cats--><a class="cat-ic" href="렌탈서비스"><span class="cat-ic-img"><img src="assets/img/p/78c433d8-s.webp" alt="" width="720" height="540" loading="lazy"></span><span class="cat-ic-name">렌탈</span><span class="cat-ic-n">23종</span></a>
+        <a class="cat-ic" href="blank-1"><span class="cat-ic-img"><img src="assets/img/p/04d29f85-s.webp" alt="" width="628" height="470" loading="lazy"></span><span class="cat-ic-name">종합바운스</span><span class="cat-ic-n">60종</span></a>
+        <a class="cat-ic" href="blank-4"><span class="cat-ic-img"><img src="assets/img/p/127c8960-s.webp" alt="" width="628" height="470" loading="lazy"></span><span class="cat-ic-name">슬라이드</span><span class="cat-ic-n">11종</span></a>
+        <a class="cat-ic" href="blank-5"><span class="cat-ic-img"><img src="assets/img/p/3ca546d9-s.webp" alt="" width="628" height="470" loading="lazy"></span><span class="cat-ic-name">스포츠·장애물</span><span class="cat-ic-n">16종</span></a>
+        <a class="cat-ic" href="수상용"><span class="cat-ic-img"><img src="assets/img/p/166e934f-s.webp" alt="" width="720" height="540" loading="lazy"></span><span class="cat-ic-name">수상</span><span class="cat-ic-n">23종</span></a>
+        <a class="cat-ic" href="에어돔-에어스크린"><span class="cat-ic-img"><img src="assets/img/p/7648fdf0-s.webp" alt="" width="720" height="540" loading="lazy"></span><span class="cat-ic-name">에어돔</span><span class="cat-ic-n">12종</span></a>
+        <a class="cat-ic" href="order-product"><span class="cat-ic-img"><img src="assets/img/p/1dd51e02-s.webp" alt="" width="611" height="467" loading="lazy"></span><span class="cat-ic-name">에어조형물</span><span class="cat-ic-n">15종</span></a>
+        <a class="cat-ic cat-ic-custom" href="#inquiry" data-inquiry="주문제작"><span class="cat-ic-img" aria-hidden="true"><svg viewBox="0 0 24 24" width="44" height="44"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg></span><span class="cat-ic-name">주문제작</span><span class="cat-ic-n">사례 25종</span></a><!--/@cats-->
+      </nav>
     </div>
   </section>
 
-  <!-- 3. 시안과 실물 -->
-  <section class="sec compare-sec" id="compare" aria-labelledby="compare-title">
-    <div class="wrap compare-in">
-      <div class="compare-copy">
-        <p class="eyebrow eyebrow-ink">3D 시안 → 설치 현장</p>
-        <h2 id="compare-title">시안 그대로<br>세웁니다</h2>
-        <p>같은 제품의 3D 시안과 실제 설치 사진입니다. 사진 위 손잡이를 좌우로 밀어 비교해 보세요.</p>
-        <div class="pair-list" role="tablist" aria-label="비교할 제품"></div>
-      </div>
-      <div class="compare-box">
-        <div class="cmp" style="--pos:50%">
-          <img class="cmp-after" src="" alt="" width="800" height="600">
-          <div class="cmp-before-wrap"><img class="cmp-before" src="" alt="" width="800" height="600"></div>
-          <span class="cmp-tag cmp-tag-l">3D 시안</span>
-          <span class="cmp-tag cmp-tag-r">설치 현장</span>
-          <div class="cmp-handle" aria-hidden="true"><span></span></div>
-          <input class="cmp-range" type="range" min="0" max="100" value="50" aria-label="시안과 설치 사진 경계 옮기기">
-        </div>
-        <div class="cmp-meta">
-          <div>
-            <p class="cmp-name"></p>
-            <p class="cmp-size"></p>
-          </div>
-          <button class="btn btn-line btn-sm cmp-open" type="button">이 제품 자세히</button>
+  <!-- 3. 제품 진열대: 렌탈·종합바운스·슬라이드 -->
+  <!--@shelves-a--><div class="shelves">
+  <section class="shelf" aria-labelledby="shelf-rental">
+    <div class="wrap">
+      <div class="shelf-head">
+        <h2 id="shelf-rental">렌탈</h2>
+        <span class="shelf-meta">23종 · 2–30 m</span>
+        <a class="shelf-all" href="렌탈서비스">전체 보기 →</a>
+        <div class="shelf-nav">
+          <button class="shelf-btn" type="button" data-dir="-1" aria-label="렌탈 앞 제품 보기" disabled>←</button>
+          <button class="shelf-btn" type="button" data-dir="1" aria-label="렌탈 다음 제품 보기">→</button>
         </div>
       </div>
+      <ul class="shelf-row"><li data-id="rental-f73971d1" data-cat="rental" data-rental="1" data-order="0" data-w="10" data-d="20"><a class="card" href="./#p-rental-f73971d1" data-open="rental-f73971d1"><span class="card-img"><img src="assets/img/p/f73971d1-s.webp" alt="유수풀" width="720" height="485" loading="lazy" decoding="async"><span class="badges"><span class="badge b-rental">렌탈</span></span></span><span class="card-body"><span class="card-name">유수풀</span><span class="card-size">10 × 20 × 1 m</span><span class="card-sub">렌탈</span></span></a></li><li data-id="rental-a917b15c" data-cat="rental" data-rental="1" data-order="0" data-w="1.5" data-d="2.7"><a class="card" href="./#p-rental-a917b15c" data-open="rental-a917b15c"><span class="card-img"><img src="assets/img/p/a917b15c-s.webp" alt="수박시소" width="720" height="720" loading="lazy" decoding="async"><span class="badges"><span class="badge b-rental">렌탈</span></span></span><span class="card-body"><span class="card-name">수박시소</span><span class="card-size">1.5 × 2.7 × 1 m</span><span class="card-sub">렌탈</span></span></a></li><li data-id="rental-8bb104e7" data-cat="rental" data-rental="1" data-order="0" data-w="10" data-d="10"><a class="card" href="./#p-rental-8bb104e7" data-open="rental-8bb104e7"><span class="card-img"><img src="assets/img/p/8bb104e7-s.webp" alt="아일랜드풀" width="720" height="720" loading="lazy" decoding="async"><span class="badges"><span class="badge b-rental">렌탈</span></span></span><span class="card-body"><span class="card-name">아일랜드풀</span><span class="card-size">지름 10 m</span><span class="card-sub">렌탈</span></span></a></li><li data-id="rental-8952ef53" data-cat="rental" data-rental="1" data-order="0" data-w="10" data-d="10"><a class="card" href="./#p-rental-8952ef53" data-open="rental-8952ef53"><span class="card-img"><img src="assets/img/p/8952ef53-s.webp" alt="그늘막수영장" width="720" height="720" loading="lazy" decoding="async"><span class="badges"><span class="badge b-rental">렌탈</span></span></span><span class="card-body"><span class="card-name">그늘막수영장</span><span class="card-size">10 × 10 × 4 m</span><span class="card-sub">렌탈</span></span></a></li><li data-id="rental-f57f4364" data-cat="rental" data-rental="1" data-order="0"><a class="card" href="./#p-rental-f57f4364" data-open="rental-f57f4364"><span class="card-img"><img src="assets/img/p/f57f4364-s.webp" alt="해적선수상용세트" width="720" height="405" loading="lazy" decoding="async"><span class="badges"><span class="badge b-rental">렌탈</span></span></span><span class="card-body"><span class="card-name">해적선수상용세트</span><span class="card-size is-none">크기 문의</span><span class="card-sub">렌탈</span></span></a></li><li data-id="rental-78c433d8" data-cat="rental" data-rental="1" data-order="0" data-w="4" data-d="20"><a class="card" href="./#p-rental-78c433d8" data-open="rental-78c433d8"><span class="card-img"><img src="assets/img/p/78c433d8-s.webp" alt="장애물콤보" width="720" height="540" loading="lazy" decoding="async"><span class="badges"><span class="badge b-rental">렌탈</span></span></span><span class="card-body"><span class="card-name">장애물콤보</span><span class="card-size">4 × 20 × 4.2 m</span><span class="card-sub">렌탈</span></span></a></li><li data-id="rental-fb222f41" data-cat="rental" data-rental="1" data-order="0"><a class="card" href="./#p-rental-fb222f41" data-open="rental-fb222f41"><span class="card-img"><img src="assets/img/p/fb222f41-s.webp" alt="중형슬라이드" width="658" height="720" loading="lazy" decoding="async"><span class="badges"><span class="badge b-rental">렌탈</span></span></span><span class="card-body"><span class="card-name">중형슬라이드</span><span class="card-size is-none">크기 문의</span><span class="card-sub">렌탈</span></span></a></li><li data-id="rental-a63acd8d" data-cat="rental" data-rental="1" data-order="0" data-w="7" data-d="4"><a class="card" href="./#p-rental-a63acd8d" data-open="rental-a63acd8d"><span class="card-img"><img src="assets/img/p/a63acd8d-s.webp" alt="기차여행바운스" width="720" height="405" loading="lazy" decoding="async"><span class="badges"><span class="badge b-rental">렌탈</span></span></span><span class="card-body"><span class="card-name">기차여행바운스</span><span class="card-size">7 × 4 × 2.5 m</span><span class="card-sub">렌탈</span></span></a></li><li data-id="rental-10ab1153" data-cat="rental" data-rental="1" data-order="0" data-w="5" data-d="11.5"><a class="card" href="./#p-rental-10ab1153" data-open="rental-10ab1153"><span class="card-img"><img src="assets/img/p/10ab1153-s.webp" alt="펭귄슬라이드세트" width="720" height="540" loading="lazy" decoding="async"><span class="badges"><span class="badge b-rental">렌탈</span></span></span><span class="card-body"><span class="card-name">펭귄슬라이드세트</span><span class="card-size">5 × 11.5 × 4.5 m</span><span class="card-sub">렌탈</span></span></a></li><li data-id="rental-aa595952" data-cat="rental" data-rental="1" data-order="0"><a class="card" href="./#p-rental-aa595952" data-open="rental-aa595952"><span class="card-img"><img src="assets/img/p/aa595952-s.webp" alt="마린슬라이드" width="720" height="405" loading="lazy" decoding="async"><span class="badges"><span class="badge b-rental">렌탈</span></span></span><span class="card-body"><span class="card-name">마린슬라이드</span><span class="card-size is-none">크기 문의</span><span class="card-sub">렌탈</span></span></a></li></ul>
     </div>
   </section>
+  <section class="shelf" aria-labelledby="shelf-bounce">
+    <div class="wrap">
+      <div class="shelf-head">
+        <h2 id="shelf-bounce">종합바운스</h2>
+        <span class="shelf-meta">60종 · 3–25 m</span>
+        <a class="shelf-all" href="blank-1">전체 보기 →</a>
+        <div class="shelf-nav">
+          <button class="shelf-btn" type="button" data-dir="-1" aria-label="종합바운스 앞 제품 보기" disabled>←</button>
+          <button class="shelf-btn" type="button" data-dir="1" aria-label="종합바운스 다음 제품 보기">→</button>
+        </div>
+      </div>
+      <ul class="shelf-row"><li data-id="lb-bboing-miro" data-cat="bounce" data-rental="1" data-order="0" data-w="7" data-d="12"><a class="card" href="lb-bboing-miro" data-open="lb-bboing-miro"><span class="card-img"><img src="assets/img/p/d248f96a-s.webp" alt="뽀잉미로 대형바운스" width="628" height="470" loading="lazy" decoding="async"><span class="badges"><span class="badge b-rental">렌탈</span></span></span><span class="card-body"><span class="card-name">뽀잉미로 대형바운스</span><span class="card-size">7 × 12 × 3 m</span><span class="card-sub">종합바운스 · 대형</span></span></a></li><li data-id="lb-castle" data-cat="bounce" data-rental="1" data-order="0" data-w="7" data-d="14"><a class="card" href="lb-castle" data-open="lb-castle"><span class="card-img"><img src="assets/img/p/eddcfccb-s.webp" alt="중세성 종합바운스 대형" width="628" height="470" loading="lazy" decoding="async"><span class="badges"><span class="badge b-rental">렌탈</span></span></span><span class="card-body"><span class="card-name">중세성 종합바운스 대형</span><span class="card-size">7 × 14 × 2.5 m</span><span class="card-sub">종합바운스 · 대형</span></span></a></li><li data-id="op-dino" data-cat="bounce" data-rental="0" data-order="1" data-w="7" data-d="5"><a class="card" href="op-dino" data-open="op-dino"><span class="card-img"><img src="assets/img/p/65fc6421-s.webp" alt="공룡메카드" width="720" height="540" loading="lazy" decoding="async"><span class="badges"><span class="badge b-order">주문제작</span></span></span><span class="card-body"><span class="card-name">공룡메카드</span><span class="card-size">7 × 5 × 3.5 m</span><span class="card-sub">종합바운스</span></span></a></li><li data-id="op-1" data-cat="bounce" data-rental="0" data-order="1" data-w="10" data-d="10"><a class="card" href="op-1" data-open="op-1"><span class="card-img"><img src="assets/img/p/19a8dabf-s.webp" alt="정글그라운드" width="720" height="540" loading="lazy" decoding="async"><span class="badges"><span class="badge b-order">주문제작</span></span></span><span class="card-body"><span class="card-name">정글그라운드</span><span class="card-size">10 × 10 × 4 m</span><span class="card-sub">종합바운스</span></span></a></li><li data-id="op-dream-kids-b" data-cat="bounce" data-rental="0" data-order="1" data-w="10" data-d="5"><a class="card" href="op-dream-kids-b" data-open="op-dream-kids-b"><span class="card-img"><img src="assets/img/p/6682d551-s.webp" alt="꿈꾸는나무 키즈바운스 B" width="720" height="540" loading="lazy" decoding="async"><span class="badges"><span class="badge b-order">주문제작</span></span></span><span class="card-body"><span class="card-name">꿈꾸는나무 키즈바운스 B</span><span class="card-size">10 × 5 × 3 m</span><span class="card-sub">종합바운스</span></span></a></li><li data-id="sb-air-escape-small-1" data-cat="bounce" data-rental="0" data-order="0" data-w="6.5" data-d="5.3"><a class="card" href="sb-air-escape-small-1" data-open="sb-air-escape-small-1"><span class="card-img"><img src="assets/img/p/daeca0ae-s.webp" alt="콩순이볼풀" width="598" height="448" loading="lazy" decoding="async"><span class="badges"></span></span><span class="card-body"><span class="card-name">콩순이볼풀</span><span class="card-size">6.5 × 5.3 × 3 m</span><span class="card-sub">종합바운스 · 소형</span></span></a></li><li data-id="sb-homea-1" data-cat="bounce" data-rental="0" data-order="0" data-w="5.8" data-d="4.3"><a class="card" href="sb-homea-1" data-open="sb-homea-1"><span class="card-img"><img src="assets/img/p/e027795a-s.webp" alt="얼음나라볼풀장" width="628" height="470" loading="lazy" decoding="async"><span class="badges"></span></span><span class="card-body"><span class="card-name">얼음나라볼풀장</span><span class="card-size is-long">5.8 × 4.3 × 2.8 m</span><span class="card-sub">종합바운스 · 소형</span></span></a></li><li data-id="op-icdworld" data-cat="bounce" data-rental="0" data-order="1" data-w="7.45" data-d="4"><a class="card" href="op-icdworld" data-open="op-icdworld"><span class="card-img"><img src="assets/img/p/a315f0f2-s.webp" alt="얼음왕국해적" width="720" height="540" loading="lazy" decoding="async"><span class="badges"><span class="badge b-order">주문제작</span></span></span><span class="card-body"><span class="card-name">얼음왕국해적</span><span class="card-size">7.45 × 4 × 2.8 m</span><span class="card-sub">종합바운스</span></span></a></li><li data-id="op-spaceroom" data-cat="bounce" data-rental="0" data-order="1" data-w="4.75" data-d="3"><a class="card" href="op-spaceroom" data-open="op-spaceroom"><span class="card-img"><img src="assets/img/p/609d4f36-s.webp" alt="어린이우주놀이방" width="720" height="540" loading="lazy" decoding="async"><span class="badges"><span class="badge b-order">주문제작</span></span></span><span class="card-body"><span class="card-name">어린이우주놀이방</span><span class="card-size is-long">4.75 × 3 × 2.5 / 5 × 3.83 × 2.5 m</span><span class="card-sub">종합바운스</span></span></a></li><li data-id="op-rayescape" data-cat="bounce" data-rental="0" data-order="1" data-w="8.85" data-d="5.2"><a class="card" href="op-rayescape" data-open="op-rayescape"><span class="card-img"><img src="assets/img/p/2e753ae6-s.webp" alt="레이탈출체험" width="628" height="470" loading="lazy" decoding="async"><span class="badges"><span class="badge b-order">주문제작</span></span></span><span class="card-body"><span class="card-name">레이탈출체험</span><span class="card-size is-long">8.85 × 5.2 × 3.1 m</span><span class="card-sub">종합바운스</span></span></a></li></ul>
+    </div>
+  </section>
+  <section class="shelf" aria-labelledby="shelf-slide">
+    <div class="wrap">
+      <div class="shelf-head">
+        <h2 id="shelf-slide">슬라이드</h2>
+        <span class="shelf-meta">11종 · 4–70 m</span>
+        <a class="shelf-all" href="blank-4">전체 보기 →</a>
+        <div class="shelf-nav">
+          <button class="shelf-btn" type="button" data-dir="-1" aria-label="슬라이드 앞 제품 보기" disabled>←</button>
+          <button class="shelf-btn" type="button" data-dir="1" aria-label="슬라이드 다음 제품 보기">→</button>
+        </div>
+      </div>
+      <ul class="shelf-row"><li data-id="sd-castle-35m" data-cat="slide" data-rental="1" data-order="0" data-w="10" data-d="30"><a class="card" href="sd-castle-35m" data-open="sd-castle-35m"><span class="card-img"><img src="assets/img/p/a053d97f-s.webp" alt="BIG 30M 대형슬라이드" width="628" height="470" loading="lazy" decoding="async"><span class="badges"><span class="badge b-rental">렌탈</span></span></span><span class="card-body"><span class="card-name">BIG 30M 대형슬라이드</span><span class="card-size">10 × 30 × 10 m</span><span class="card-sub">슬라이드 · 지상용</span></span></a></li><li data-id="op-water-slide-2" data-cat="slide" data-rental="0" data-order="1" data-w="6.5" data-d="70"><a class="card" href="op-water-slide-2" data-open="op-water-slide-2"><span class="card-img"><img src="assets/img/p/fab71786-s.webp" alt="70M 워터슬라이드" width="720" height="540" loading="lazy" decoding="async"><span class="badges"><span class="badge b-order">주문제작</span></span></span><span class="card-body"><span class="card-name">70M 워터슬라이드</span><span class="card-size is-long">5 × 60 × 2.3 + 6.5 × 10 × 5.3 m</span><span class="card-sub">슬라이드</span></span></a></li><li data-id="sd-blue-pengyn-w-1" data-cat="slide" data-rental="0" data-order="0" data-w="8.5" data-d="5"><a class="card" href="sd-blue-pengyn-w-1" data-open="sd-blue-pengyn-w-1"><span class="card-img"><img src="assets/img/p/16136aff-s.webp" alt="블루펭귄 T형 수상슬라이드" width="720" height="540" loading="lazy" decoding="async"><span class="badges"></span></span><span class="card-body"><span class="card-name">블루펭귄 T형 수상슬라이드</span><span class="card-size">8.5 × 5 × 4.8 m</span><span class="card-sub">슬라이드 · 수상용</span></span></a></li><li data-id="sd-blue-pengyn-w" data-cat="slide" data-rental="0" data-order="0" data-w="5.3" data-d="9"><a class="card" href="sd-blue-pengyn-w" data-open="sd-blue-pengyn-w"><span class="card-img"><img src="assets/img/p/5edb3749-s.webp" alt="블루펭귄수상슬라이드" width="628" height="470" loading="lazy" decoding="async"><span class="badges"></span></span><span class="card-body"><span class="card-name">블루펭귄수상슬라이드</span><span class="card-size is-long">5.3 × 9 × 6.5 / 5 × 6.5 × 4.8 m</span><span class="card-sub">슬라이드 · 수상용</span></span></a></li><li data-id="op-waterpark-combob" data-cat="slide" data-rental="0" data-order="1" data-w="6" data-d="12.4"><a class="card" href="op-waterpark-combob" data-open="op-waterpark-combob"><span class="card-img"><img src="assets/img/p/cb72a5bf-s.webp" alt="워터파크 콤보 B" width="720" height="540" loading="lazy" decoding="async"><span class="badges"><span class="badge b-order">주문제작</span></span></span><span class="card-body"><span class="card-name">워터파크 콤보 B</span><span class="card-size is-long">5.2 × 8.4 × 3.5 + 6 × 4 × 0.6 m</span><span class="card-sub">슬라이드</span></span></a></li><li data-id="sd-castle-30m" data-cat="slide" data-rental="0" data-order="0" data-w="10" data-d="35"><a class="card" href="sd-castle-30m" data-open="sd-castle-30m"><span class="card-img"><img src="assets/img/p/127c8960-s.webp" alt="캐슬 35M 대형슬라이드" width="628" height="470" loading="lazy" decoding="async"><span class="badges"></span></span><span class="card-body"><span class="card-name">캐슬 35M 대형슬라이드</span><span class="card-size">10 × 35 × 11 m</span><span class="card-sub">슬라이드 · 지상용</span></span></a></li><li data-id="sd-t-slide" data-cat="slide" data-rental="0" data-order="0" data-w="4" data-d="4"><a class="card" href="sd-t-slide" data-open="sd-t-slide"><span class="card-img"><img src="assets/img/p/77b9068a-s.webp" alt="ㄱ자형 수상슬라이드" width="720" height="540" loading="lazy" decoding="async"><span class="badges"></span></span><span class="card-body"><span class="card-name">ㄱ자형 수상슬라이드</span><span class="card-size">4 × 4 × 3.8 m</span><span class="card-sub">슬라이드 · 수상용</span></span></a></li><li data-id="sd-bboing" data-cat="slide" data-rental="0" data-order="0" data-w="5.3" data-d="8"><a class="card" href="sd-bboing" data-open="sd-bboing"><span class="card-img"><img src="assets/img/p/dbe76e6c-s.webp" alt="뽀잉슬라이드" width="628" height="470" loading="lazy" decoding="async"><span class="badges"></span></span><span class="card-body"><span class="card-name">뽀잉슬라이드</span><span class="card-size">5.3 × 8 × 5.8 m</span><span class="card-sub">슬라이드 · 지상용</span></span></a></li><li data-id="op-airplane-escape" data-cat="slide" data-rental="0" data-order="1" data-w="2.8" data-d="7.5"><a class="card" href="op-airplane-escape" data-open="op-airplane-escape"><span class="card-img"><img src="assets/img/p/b9f3d476-s.webp" alt="항공기탈출슬라이드" width="720" height="540" loading="lazy" decoding="async"><span class="badges"><span class="badge b-order">주문제작</span></span></span><span class="card-body"><span class="card-name">항공기탈출슬라이드</span><span class="card-size is-long">2.8 × 7.5 × 4.75 m</span><span class="card-sub">슬라이드</span></span></a></li><li data-id="sd-step-water" data-cat="slide" data-rental="0" data-order="0" data-w="2" data-d="6.55"><a class="card" href="sd-step-water" data-open="sd-step-water"><span class="card-img"><img src="assets/img/p/18ee2afd-s.webp" alt="계단슬라이드" width="628" height="470" loading="lazy" decoding="async"><span class="badges"></span></span><span class="card-body"><span class="card-name">계단슬라이드</span><span class="card-size">2 × 6.55 × 4.7 m</span><span class="card-sub">슬라이드 · 수상용</span></span></a></li></ul>
+    </div>
+  </section>
+  </div><!--/@shelves-a-->
 
   <!-- 4. 에어돔 프로모션 -->
   <section class="sec dome-sec" id="dome" aria-labelledby="dome-title">
@@ -205,7 +195,53 @@
     </div>
   </section>
 
-  <!-- 5. 전체 제품 -->
+  <!-- 5. 제품 진열대: 수상·스포츠·장애물·에어조형물 -->
+  <!--@shelves-b--><div class="shelves">
+  <section class="shelf" aria-labelledby="shelf-water">
+    <div class="wrap">
+      <div class="shelf-head">
+        <h2 id="shelf-water">수상</h2>
+        <span class="shelf-meta">23종 · 2–12 m</span>
+        <a class="shelf-all" href="수상용">전체 보기 →</a>
+        <div class="shelf-nav">
+          <button class="shelf-btn" type="button" data-dir="-1" aria-label="수상 앞 제품 보기" disabled>←</button>
+          <button class="shelf-btn" type="button" data-dir="1" aria-label="수상 다음 제품 보기">→</button>
+        </div>
+      </div>
+      <ul class="shelf-row"><li data-id="water-151c11d0" data-cat="water" data-rental="1" data-order="0" data-w="10" data-d="10"><a class="card" href="./#p-water-151c11d0" data-open="water-151c11d0"><span class="card-img"><img src="assets/img/p/151c11d0-s.webp" alt="에어수영장 10×10 사각" width="667" height="500" loading="lazy" decoding="async"><span class="badges"><span class="badge b-rental">렌탈</span></span></span><span class="card-body"><span class="card-name">에어수영장 10×10 사각</span><span class="card-size">10 × 10 m</span><span class="card-sub">수상</span></span></a></li><li data-id="water-968fb48e" data-cat="water" data-rental="1" data-order="0" data-w="8" data-d="8"><a class="card" href="./#p-water-968fb48e" data-open="water-968fb48e"><span class="card-img"><img src="assets/img/p/968fb48e-s.webp" alt="에어수영장" width="720" height="440" loading="lazy" decoding="async"><span class="badges"><span class="badge b-rental">렌탈</span></span></span><span class="card-body"><span class="card-name">에어수영장</span><span class="card-size">8 × 8 × 0.65 m</span><span class="card-sub">수상</span></span></a></li><li data-id="water-0e340dc4" data-cat="water" data-rental="1" data-order="0"><a class="card" href="./#p-water-0e340dc4" data-open="water-0e340dc4"><span class="card-img"><img src="assets/img/p/0e340dc4-s.webp" alt="조립식수영장 사각" width="600" height="450" loading="lazy" decoding="async"><span class="badges"><span class="badge b-rental">렌탈</span></span></span><span class="card-body"><span class="card-name">조립식수영장 사각</span><span class="card-size is-none">크기 문의</span><span class="card-sub">수상</span></span></a></li><li data-id="water-69213db1" data-cat="water" data-rental="1" data-order="0" data-w="2" data-d="2"><a class="card" href="./#p-water-69213db1" data-open="water-69213db1"><span class="card-img"><img src="assets/img/p/69213db1-s.webp" alt="워터워킹볼" width="720" height="540" loading="lazy" decoding="async"><span class="badges"><span class="badge b-rental">렌탈</span></span></span><span class="card-body"><span class="card-name">워터워킹볼</span><span class="card-size">지름 2 m</span><span class="card-sub">수상</span></span></a></li><li data-id="water-f4460247" data-cat="water" data-rental="1" data-order="0" data-w="2.7" data-d="2.4"><a class="card" href="./#p-water-f4460247" data-open="water-f4460247"><span class="card-img"><img src="assets/img/p/f4460247-s.webp" alt="워터롤러" width="700" height="700" loading="lazy" decoding="async"><span class="badges"><span class="badge b-rental">렌탈</span></span></span><span class="card-body"><span class="card-name">워터롤러</span><span class="card-size is-long">2.7 × 2.4 × 1.8 m</span><span class="card-sub">수상</span></span></a></li><li data-id="water-334415ab" data-cat="water" data-rental="0" data-order="0" data-w="6" data-d="6"><a class="card" href="./#p-water-334415ab" data-open="water-334415ab"><span class="card-img"><img src="assets/img/p/334415ab-s.webp" alt="에어수영장 6m 원형" width="720" height="540" loading="lazy" decoding="async"><span class="badges"></span></span><span class="card-body"><span class="card-name">에어수영장 6m 원형</span><span class="card-size">지름 6 m</span><span class="card-sub">수상</span></span></a></li><li data-id="water-166e934f" data-cat="water" data-rental="0" data-order="0" data-w="12" data-d="6"><a class="card" href="./#p-water-166e934f" data-open="water-166e934f"><span class="card-img"><img src="assets/img/p/166e934f-s.webp" alt="에어수영장 12×6 사각" width="720" height="540" loading="lazy" decoding="async"><span class="badges"></span></span><span class="card-body"><span class="card-name">에어수영장 12×6 사각</span><span class="card-size">12 × 6 m</span><span class="card-sub">수상</span></span></a></li><li data-id="water-c10784a2" data-cat="water" data-rental="0" data-order="0"><a class="card" href="./#p-water-c10784a2" data-open="water-c10784a2"><span class="card-img"><img src="assets/img/p/c10784a2-s.webp" alt="조립식수영장 원형" width="600" height="450" loading="lazy" decoding="async"><span class="badges"></span></span><span class="card-body"><span class="card-name">조립식수영장 원형</span><span class="card-size is-none">크기 문의</span><span class="card-sub">수상</span></span></a></li><li data-id="water-1d776780" data-cat="water" data-rental="0" data-order="0"><a class="card" href="./#p-water-1d776780" data-open="water-1d776780"><span class="card-img"><img src="assets/img/p/1d776780-s.webp" alt="수상 워터파크 A" width="528" height="720" loading="lazy" decoding="async"><span class="badges"></span></span><span class="card-body"><span class="card-name">수상 워터파크 A</span><span class="card-size is-none">크기 문의</span><span class="card-sub">수상</span></span></a></li><li data-id="water-9e3087bb" data-cat="water" data-rental="0" data-order="0"><a class="card" href="./#p-water-9e3087bb" data-open="water-9e3087bb"><span class="card-img"><img src="assets/img/p/9e3087bb-s.webp" alt="수상 워터파크 B" width="528" height="720" loading="lazy" decoding="async"><span class="badges"></span></span><span class="card-body"><span class="card-name">수상 워터파크 B</span><span class="card-size is-none">크기 문의</span><span class="card-sub">수상</span></span></a></li></ul>
+    </div>
+  </section>
+  <section class="shelf" aria-labelledby="shelf-sports">
+    <div class="wrap">
+      <div class="shelf-head">
+        <h2 id="shelf-sports">스포츠·장애물</h2>
+        <span class="shelf-meta">16종 · 3–14 m</span>
+        <a class="shelf-all" href="blank-5">전체 보기 →</a>
+        <div class="shelf-nav">
+          <button class="shelf-btn" type="button" data-dir="-1" aria-label="스포츠·장애물 앞 제품 보기" disabled>←</button>
+          <button class="shelf-btn" type="button" data-dir="1" aria-label="스포츠·장애물 다음 제품 보기">→</button>
+        </div>
+      </div>
+      <ul class="shelf-row"><li data-id="so-trolley" data-cat="sports" data-rental="1" data-order="0" data-w="4" data-d="10.5"><a class="card" href="so-trolley" data-open="so-trolley"><span class="card-img"><img src="assets/img/p/3ca546d9-s.webp" alt="장애물 불의전차" width="628" height="470" loading="lazy" decoding="async"><span class="badges"><span class="badge b-rental">렌탈</span></span></span><span class="card-body"><span class="card-name">장애물 불의전차</span><span class="card-size">4 × 10.5 × 4.2 m</span><span class="card-sub">스포츠·장애물 · 게임</span></span></a></li><li data-id="op-entergatew" data-cat="sports" data-rental="0" data-order="1" data-w="4" data-d="3.5"><a class="card" href="op-entergatew" data-open="op-entergatew"><span class="card-img"><img src="assets/img/p/c4cee2ae-s.webp" alt="위비입장게이트" width="720" height="540" loading="lazy" decoding="async"><span class="badges"><span class="badge b-order">주문제작</span></span></span><span class="card-body"><span class="card-name">위비입장게이트</span><span class="card-size">4 × 3.5 × 4.5 m</span><span class="card-sub">스포츠·장애물</span></span></a></li><li data-id="s-o-soccer-game-1" data-cat="sports" data-rental="0" data-order="0" data-w="2.6" data-d="4"><a class="card" href="s-o-soccer-game-1" data-open="s-o-soccer-game-1"><span class="card-img"><img src="assets/img/p/65cac7f0-s.webp" alt="암벽등반놀이" width="720" height="540" loading="lazy" decoding="async"><span class="badges"></span></span><span class="card-body"><span class="card-name">암벽등반놀이</span><span class="card-size">2.6 × 4 × 2.8 m</span><span class="card-sub">스포츠·장애물 · 게임</span></span></a></li><li data-id="op-dronegate" data-cat="sports" data-rental="0" data-order="1"><a class="card" href="op-dronegate" data-open="op-dronegate"><span class="card-img"><img src="assets/img/p/cfef0508-s.webp" alt="드론 게이트" width="173" height="130" loading="lazy" decoding="async"><span class="badges"><span class="badge b-order">주문제작</span></span></span><span class="card-body"><span class="card-name">드론 게이트</span><span class="card-size is-none">크기 문의</span><span class="card-sub">스포츠·장애물</span></span></a></li><li data-id="s-o-soccer-game-b" data-cat="sports" data-rental="0" data-order="0" data-w="2.6" data-d="4"><a class="card" href="s-o-soccer-game-b" data-open="s-o-soccer-game-b"><span class="card-img"><img src="assets/img/p/f3c2f6f1-s.webp" alt="농구 핀볼 C" width="720" height="540" loading="lazy" decoding="async"><span class="badges"></span></span><span class="card-body"><span class="card-name">농구 핀볼 C</span><span class="card-size">2.6 × 4 × 2.8 m</span><span class="card-sub">스포츠·장애물 · 게임</span></span></a></li><li data-id="s-o-soccer-game" data-cat="sports" data-rental="0" data-order="0" data-w="2.6" data-d="4.6"><a class="card" href="s-o-soccer-game" data-open="s-o-soccer-game"><span class="card-img"><img src="assets/img/p/47c4d124-s.webp" alt="축구 슛팅게임 B" width="720" height="540" loading="lazy" decoding="async"><span class="badges"></span></span><span class="card-body"><span class="card-name">축구 슛팅게임 B</span><span class="card-size is-long">2.6 × 4.6 × 2.8 m</span><span class="card-sub">스포츠·장애물 · 게임</span></span></a></li><li data-id="so-cometition" data-cat="sports" data-rental="0" data-order="0" data-w="4" data-d="10"><a class="card" href="so-cometition" data-open="so-cometition"><span class="card-img"><img src="assets/img/p/a9c4e4c0-s.webp" alt="장애물 통과게임" width="628" height="470" loading="lazy" decoding="async"><span class="badges"></span></span><span class="card-body"><span class="card-name">장애물 통과게임</span><span class="card-size">4 × 10 × 3.5 m</span><span class="card-sub">스포츠·장애물 · 게임</span></span></a></li><li data-id="basketball-pin" data-cat="sports" data-rental="0" data-order="0" data-w="3" data-d="4"><a class="card" href="basketball-pin" data-open="basketball-pin"><span class="card-img"><img src="assets/img/p/894a2da6-s.webp" alt="농구 핀볼게임 Type B" width="628" height="470" loading="lazy" decoding="async"><span class="badges"></span></span><span class="card-body"><span class="card-name">농구 핀볼게임 Type B</span><span class="card-size">3 × 4 × 3.5 m</span><span class="card-sub">스포츠·장애물 · 게임</span></span></a></li><li data-id="soccer-game" data-cat="sports" data-rental="0" data-order="0" data-w="4" data-d="5"><a class="card" href="soccer-game" data-open="soccer-game"><span class="card-img"><img src="assets/img/p/b20e2fc1-s.webp" alt="축구 슛팅게임" width="628" height="470" loading="lazy" decoding="async"><span class="badges"></span></span><span class="card-body"><span class="card-name">축구 슛팅게임</span><span class="card-size">4 × 5 × 3 m</span><span class="card-sub">스포츠·장애물 · 게임</span></span></a></li><li data-id="water-soccer" data-cat="sports" data-rental="0" data-order="0" data-w="14" data-d="8"><a class="card" href="water-soccer" data-open="water-soccer"><span class="card-img"><img src="assets/img/p/28fdf719-s.webp" alt="수중축구게임장" width="628" height="470" loading="lazy" decoding="async"><span class="badges"></span></span><span class="card-body"><span class="card-name">수중축구게임장</span><span class="card-size">14 × 8 × 2 m</span><span class="card-sub">스포츠·장애물 · 게임</span></span></a></li></ul>
+    </div>
+  </section>
+  <section class="shelf" aria-labelledby="shelf-sculpture">
+    <div class="wrap">
+      <div class="shelf-head">
+        <h2 id="shelf-sculpture">에어조형물</h2>
+        <span class="shelf-meta">15종</span>
+        <a class="shelf-all" href="order-product">전체 보기 →</a>
+        <div class="shelf-nav">
+          <button class="shelf-btn" type="button" data-dir="-1" aria-label="에어조형물 앞 제품 보기" disabled>←</button>
+          <button class="shelf-btn" type="button" data-dir="1" aria-label="에어조형물 다음 제품 보기">→</button>
+        </div>
+      </div>
+      <ul class="shelf-row"><li data-id="sculpture-a88f866e" data-cat="sculpture" data-rental="0" data-order="0"><a class="card" href="./#p-sculpture-a88f866e" data-open="sculpture-a88f866e"><span class="card-img"><img src="assets/img/p/a88f866e-s.webp" alt="에어무대" width="720" height="453" loading="lazy" decoding="async"><span class="badges"></span></span><span class="card-body"><span class="card-name">에어무대</span><span class="card-size is-none">크기 문의</span><span class="card-sub">에어조형물</span></span></a></li><li data-id="sculpture-1dd51e02" data-cat="sculpture" data-rental="0" data-order="0"><a class="card" href="./#p-sculpture-1dd51e02" data-open="sculpture-1dd51e02"><span class="card-img"><img src="assets/img/p/1dd51e02-s.webp" alt="황금돼지" width="611" height="467" loading="lazy" decoding="async"><span class="badges"></span></span><span class="card-body"><span class="card-name">황금돼지</span><span class="card-size is-none">크기 문의</span><span class="card-sub">에어조형물</span></span></a></li><li data-id="sculpture-a93a4fc1" data-cat="sculpture" data-rental="0" data-order="0"><a class="card" href="./#p-sculpture-a93a4fc1" data-open="sculpture-a93a4fc1"><span class="card-img"><img src="assets/img/p/a93a4fc1-s.webp" alt="아기공룡2" width="400" height="434" loading="lazy" decoding="async"><span class="badges"></span></span><span class="card-body"><span class="card-name">아기공룡2</span><span class="card-size is-none">크기 문의</span><span class="card-sub">에어조형물</span></span></a></li><li data-id="sculpture-6c6b762a" data-cat="sculpture" data-rental="0" data-order="0"><a class="card" href="./#p-sculpture-6c6b762a" data-open="sculpture-6c6b762a"><span class="card-img"><img src="assets/img/p/6c6b762a-s.webp" alt="곰팅이" width="400" height="533" loading="lazy" decoding="async"><span class="badges"></span></span><span class="card-body"><span class="card-name">곰팅이</span><span class="card-size is-none">크기 문의</span><span class="card-sub">에어조형물</span></span></a></li><li data-id="sculpture-eac806d1" data-cat="sculpture" data-rental="0" data-order="0"><a class="card" href="./#p-sculpture-eac806d1" data-open="sculpture-eac806d1"><span class="card-img"><img src="assets/img/p/eac806d1-s.webp" alt="곰돌이푸" width="400" height="431" loading="lazy" decoding="async"><span class="badges"></span></span><span class="card-body"><span class="card-name">곰돌이푸</span><span class="card-size is-none">크기 문의</span><span class="card-sub">에어조형물</span></span></a></li><li data-id="sculpture-39384013" data-cat="sculpture" data-rental="0" data-order="0"><a class="card" href="./#p-sculpture-39384013" data-open="sculpture-39384013"><span class="card-img"><img src="assets/img/p/39384013-s.webp" alt="부처" width="598" height="449" loading="lazy" decoding="async"><span class="badges"></span></span><span class="card-body"><span class="card-name">부처</span><span class="card-size is-none">크기 문의</span><span class="card-sub">에어조형물</span></span></a></li><li data-id="sculpture-91da5892" data-cat="sculpture" data-rental="0" data-order="0"><a class="card" href="./#p-sculpture-91da5892" data-open="sculpture-91da5892"><span class="card-img"><img src="assets/img/p/91da5892-s.webp" alt="부처와코끼리" width="598" height="449" loading="lazy" decoding="async"><span class="badges"></span></span><span class="card-body"><span class="card-name">부처와코끼리</span><span class="card-size is-none">크기 문의</span><span class="card-sub">에어조형물</span></span></a></li><li data-id="sculpture-534b41d4" data-cat="sculpture" data-rental="0" data-order="0"><a class="card" href="./#p-sculpture-534b41d4" data-open="sculpture-534b41d4"><span class="card-img"><img src="assets/img/p/534b41d4-s.webp" alt="오징어" width="399" height="259" loading="lazy" decoding="async"><span class="badges"></span></span><span class="card-body"><span class="card-name">오징어</span><span class="card-size is-none">크기 문의</span><span class="card-sub">에어조형물</span></span></a></li><li data-id="sculpture-28d87105" data-cat="sculpture" data-rental="0" data-order="0"><a class="card" href="./#p-sculpture-28d87105" data-open="sculpture-28d87105"><span class="card-img"><img src="assets/img/p/28d87105-s.webp" alt="푸른고래" width="400" height="258" loading="lazy" decoding="async"><span class="badges"></span></span><span class="card-body"><span class="card-name">푸른고래</span><span class="card-size is-none">크기 문의</span><span class="card-sub">에어조형물</span></span></a></li><li data-id="sculpture-e2fb97fe" data-cat="sculpture" data-rental="0" data-order="0"><a class="card" href="./#p-sculpture-e2fb97fe" data-open="sculpture-e2fb97fe"><span class="card-img"><img src="assets/img/p/e2fb97fe-s.webp" alt="바다사자" width="399" height="259" loading="lazy" decoding="async"><span class="badges"></span></span><span class="card-body"><span class="card-name">바다사자</span><span class="card-size is-none">크기 문의</span><span class="card-sub">에어조형물</span></span></a></li></ul>
+    </div>
+  </section>
+  </div><!--/@shelves-b-->
+
+  <!-- 6. 전체 제품 -->
   <section class="sec products-sec" id="products" aria-labelledby="products-title">
     <div class="wrap">
       <div class="sec-head sec-head-row">
@@ -406,7 +442,36 @@
     </div>
   </section>
 
-  <!-- 6. 렌탈 / 주문제작 -->
+  <!-- 7. 시안과 실물 -->
+  <section class="sec compare-sec" id="compare" aria-labelledby="compare-title">
+    <div class="wrap compare-in">
+      <div class="compare-copy">
+        <p class="eyebrow eyebrow-ink">3D 시안 → 설치 현장</p>
+        <h2 id="compare-title">시안 그대로<br>세웁니다</h2>
+        <p>같은 제품의 3D 시안과 실제 설치 사진입니다. 사진 위 손잡이를 좌우로 밀어 비교해 보세요.</p>
+        <div class="pair-list" role="tablist" aria-label="비교할 제품"></div>
+      </div>
+      <div class="compare-box">
+        <div class="cmp" style="--pos:50%">
+          <img class="cmp-after" src="" alt="" width="800" height="600">
+          <div class="cmp-before-wrap"><img class="cmp-before" src="" alt="" width="800" height="600"></div>
+          <span class="cmp-tag cmp-tag-l">3D 시안</span>
+          <span class="cmp-tag cmp-tag-r">설치 현장</span>
+          <div class="cmp-handle" aria-hidden="true"><span></span></div>
+          <input class="cmp-range" type="range" min="0" max="100" value="50" aria-label="시안과 설치 사진 경계 옮기기">
+        </div>
+        <div class="cmp-meta">
+          <div>
+            <p class="cmp-name"></p>
+            <p class="cmp-size"></p>
+          </div>
+          <button class="btn btn-line btn-sm cmp-open" type="button">이 제품 자세히</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. 렌탈 / 주문제작 -->
   <section class="sec doors-sec" aria-labelledby="doors-title">
     <div class="wrap">
       <div class="sec-head">
@@ -447,7 +512,7 @@
     </div>
   </section>
 
-  <!-- 7. 견적 문의 -->
+  <!-- 9. 견적 문의 -->
   <section class="sec inquiry-sec" id="inquiry" aria-labelledby="inquiry-title">
     <div class="wrap inquiry-in">
       <div class="inquiry-form-wrap">
@@ -486,7 +551,6 @@
               </div>
             </div>
           </div>
-          <div class="pick" id="pick" hidden aria-live="polite"></div>
           <div class="f-row">
             <label class="f">
               <span class="f-label">이름 또는 회사명 <i>*</i></span>
@@ -614,6 +678,6 @@
 
 <script src="assets/js/data.js?v=8d20066f"></script>
 <script src="assets/js/scale.js?v=f87f3c60"></script>
-<script src="assets/js/app.js?v=c99f91d7"></script>
+<script src="assets/js/app.js?v=32899d10"></script>
 </body>
 </html>
