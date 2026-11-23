@@ -660,6 +660,7 @@ a.dome-row { color: #fff; }
   /* 첫 화면: 사진 → (사진 위) 제목 → 사진 고르기 → 설명 → 버튼 */
   .hero { --mh: clamp(330px, 52svh, 460px); padding: calc(var(--mh) - 118px) 0 26px; }
   .hero-note, .hero-actions .btn-ghost { display: none; }   /* 아래 고정 줄에 견적 문의가 있어서, 제품 줄이 더 빨리 보이게 */
+  .lead-cat { display: none; }   /* 휴대폰은 안내 문장을 두 줄로: 분류·개수는 바로 아래 아이콘 줄에 있다 */
   .lead { margin-top: 16px; font-size: 1rem; }
   .hero-actions { margin-top: 18px; gap: 10px; }
   .hero-note { font-size: .86rem; }
